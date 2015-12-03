@@ -1,0 +1,31 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "eadlg.h"
+
+DLGTEMPLATE ID_OPENDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Change directory", ID_OPENDLG, 72, 33, 269, 145, FS_SYSMODAL | 
+            FS_SCREENALIGN | WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LISTBOX         ID_DIRLIST, 7, 4, 159, 117
+        LTEXT           "Directory", 203, 7, 124, 50, 12
+        ENTRYFIELD      "", ID_DIRNAME, 57, 126, 206, 8, ES_MARGIN
+        DEFPUSHBUTTON   "Ok", DID_OK, 175, 4, 40, 15
+        PUSHBUTTON      "Cancel", DID_CANCEL, 220, 4, 40, 15
+    END
+END
+
+DLGTEMPLATE ID_ABOUTDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About EA-Browser", ID_ABOUTDLG, 87, 70, 190, 67, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        DEFPUSHBUTTON   "~Ok", DID_OK, 77, 10, 40, 14
+        CTEXT           "EA-Browser version 0.31", 402, 57, 48, 120, 11, 
+                        DT_VCENTER | DT_WORDBREAK
+        LTEXT           "Made by Henk Kelder", 403, 69, 38, 96, 8
+        CONTROL         ID_BITMAP, ID_BITMAP, 19, 42, 21, 16, WC_STATIC, 
+                        SS_BITMAP | WS_GROUP | WS_VISIBLE
+    END
+END

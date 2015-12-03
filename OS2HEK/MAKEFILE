@@ -1,0 +1,63 @@
+# Make file for OS2HEK.DLL
+#   1-09-1992
+# IBM C/2 Set compiler
+# DLL 
+
+TOOLKIT=E:\TOOLKIT
+IBMC   =E:\IBMCPP
+
+DEBUG=YES
+
+.SUFFIXES: .dll
+
+!ifdef DEBUG
+OPTS=/Ti /DDEBUG 
+CV=/CO
+!else
+OPTS=/O+
+!endif
+
+LINKOPT=/NOI $(CV) /ALIGN:16 /MAP /EXEPACK
+
+# Compiler options
+# /Sm - Migration (microsoft compatible) libs
+# /Se - IBM extentions
+
+# /Ss - Allow use of // comment
+# /Gm - Use single thread libraries
+# /Gf - Use fast floating point
+# /Kb+ - Warnings on general diagnostics
+# /G3  - Optimize code for 80386 (also runs on 80486)
+# /C   - Compile only
+# /Gt+ - Make shure all data is 16 bits alligned
+# /Gs+ - Remove stack checking
+# /Gm+ - Link with multi-tasking lib
+# /Ge- - Use libs that assume a DLL is being build
+# /Ge+ - Use libs that assume a EXE is being build
+# /Gd- - Statically link c-runtime into the dll.
+
+.c.obj:
+     ICC.EXE  /Sm /Ss /Kb+ /G3 /C /Ge+ /Gd- /Gm+ /Gs+ $(OPTS) /I$(TOOLKIT)\H;$(IBMC)\INCLUDE %s >%|dpfF.err
+     type %|dpfF.err      
+
+
+ALL: OS2HEK.lib 
+
+OS2HEK.LIB : os2prof.obj os2block.obj os2ea.obj os2obj.obj os2err.obj \
+             readicon.obj
+    -if exist OS2HEK.LIB del OS2HEK.LIB
+    lib @<<OS2HEK.lnk
+OS2HEK.LIB
+Y
+$(RT_OBJS: = +^
+) $(**: = &^
+)
+;
+<<NOKEEP
+
+os2prof.obj : os2prof.c  os2hek.h
+os2block.obj: os2block.c os2hek.h
+os2ea.obj   : os2ea.c    os2hek.h
+os2obj.obj  : os2obj.c   os2hek.h
+os2err.obj  : os2err.c   os2hek.h
+readicon.obj: readicon.c os2hek.h

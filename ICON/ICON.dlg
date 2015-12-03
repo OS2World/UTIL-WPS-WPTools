@@ -1,0 +1,108 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "E:\hektools\icon\icon.h"
+
+DLGTEMPLATE ID_DELDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Delete object(s)", ID_DELDLG, 102, 28, 186, 132, FS_ICON | 
+            FS_ACCELTABLE | FS_SYSMODAL | FS_SCREENALIGN
+    BEGIN
+        GROUPBOX        "From", -1, 7, 32, 165, 96
+        LTEXT           "location", -1, 11, 106, 36, 8
+        ENTRYFIELD      "", ID_LOCATION, 51, 106, 112, 8, ES_MARGIN | 
+                        ES_READONLY | NOT WS_TABSTOP
+        LTEXT           "Files", -1, 11, 87, 33, 8
+        LISTBOX         ID_DELLIST, 49, 37, 116, 62, LS_MULTIPLESEL
+        AUTOCHECKBOX    "Confirm on folder delete", ID_CONFIRM, 7, 20, 116, 
+                        10
+        DEFPUSHBUTTON   "Delete", DID_OK, 6, 4, 40, 14
+        PUSHBUTTON      "Cancel", ID_DIRICON, 49, 4, 40, 14
+    END
+END
+
+DLGTEMPLATE ID_OPENDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Change directory", ID_OPENDLG, 72, 33, 269, 145, FS_SYSMODAL | 
+            FS_SCREENALIGN | WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LISTBOX         ID_DIRLIST, 7, 4, 159, 117
+        LTEXT           "Directory", 203, 7, 124, 50, 12
+        ENTRYFIELD      "", ID_DIRNAME, 57, 126, 206, 8, ES_MARGIN
+        DEFPUSHBUTTON   "Ok", DID_OK, 175, 4, 40, 15
+        PUSHBUTTON      "Cancel", ID_DIRICON, 220, 4, 40, 15
+    END
+END
+
+DLGTEMPLATE ID_SSTRINGDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Setupstring", ID_SSTRINGDLG, 24, 32, 368, 147, NOT FS_DLGBORDER | 
+            FS_SCREENALIGN | FS_SIZEBORDER | WS_VISIBLE | NOT WS_SAVEBITS, 
+            FCF_SYSMENU | FCF_TITLEBAR | FCF_MAXBUTTON | FCF_NOBYTEALIGN
+    BEGIN
+        CONTROL         "", ID_MLESETTING, 0, 0, 368, 147, WC_MLE, 
+                        MLS_READONLY | MLS_HSCROLL | MLS_VSCROLL | WS_GROUP | 
+                        WS_TABSTOP | WS_VISIBLE
+                        PRESPARAMS PP_FONTNAMESIZE, "11.System VIO"
+    END
+END
+
+DLGTEMPLATE ID_OPTIONDLG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Change options", ID_OPTIONDLG, 15, 22, 335, 157, FS_SYSMODAL | 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "View", ID_VIEW, 8, 119, 82, 33
+        AUTORADIOBUTTON "Non grid", ID_NGRID, 14, 134, 57, 10
+        AUTORADIOBUTTON "Flowed", ID_FLOWED, 14, 124, 55, 10
+        GROUPBOX        "Show", ID_SHOW, 8, 55, 82, 62
+        AUTOCHECKBOX    "Drives", ID_DRIVES, 15, 97, 54, 10
+        AUTOCHECKBOX    "Directories", ID_DIRECTORIES, 15, 87, 64, 10
+        AUTOCHECKBOX    "Real names", ID_REALNAMES, 15, 77, 68, 10
+        AUTOCHECKBOX    "Small icons", ID_MINIICONS, 15, 67, 65, 10
+        AUTOCHECKBOX    "Animated icon", ID_ANIMATED, 15, 57, 73, 10
+        LTEXT           "Filter", ID_FILTERTXT, 101, 131, 27, 8
+        ENTRYFIELD      "", ID_FILTER, 134, 131, 69, 8, ES_MARGIN
+        GROUPBOX        "Sort", ID_SORT, 111, 63, 94, 54
+        AUTORADIOBUTTON "Title", ID_SORTNAME, 119, 93, 39, 10
+        AUTORADIOBUTTON "Realname", ID_SORTREALNAME, 119, 83, 63, 10
+        AUTORADIOBUTTON "Extention", ID_SORTEXT, 119, 73, 67, 10
+        GROUPBOX        "EA to show", ID_EATOSHOW, 225, 48, 100, 70
+        AUTORADIOBUTTON "None", ID_EANONE, 233, 96, 39, 10
+        AUTORADIOBUTTON ".SUBJECT", ID_EASUBJECT, 233, 86, 81, 10
+        AUTORADIOBUTTON ".COMMENTS", ID_EACOMMENTS, 233, 76, 86, 10
+        AUTORADIOBUTTON ".KEYPHRASES", ID_EAKEYPHRASES, 233, 66, 86, 10
+        AUTORADIOBUTTON ".HISTORY", ID_EAHISTORY, 233, 56, 90, 10
+        LTEXT           "Path for extracted icons", 318, 9, 46, 135, 8
+        ENTRYFIELD      "", ID_EXTPATH, 10, 36, 143, 8, ES_MARGIN
+        AUTOCHECKBOX    "Save options on exit", ID_SAVEEXIT, 6, 21, 99, 10
+        DEFPUSHBUTTON   "~Ok", DID_OK, 6, 4, 40, 14
+        PUSHBUTTON      "~Cancel", ID_DIRICON, 49, 4, 40, 14
+        PUSHBUTTON      "~Save", ID_SAVE, 92, 4, 40, 14
+    END
+END
+
+DLGTEMPLATE ID_DLGSETOBJID LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Set OBJECTID", ID_DLGSETOBJID, 67, 75, 213, 45, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        ENTRYFIELD      "", ID_NEWOBJECTID, 15, 20, 129, 8, ES_MARGIN
+        DEFPUSHBUTTON   "OK", DID_OK, 163, 25, 40, 14
+        PUSHBUTTON      "Cancel", ID_DIRICON, 163, 6, 40, 14
+    END
+END
+
+DLGTEMPLATE ID_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About Icon Tool", ID_ABOUT, 100, 86, 200, 71, FS_SYSMODAL | NOT 
+            FS_DLGBORDER | FS_BORDER | FS_SCREENALIGN | WS_VISIBLE, 
+            FCF_TITLEBAR
+    BEGIN
+        ICON            ID_VOLMACICON, ID_ABOUTICON, 13, 35, 21, 16
+        LTEXT           "IconTool version 1.92", 502, 57, 46, 96, 8
+        LTEXT           "Written by Henk Kelder", 503, 53, 38, 105, 8
+        PUSHBUTTON      "Ok", DID_OK, 149, 4, 40, 14
+        CTEXT           "November 1999", 504, 71, 30, 68, 8, DT_VCENTER
+    END
+END

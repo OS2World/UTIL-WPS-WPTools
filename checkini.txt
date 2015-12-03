@@ -1,0 +1,667 @@
+
+
+
+                                                     CHECKINI.TXT - Page 1
+
+
+     Table of Contents
+     -----------------
+
+
+1. DISCLAIMER............................................................2
+
+
+2. IMPORTANT - READ THIS FIRST !.........................................2
+
+
+3. DESCRIPTION...........................................................3
+
+3.1 GENERAL..............................................................3
+3.2 PM_WORKPLACE:HANDLES.................................................3
+3.3 SOME SPECIFIC PROBLEMS...............................................4
+3.4 ORPHAN OBJECTS.......................................................4
+
+4. USING CHECKINI........................................................4
+
+
+5. HOW THE PROGRAM WORKS.................................................5
+
+
+6. EXAMPLES OF OUTPUT:...................................................6
+
+
+7. WHAT THE PROGRAM CHECKS...............................................7
+
+
+8. REVISION HISTORY......................................................8
+
+
+
+                                                     CHECKINI.TXT - Page 2
+
+
+
+1. DISCLAIMER
+
+I allow you to use and distribute CHECKINI freely under the condition that
+I am in no way responsible for any damage or loss you may suffer.
+
+Henk Kelder
+Dennenlaan 12
+3843 BX Harderwijk
+email: henk.kelder@capgemini.nl
+http://www.os2ss.com/information/kelder/index.html
+
+
+2. IMPORTANT - READ THIS FIRST !
+
+You should take care when using this program on new version of OS/2 since
+this program interprets data from the ini-files. The internal structure of
+this data can change, and the program might fail or even corrupt
+information. This has happened before with previous releases of OS/2.
+
+CHECKINI checks for, and optionally corrects, problems in OS2.INI and
+OS2SYS.INI. CHECKINI only looks at information regarding the workplace
+shell.
+
+To make full use of CHECKINI, read this document for information about
+what CHECKINI does.
+
+
+                                                     CHECKINI.TXT - Page 3
+
+
+
+3. DESCRIPTION
+
+3.1 GENERAL
+The main reason for CHECKINI is the growth that the both INI files tend to
+have if one uses the Workplace shell heavily. Using CHECKINI in
+conjunction with COPYINI helps to reduce the INI files' sizes, which in
+turn should increase the workplace shell's performance.
+
+Also, CHECKINI helps to determine some possible causes for workplace shell
+failures, like losing workplace shell objects, or situations in which a
+program object loses the proper executable name or current directory.
+Obviously, the real cause for these problems must be in the workplace
+shell itself; CHECKINI however could help you to determine the degree of
+damage that has been done.
+
+
+3.2 PM_WORKPLACE:HANDLES
+A special note is in order about a specific piece of information in the
+INI-files called 'PM_Workplace:HandlesX'. The workplace shell uses some
+obscure entity called object-handles to refer to objects. Object handles
+are in fact numbers. A object-handle can refer to an abstract object (a
+object NOT on your harddisk e.g. the colour palette) and file-system
+objects (files & directories).
+
+Just to let you know:
+Abstract objects reside in the ini-files. (Although then can appear
+anywhere on your computer, they are stored inside OS2.INI)
+
+File-system objects reside on your harddisk. (since these are files and
+directories)
+
+Whenever you add a program object to your desktop and specify a program
+file, the workplace shell determines if a handle was already assigned to
+the program file and if so, it uses this handle. If no handle was
+assigned, the shell creates a handle and assigns it to the program file.
+In the definition of the program object (itself an abstract object) the
+handle for the program file is stored.
+
+When you start the program by clicking on the object, the wps must have a
+way to refer the stored handle back to the program file. This is done by
+using the  PM_Workplace:HandlesX' information. Unfortunately, handles are
+added to this information, but they are not removed when a (program) file
+is removed from your harddisk.
+
+In theory, the total amount of handle-to-file information could grow too
+big and then without any warning you would lose information. The workplace
+shell would then show nonsense or nothing at all in some of your program
+objects.
+
+CHECKINI allows you to remove handles for files or directories that are no
+longer present or inaccessible.
+
+Already some time now the workplace shell keeps multiple versions of
+'PM_Workplace:Handles' in the ini-files. Apparently this is intended as an
+error-recovery mechanism. However, I've been unable to determine whether
+the backup mechanism itself is implemented.
+
+
+                                                     CHECKINI.TXT - Page 4
+
+
+3.3 SOME SPECIFIC PROBLEMS
+The data a PM_Workplace:Handles can be damaged. Most often the damage is
+done by the WPS itself. Two types of damage is detected by CHECKINI:
+
+* A damaged drive name. If CHECKINI detects this problem it will fix this
+  as one of the first things.
+* Duplicate entries for the same drive. If this is detected it is fixed as
+  one of the last things CHECKINI does.
+
+3.4 ORPHAN OBJECTS
+An widespread way to remove not deletable objects is to move them to a
+directory, and then, in an OS/2 or DOS session, remove the directory. The
+Workplace shell then no longer shows the objects.
+They are in fact NOT removed but they simply have no parent directory in
+which they will show.
+
+Also, sometimes it is possible that suddenly several objects are lost. A
+reason for this could be the unintentional removal of a desktop directory.
+
+CHECKINI detects these 'orphan objects' and queries the user (when /C is
+specified) on moving these objects to new location. The moved objects will
+appear after the workplace shell has been restarted.
+
+If this question is answered with NO, another question is asked whether
+the objects should be removed from the ini-files.
+
+WARNING
+
+If you are normally connected to a network and run CHECKINI when you are
+NOT connected to this network, or when you are not logged in, CHECKINI
+will report errors for references to network objects. In this situation
+and with the /C switch given, take care when confirming deletions since
+this could remove valid handles.
+
+You can overcome this problem by specifying /R when running CHECKINI.
+
+However, when all tests are executed, CHECKINI will keep track of which
+handles are actually used by other objects and those handles will not be
+deleted even if they point to non-existing pathnames.
+
+
+
+4. USING CHECKINI
+From an OS/2 command prompt enter the command CHECKINI. Without any
+command line options CHECKINI doesn't change anything in your ini-files.
+
+COMMAND LINE OPTIONS
+
+/C   -      Write corrections to ini-files. The default is to diagnose
+           only. If this option is specified the program will ask
+           confirmations for all changes it may want to do in your ini-
+           files.
+
+/Apath    - Specify different a location for ini-files to be checked. This
+           option is useful if you have copies of your ini files and you
+           would like these copies to be checked. Clearly only internal
+           integrity will be checked and no path references or other
+           system specific things.
+
+
+                                                     CHECKINI.TXT - Page 5
+
+
+
+/Llogfilename- Specify name of the logfile. The default is CHECKINI.LOG in
+           the directory you start the program in.
+
+/W[:n] -    Write all output to logfile. Normally only problems are
+           written to the logfile. This option could help you to inspect a
+           lot about your workplace shell objects (actually workplace
+           shell objects instances). /W:2 write everything to the Log, but
+           only errors to the screen. /W:3 (almost) doesn't write anything
+           to the screen. The latter is only useful with /S.
+
+/S   -      'Silent run', only write logfile. Normally, found errors are
+           reported directly.
+
+/R   -      Do not report errors on files on network drives or removable
+           local drives like diskettes or CD-roms.
+
+/D   -      Manually specify the location of the DESKTOP. Use this option
+           only if CHECKINI asks for it!
+
+/Y[:2]-     Automatically answer all questions whether or not to correct
+           anything with YES. This option is only valid when /C is
+           specified. If /Y:2 is specified then no confirmation is asked
+           for the individual tests. When this switch is used the /R
+           switch is automatically set.
+
+/T          Use this switch to enable the disk scan function of CHECKINI.
+           This will amongst other things repair non-functioning Startup
+           folders.
+           NOTE: THIS SWITCH SHOULD NOT BE USED IF YOU HAVE MORE THEN ONE
+           VERSION OF OS/2 INSTALLED ON YOUR SYSTEM.
+
+/H   -      Only do the check on PM_Workplace:Handles0/1. Please note that
+           this could cause UNKNOWN OBJECT errors in other tests when
+           CHECKINI is run again. This is because handles that CHECKINI
+           deletes might be in use in other keys.
+
+/?   -      Show info.
+
+
+
+5. HOW THE PROGRAM WORKS
+
+While running, CHECKINI displays all found information on the screen.
+Whenever a problem is found and the /S switch is not used, the program
+reports the problem. The problem itself is visible in the bottom lines of
+the screen. Problems are always reported in CAPITALS.
+
+
+6. EXAMPLES of OUTPUT:
+
+=================================================
+PM_Workplace:Handles0:BLOCK1
+=================================================
+3E2DA:CHECKINI.EXE   =>E:\ICON\CHECKINI.EXE<-UNABLE TO ACCESS
+395F8:COPYINI.EXE    =>E:\ICON\COPYINI.EXE<-UNABLE TO ACCESS
+39400:GETPROG.EXE    =>E:\ICON\GETPROG.EXE<-UNABLE TO ACCESS
+=================================================
+
+
+                                                     CHECKINI.TXT - Page 6
+
+
+PM_Abstract:Objects & PM_Abstract:FldrContents
+=================================================
+Object 13087, Class WPNetLink : A network folder
+Linked to: \\SERVER09\SYS3\DIRECTORY1<-UNABLE TO ACCESS!
+Object 140AD, Class WPNetLink : SYS3
+Linked to: \\SERVER09\SYS3<-UNABLE TO ACCESS!
+Object 15185, Class WPNetLink : SYS1
+Linked to: \\SERVER09\SYS1<-UNABLE TO ACCESS!
+Object 15956, Class WPNetLink : A network folder
+Linked to: \\SERVER09\SYS3\DIRECTORY1<-UNABLE TO ACCESS!
+=================================================
+Checking AssocCheckSum
+=================================================
+PMWP_ASSOC_CHECKSUM:252153
+points to 3D8F9 - E:\ICON\GETBLOCK.EXE<-UNABLE TO ACCESS
+=================================================
+Checking FolderPos
+=================================================
+PM_Workplace:FolderPos:252223@10
+points to 3D93F - OBJECT DOES NOT EXIST
+
+
+                                                     CHECKINI.TXT - Page 7
+
+
+
+7. WHAT THE PROGRAM CHECKS
+
+The following ini-records (Application - Key) are checked:
+
+PM_Workplace:Handles    - (all keys)
+(Checks consistency and existence of filesystem object-handles)
+
+PM_Workplace:Location   - (all keys)
+(Checks existence of object pointed to by id-strings like
+<WP_DESKTOP>)
+
+PM_Workplace:Folderpos  - (all keys)
+(Checks for obsolete saved object positions)
+
+PM_PrintObject:JobCnrPos - (all keys)
+(Checks for obsolete saved print job container positions)
+
+PM_Workplace:PalettePos - (all keys)
+(Checks for obsolete saved palette positions)
+
+PM_Workplace:Templates  - (all keys)
+(Checks for template-records that refer to non-existing objects)
+
+PM_Abstract:Objects     - (all keys)
+(Mainly checks WPProgram objects for consistency, but also checks for
+'lost-objects' - objects moved to non-existing locations. Also checks
+WPNetLink and WPShadow links. Beside that lost WarpCenter objects are also
+found)
+
+PM_Abstract:FldrContent - (all keys)
+(Used for the check mentioned above for 'lost-objects')
+
+PM_Abstract:Icons       - (all keys)
+(Checks for obsolete icons, icons for abstract objects that do not exist)
+
+PMWP_ASSOC_FILTER       - (all keys)
+(Checks for associations with non-existing objects)
+
+PMWP_ASSOC_TYPE         - (all keys)
+(Checks for associations with non-existing objects)
+
+PMWP_ASSOC_CHECKSUM     - (all keys)
+(Checks for obsolete checksum record that point to non-existing objects)
+
+PM_Workplace:Location   - (all keys)
+(Checks consistency of logical location names e.g. <WP_DESKTOP>)
+
+PM_Workplace:Startup    - (all keys)
+(Checks if the referenced folders are in fact startup folders)
+
+FolderWorkareaRunningObjects - (all keys)
+(Checks for a list of open objects for a work area)
+
+
+                                                     CHECKINI.TXT - Page 8
+
+
+
+8. REVISION HISTORY
+
+Notes on version 1.1:
+
+Some checks were added:
+* PM_Workplace:PalettePos
+* PM_Workplace:Startup
+* Some other checks were extended.
+
+Notes on version 1.2:
+
+* The check for PM_Workplace:Handles was moved so that it would be the
+  last test done.
+* The phrase 'DOES NOT EXIST' for file objects (files & directories) has
+  been changed to 'UNABLE TO ACCESS' since this is a better description of
+  what CHECKINI finds.
+
+Notes on version 1.3:
+
+* The only extra in this version is that it support OS/2 2.00.1 (beta
+  version), since in this version the internal structure of various
+  workplace shell object data has changed.
+
+Notes on version 1.4:
+
+* Not all of the data checkini apparently needs to exist. If some data
+  checkini checks does not exist, the test is skipped.
+
+Notes on version 1.5:
+
+* Checkini now works properly after installing the servicepack dated
+  october 1992.
+
+Notes on version 1.6:
+
+* Two additional tests were added. These test are for:
+     'FolderWorkareaRunningObjects' and
+     'PM_PrintObject:JobCnrPos'
+* When a conflict in OBJECTID's is detected (two or more objects having
+  the same OBJECTID, CHECKINI /c can assign a new OBJECTID to the objects
+  that claim to have an OBJECTID that is already in use by another object.
+* Updated the documentation files (this file)
+* A simple test has been built in to see if OBJECTID's can be found in the
+  ini-files, to determine if the internal data structure of the ini-files
+  might have been changed, causing CHECKINI to fail completely. This is
+  however no guarantee that CHECKINI will function properly on new
+  versions of OS/2.
+
+Notes on version 1.7:
+
+* The 'simple test' mentioned above might block someone using CheckIni if
+  the ini-file itself is corrupt. Now the test is only performed when /C
+  (correct) switch is specified.
+
+Notes on version 1.8:
+
+
+
+                                                     CHECKINI.TXT - Page 9
+
+
+* When checking 'PM_Workplace:Handles' a test has been put in that checks
+  the accessibility on a volume in one stroke. If the user okay's the
+  removal of all references to a non-locatable volume, all handles on that
+  volume are removed without further checking.
+
+Notes on version 1.81:
+
+* Apparently CheckIni went bananas whenever an alternate ini directory was
+  specified and no ini's were found. This has been corrected.
+* Some minor enhancements were made to the text that is being shown on the
+  screen. These changes mainly have to do with signalling problems with
+  OBJECTID's.
+* CheckIni refused to Change/Correct anything if the Desktop's Extended
+  attributes have been damaged. CheckIni now offers a try-to-repair
+  option. This option comes down to CheckIni reassigning objectid
+  <WP_DESKTOP> to the desktop when CheckIni is unable to locate this
+  ObjectId inside the Desktop Extended Attributes. If this corrective
+  action has been taken CheckIni terminates and one should wait a few
+  moments so the WPS has time to update the physical extended attribute on
+  disk.
+
+Notes on version 1.90:
+
+* This version now supports all known versions of OS/2 2.0 and OS/2 2.1
+  Beta versions up until release level 6.498 (March '93)
+
+Notes on version 1.91:
+
+* The try-to-repair option will now also be called when the desktop folder
+  doesn't contain the .CLASSINFO extended attribute at all.
+* When /C was specified, and lost objects were found and the user choose
+  'discard object', the OBJECTID was still checked and when an error was
+  found the program asked if a new OBJECTID should be assigned. This has
+  been corrected.
+
+Notes on version 1.92:
+
+* Several small (non-functional) errors were corrected.
+* Verified that CHECKINI works with OS/2 2.1 GA (rev. 6.514)
+
+Notes on version 1.93:
+
+* Corrected a problem were CheckIni reported a problem with 'Not enough
+  memory' in GetAllProfileNames.
+* When a directory containing objects is missing, CHECKINI now first tries
+  to recreate this directory before trying to move the objects. (Only on
+  local drives)
+
+Notes on version 1.94:
+
+* Due to a bug in the Workplace shell, whenever Checkini (re)assigned an
+  OBJECTID to a Scheme Palette, all schemes went to 'New Scheme'.
+* The same problem could occur on OS/2 2.1 installations that were
+  installed on top of OS/2 2.0. The problem would even occur even when the
+  /C option was not specified. These problems have been corrected.
+
+Notes on version 1.95:
+
+
+
+                                                     CHECKINI.TXT - Page10
+
+
+* When the workplace shell had more then 64 Kb of object-handle-to-file
+  data (PM_Workplace:HandlesX) CHECKINI would mess up. Now CHECKINI can
+  handle multiple BLOCK records and will only write as much of these
+  records as needed back to OS2SYS.INI (and discard any others).
+* Objects of class WPTransient were not recognised and therefore whenever
+  an OBJECTID of such an object existed CHECKINI would give an error
+  message. This has been corrected.
+
+Notes on version 1.96:
+
+* Checkini would abort when very long file names had to be presented on
+  the screen. This has been corrected.
+
+Notes on version 1.97:
+
+* This version works with OS/2 3.0 (Warp version)
+* Some minor bugs where corrected.
+
+Notes on version 1.98:
+
+* In version 1.95 I added logic to handle more then 64 Kb of object-
+  handle-to-file data. I implicitly assumed then that I would always read
+  the multiple BLOCK records in the proper order. As it turns out, this
+  assumption is not always correct. I've changed it so I will always read
+  the proper order.
+
+Notes on version 1.99:
+* I've found that some OBJECTID's can be *extremely* long. I've increased
+  the internal buffer from 50 to 150 chars.
+
+Notes on version 1.991
+
+* Corrected some problems with corrupted object data which caused checkini
+  to trap.
+* Implemented the /R switch that makes Checkini to ignore errors on non-
+  locatable drives.
+* Added tests for object classes, PM_Workplace:StatusPos, and
+  PM_PrintObjects. Also, checkini now tests all abstract objects for
+  existing classes and checks whether startup folders are present in
+  PM_Workplace:Startup.
+* CHECKINI now offers to remove objects that contain errors (/C option
+  only).
+
+Notes on version 2.000
+
+* For a long time I did not release new versions. This had to do with a
+  burglary at my house where, amongst other things, I lost my PC and thus
+  my fidonet connection.
+
+* Changed the way object classes are checked. Before trying to load a
+  Dynamic link library containing a specific class I first check if the
+  dll has already been loaded. Also, some specific classes are not checked
+  since they always gave trouble.
+* Increased several internal buffers to accommodate the changes in Warp
+  3.0, FP 17 and above and the current gamma version of Merlin. I did not
+  make any specific functional changes for Merlin.
+
+
+                                                     CHECKINI.TXT - Page11
+
+
+* Changed the way the /R parameter works. Now /R means: Only check for
+  files on local, non-removable disks. This implies that local diskette or
+  CD-ROM drives are not checked when this option is specified.
+
+Notes on version 2.10
+
+* Added an option /D to manually specify the location of the DESKTOP
+  directory should CHECKINI be unable to determine the location of the
+  DESKTOP.
+
+Notes on version 2.20:
+
+* Added the long-asked-for option /Y to answer 'YES' to all questions
+  about corrections.
+
+Notes on version 2.21:
+* Added some logic for a specific error situation at PM_Workplace:Location
+  where an textual OBJECID pointed to a completely wrong numeric object
+  handle.
+
+* I noticed while correcting this bug that the WARP version I am working
+  with (WARP 4 + FP6) has some auto correction features. Simply querying
+  for this OBJECTID removed the misbehaving entry !!!
+
+Notes on version 2.22:
+
+* Probably as a result of the remark above, CHECKINI tried to delete
+  OBJECTIDs at PM_Workplace:Location that are already deleted by the WPS.
+  This resulted in an empty key being added. Now CHECKINI first checks
+  (again) if the misbehaving value is still present and if not no delete
+  is issued.
+* After correcting PM_Workplace:HandlesX, both Handles0 and Handles1 are
+  written into OS2SYS.INI now, where before only the active version of the
+  two was written.
+
+Notes on version 2.23:
+
+* Just a minor change. If a reboot is needed, CHECKINI now calls resetWPS
+  to simply reset the WPS.
+
+Notes on version 2.24:
+
+* Added a complete scan of all local disks for lost startup folders. Also
+  added the logic to handle other startup classes then WPStartup. This is
+  handy if you have add-on's that add their own startup class. See
+  STARTUP.CLS.
+
+Notes on version 2.25:
+
+* Added logic to remove ARCHIVED Startup folders from the WPS internal
+  list of startup folders. The diskscan added in version 2.24 doesn't add
+  ARCHIVED folders anymore to the list of startup folders.
+* Enhanced the /Y option. /Y:2 now doesn't ask confirmations for the
+  individual tests anymore.
+
+Notes on version 2.26:
+
+
+
+                                                     CHECKINI.TXT - Page12
+
+
+* Added logic to detect lost smartcenter shadows in the Nowhere folder.
+  Apparently, when deleting a tray from the SC the associated shadows are
+  not deleted. CHECKINI now does.
+
+Notes on version 2.27:
+
+* Added some logic while checking PM_Workplace:Location. Besides removing
+  incorrect location records, the proper one is re-applied so a new
+  location record is created.
+* Changed the scan of all disks so unrecognised folder classes are not
+  'fixed' by default. This is necessary if you have more then one version
+  of OS/2 Warp on your system and you use the /Y option. Also, the
+  DISKSCAN test only takes place when /T is specified.
+
+Notes on version 2.28:
+
+* Added a check for double objecthandles.
+
+Notes on version 2.29:
+
+* CHECKINI always assumed the type of an object could safely be determined
+  by looking at the HIWORD of an (WPS internal) handle. A 2 was an
+  abstract object and a 3 a file system object. Based on a report from a
+  single user, I found this was incorrect. Now CHECKINI dynamically
+  determines the proper values.
+* CHECKINI now uses WPTOOLS.DLL for several functions instead of a
+  statically linked library. This is done to make life easier for myself.
+* Added a question during the PM_Workplace:Handles0/1 check to ask if a
+  found volume should be checked. This question is only asked if /S and /Y
+  options are NOT given.
+* Modified the behaviour of the Startup folders check when /Y was given.
+  Startup folder are no longer automatically removed from the WPS's list
+  of startup folders. If the /Y switch is NOT specified the error is still
+  reported and (with /C) can be fixed.
+  
+Notes on version 2.30:
+
+* Corrected a problem where a folder without any objects could cause
+  CHECKINI to terminate.
+
+Notes on version 2.40:
+
+* Modified the question during PM_Workplace:Handles0/1 to look at the /R
+  switch. If /R is specified, the question will not be asked for removable
+  or non-local drives.
+* Introduced the /H switch to check PM_Workplace:Handles0/1 only.
+  
+Notes on version 2.42:
+
+* CHECKINI is now made with VisualAge C++ version 3.0;
+* CHECKINI now makes a backup of the INI files when /C is specified.
+* CHECKINI now contains a test for duplicate DRIV blocks or invalid first
+  NODE blocks in PM_Workplace:Handles;
+* Modified the /W argument. /W now accepts /W:2 or /W:3. See explanation
+  on command line arguments.
+* Changed to output of PM_Workplace:Handles to show an asterisk if the
+  handle was found to be used somewhere in CHECKINI's checks. Note: this
+  only works when ALL checks are done.
+
+
+                                                     CHECKINI.TXT - Page13
+
+
+* Will no longer offer to remove a entry at PM_Workplace:Handles if I have
+  found the handle to be in use somewhere else. Keep in mind I can only
+  determine this if you DO NOT SKIP any other tests.
+* CHECKINI now checks the version of WPTOOLS.DLL.
+* The lay-out of the output has been modified to enhance readability.
+
+Notes on versions 2.43 to 2.46:
+
+* Corrected a problem probably introduced by VAC 3.0 that CHECKINI did not
+  detect its current directory as it should.
+* Corrected a problem where a DRIV block without any nodes in it lead to
+  corruption of PM_Workplace:Handles.

@@ -1,0 +1,1946 @@
+ 
+ Class definition file: wpclrpal.idl 
+  ÚÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME   ³VALUE     ³DESCRIPTION                             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³AUTOSETUP ³HIRES     ³This sets the number of default colors  ³
+  ³          ³          ³in the color palette to the 256-color   ³
+  ³          ³          ³Mixed Color Palette.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³          ³LORES     ³This sets the number of default colors  ³
+  ³          ³          ³in the color palette to the 16-color    ³
+  ³          ³          ³Solid Color Palette.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³COLORS    ³RGB values³These are the initial color values of   ³
+  ³          ³          ³each cell in the color palette. The     ³
+  ³          ³          ³values for each cell are separated by   ³
+  ³          ³          ³commas. This is equivalent to calling   ³
+  ³          ³          ³the wpSetupCell method. The RGB value   ³
+  ³          ³          ³must be presented as a 6-digit hex value³
+  ³          ³          ³in the format 0xRRGGBB where RR, GG, and³
+  ³          ³          ³BB are the red, green, and blue, values ³
+  ³          ³          ³ranging between 0x00 and 0xFF (0-255).  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLCOUNT³columns   ³Number of X cells as decimal digits.    ³
+  ³          ³          ³For Solid Color Palette, AUTOSETUP=LORES³
+  ³          ³          ³must be specified, and the default value³
+  ³          ³          ³is 8.                                   ³
+  ³          ³          ³For Mixed Color Palette, AUTOSETUP=HIRES³
+  ³          ³          ³must be specified, and the default value³
+  ³          ³          ³is 16.                                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLCOUNT³rows      ³Number of Y cells as decimal digits.    ³
+  ³          ³          ³For Solid Color Palette, AUTOSETUP=LORES³
+  ³          ³          ³must be specified, and the default value³
+  ³          ³          ³is 2.                                   ³
+  ³          ³          ³For Mixed Color Palette, AUTOSETUP=HIRES³
+  ³          ³          ³must be specified, and the default value³
+  ³          ³          ³is 16.                                  ³
+  ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+
+                          WPDesktop
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME             ³VALUE          ³DESCRIPTION                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³AUTOLOCKUP          ³YES            ³This sets the auto-lockup feature, ³
+  ³                    ³               ³so that the keyboard and mouse will³
+  ³                    ³               ³automatically lock up after the    ³
+  ³                    ³               ³specified number of minutes of     ³
+  ³                    ³               ³inactivity.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                    ³NO             ³This turns off the autolockup      ³
+  ³                    ³               ³feature, so that the system will   ³
+  ³                    ³               ³not automatically lock the keyboard³
+  ³                    ³               ³and mouse, no matter how long they ³
+  ³                    ³               ³are inactive.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKUPAUTODIM       ³YES            ³This sets the autodim feature, so  ³
+  ³                    ³               ³that the screen blanks out and a   ³
+  ³                    ³               ³floating lock icon is displayed 2  ³
+  ³                    ³               ³minutes after the keyboard and     ³
+  ³                    ³               ³mouse are locked.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                    ³NO             ³This turns off the autodim feature.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKUPBACKGROUND    ³N,M,S,B,C      ³This sets the lockup background,   ³
+  ³                    ³               ³where:                             ³
+  ³                    ³               ³N = Image file name. This          ³
+  ³                    ³               ³    name must be the fully-        ³
+  ³                    ³               ³    qualified path of the          ³
+  ³                    ³               ³    image file. "(none)"           ³
+  ³                    ³               ³    or "?:\" is                    ³
+  ³                    ³               ³    permitted to indicate the      ³
+  ³                    ³               ³    boot drive.                    ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³M = Image mode. This mode can      ³
+  ³                    ³               ³    be one of the following:       ³
+  ³                    ³               ³    N = Normal image               ³
+  ³                    ³               ³    T = Titled image               ³
+  ³                    ³               ³    S = Scaled image               ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³S = Scaling factor.                ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³B = Background type. This can      ³
+  ³                    ³               ³    be one of the following:       ³
+  ³                    ³               ³    I = Image                      ³
+  ³                    ³               ³    C = Color only                 ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³C = Background color. This         ³
+  ³                    ³               ³    color can be 3 numbers re-     ³
+  ³                    ³               ³    presenting RGB values or       ³
+  ³                    ³               ³    the default, in the            ³
+  ³                    ³               ³    following format:              ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³    {R-value G-value B-value}      ³
+  ³                    ³               ³                                   ³
+  ³                    ³               ³For example:                       ³
+  ³                    ³               ³"BACKGROUND=                       ³
+  ³                    ³               ³C:\OS2\BITMAP\OS2LOGO.BMP,S,       ³
+  ³                    ³               ³3,I"                               ³
+  ³                    ³               ³or                                 ³
+  ³                    ³               ³"BACKGROUND=                       ³
+  ³                    ³               ³(none),,,C,0 128 128"              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKUPFULLSCREEN    ³YES            ³This specifies that the entire     ³
+  ³                    ³               ³screen is taken up by the lockup   ³
+  ³                    ³               ³background image.  The lockup      ³
+  ³                    ³               ³background specified by the        ³
+  ³                    ³               ³LOCKUPBACKGROUND keyname is        ³
+  ³                    ³               ³displayed when the system locks the³
+  ³                    ³               ³keyboard and mouse.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                    ³NO             ³This specifies that when the system³
+  ³                    ³               ³locks up, a message box is to be   ³
+  ³                    ³               ³displayed prompting you to enter   ³
+  ³                    ³               ³your lockup password.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKUPONSTARTUP     ³YES            ³This specifies that the keyboard   ³
+  ³                    ³               ³and mouse are automatically locked ³
+  ³                    ³               ³when the system is started or      ³
+  ³                    ³               ³restarted.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                    ³NO             ³This specifies that the keyboard   ³
+  ³                    ³               ³and mouse are not automatically    ³
+  ³                    ³               ³locked when the system is started  ³
+  ³                    ³               ³or restarted.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKUPTIMEOUT       ³n              ³This specifies the number of       ³
+  ³                    ³               ³minutes of keyboard and mouse      ³
+  ³                    ³               ³inactivity that will cause the     ³
+  ³                    ³               ³system to automatically lock the   ³
+  ³                    ³               ³keyboard and mouse.                ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+                   WPDisk 
+  ÚÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME   ³VALUE          ³DESCRIPTION                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DRIVENUM  ³DRIVENUM=dd    ³Logical drive number (1-26).       ³
+  ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+                   WPFolder 
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME                 ³VALUE           ³DESCRIPTION                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ALWAYSSORT              ³YES             ³Sort order is always         ³
+  ³                        ³                ³maintained. Opening and      ³
+  ³                        ³                ³adding an object to a folder ³
+  ³                        ³                ³may take longer if the sort  ³
+  ³                        ³                ³order is being maintained.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³Sort order is not maintained.³
+  ³                        ³                ³This is the default value.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³BACKGROUND              ³N, M, S, B, C   ³This sets the folder         ³
+  ³                        ³                ³background, where:           ³
+  ³                        ³                ³N = Image file name. This    ³
+  ³                        ³                ³    name must be the fully-  ³
+  ³                        ³                ³    qualified path of the    ³
+  ³                        ³                ³    image file. "(none)"     ³
+  ³                        ³                ³    or "?:\" is              ³
+  ³                        ³                ³    permitted to indicate the³
+  ³                        ³                ³    boot drive.              ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³M = Image mode. This mode can³
+  ³                        ³                ³    be one of the following: ³
+  ³                        ³                ³    N = Normal image         ³
+  ³                        ³                ³    T = Titled image         ³
+  ³                        ³                ³    S = Scaled image         ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³S = Scaling factor.          ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³B = Background type. This can³
+  ³                        ³                ³    be one of the following: ³
+  ³                        ³                ³    I = Image                ³
+  ³                        ³                ³    C = Color only           ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³C = Background color. This   ³
+  ³                        ³                ³    color can be 3 numbers   ³
+  ³                        ³                ³    representing RGB values  ³
+  ³                        ³                ³    or the default, in the   ³
+  ³                        ³                ³    following format:        ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³{R-value G-value B-value}    ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³For example:                 ³
+  ³                        ³                ³"BACKGROUND=                 ³
+  ³                        ³                ³C:\OS2\BITMAP\OS2LOGO.BMP,   ³
+  ³                        ³                ³S, 3,I"                      ³
+  ³                        ³                ³or                           ³
+  ³                        ³                ³"BACKGROUND=                 ³
+  ³                        ³                ³(none),,,C,0 128 128"        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTSORT             ³index           ³This sets the default sort   ³
+  ³                        ³                ³attribute on the sort menu.  ³
+  ³                        ³                ³The index value specifies the³
+  ³                        ³                ³index number of the details  ³
+  ³                        ³                ³data item to be used as the  ³
+  ³                        ³                ³default sort property. For   ³
+  ³                        ³                ³example, if this keyname is  ³
+  ³                        ³                ³set to 0, the folder's popup ³
+  ³                        ³                ³menu sort option has the     ³
+  ³                        ³                ³first item checked.          ³
+  ³                        ³                ³The default is set to 0.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTVIEW             ³ICON            ³This sets the default open   ³
+  ³                        ³                ³view to the ICON (or         ³
+  ³                        ³                ³CONTENTS) view.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³TREE            ³This sets the default open   ³
+  ³                        ³                ³view to the TREE view.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³DETAILS         ³This sets the default open   ³
+  ³                        ³                ³view to the DETAILS view.    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³                ³The default view of the      ³
+  ³                        ³                ³containing folder.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSCLASS            ³classname       ³This sets the object class   ³
+  ³                        ³                ³for which the details are    ³
+  ³                        ³                ³displayed in details view.   ³
+  ³                        ³                ³The default object class is  ³
+  ³                        ³                ³WPFileSystem.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSFONT             ³fontname        ³Specifies the font to be used³
+  ³                        ³                ³in details view. For example:³
+  ³                        ³                ³10.Helv                      ³
+  ³                        ³                ³The default value is 8.Helv. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSSHADOWCOLOR      ³color           ³This sets the color of the   ³
+  ³                        ³                ³text for a shadow object in  ³
+  ³                        ³                ³details view. The color value³
+  ³                        ³                ³may be the name of a color or³
+  ³                        ³                ³3 numbers representing RBG   ³
+  ³                        ³                ³values.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSTEXTCOLOR        ³color           ³This set the color of the    ³
+  ³                        ³                ³text for a normal object in  ³
+  ³                        ³                ³details view. The color value³
+  ³                        ³                ³may be the name of a color or³
+  ³                        ³                ³3 numbers representing RBG   ³
+  ³                        ³                ³values.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSTODISPLAY        ³index [,...]    ³This sets the details to be  ³
+  ³                        ³                ³displayed for a given class. ³
+  ³                        ³                ³The index is the column      ³
+  ³                        ³                ³index, starting at 0, of the ³
+  ³                        ³                ³field to display. For        ³
+  ³                        ³                ³example,                     ³
+  ³                        ³                ³"DETAILSTODISPLAY=0,2"       ³
+  ³                        ³                ³specifies that only the first³
+  ³                        ³                ³and third details data items ³
+  ³                        ³                ³are to be displayed.         ³
+  ³                        ³                ³The default value is to      ³
+  ³                        ³                ³display all fields.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DETAILSVIEW             ³NORMAL          ³This specifies normal size   ³
+  ³                        ³                ³icons.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³MINI            ³This specifies small icons.  ³
+  ³                        ³                ³This is the default.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONFONT                ³fontname        ³Specifies the font to be used³
+  ³                        ³                ³in icon view. For example:   ³
+  ³                        ³                ³10.Helv                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONNFILE               ³index, filename ³This sets the file name of   ³
+  ³                        ³                ³the animation (open folder)  ³
+  ³                        ³                ³icon. The "index" value must ³
+  ³                        ³                ³be set to 1. The specified   ³
+  ³                        ³                ³file contains the folder's   ³
+  ³                        ³                ³open folder icon.            ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONGRIDSIZE            ³                ³This sets the icon spacing   ³
+  ³                        ³                ³for icon view.               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONFILE                ³index,filename  ³This sets the animation icon ³
+  ³                        ³                ³to be used for this folder.  ³
+  ³                        ³                ³Filename specifies the .ICO  ³
+  ³                        ³                ³file containing the icon. The³
+  ³                        ³                ³value of index must be 1     ³
+  ³                        ³                ³(indicating the open folder  ³
+  ³                        ³                ³icon).                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONNRESOURCE           ³index, id,      ³This sets the resource of the³
+  ³                        ³modname         ³animation (open folder) icon.³
+  ³                        ³                ³The "index" value must be set³
+  ³                        ³                ³to 1. The "id" is the        ³
+  ³                        ³                ³identity of an icon resource ³
+  ³                        ³                ³in the "module" dynamic link ³
+  ³                        ³                ³library (DLL). The specified ³
+  ³                        ³                ³resource is the folder's open³
+  ³                        ³                ³folder icon.                 ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONSHADOWCOLOR         ³color           ³This sets the color of the   ³
+  ³                        ³                ³text associated with the     ³
+  ³                        ³                ³shadow icons in icon view.   ³
+  ³                        ³                ³The color value may be the   ³
+  ³                        ³                ³name of a color or 3 numbers ³
+  ³                        ³                ³representing RBG values.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONTEXTBACKGROUNDCOLOR ³color           ³This sets the color of the   ³
+  ³                        ³                ³background for all normal    ³
+  ³                        ³                ³text displayed in icon view, ³
+  ³                        ³                ³tree view and details view.  ³
+  ³                        ³                ³The color value may be the   ³
+  ³                        ³                ³name of a color or 3 numbers ³
+  ³                        ³                ³representing RBG values.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONTEXTCOLOR           ³color           ³This sets the color of the   ³
+  ³                        ³                ³text associated with normal  ³
+  ³                        ³                ³icons in icon view. The color³
+  ³                        ³                ³value may be the name of a   ³
+  ³                        ³                ³color or 3 numbers           ³
+  ³                        ³                ³representing RBG values.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONTEXTVISIBLE         ³YES             ³This sets the icon text      ³
+  ³                        ³                ³visible property, so that the³
+  ³                        ³                ³names of the objects         ³
+  ³                        ³                ³contained within the folder  ³
+  ³                        ³                ³are displayed in icon view.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This resets the icon text    ³
+  ³                        ³                ³visible property, so that the³
+  ³                        ³                ³names of the objects are not ³
+  ³                        ³                ³displayed.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONVIEW                ³s1[,s2,...sn]   ³This sets icon view to the   ³
+  ³                        ³                ³specified styles. Possible   ³
+  ³                        ³                ³values are:                  ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³GRIDDED or NONGRID           ³
+  ³                        ³                ³FLOWED  or NONFLOWED         ³
+  ³                        ³                ³MINI, NORMAL or INVISIBLE    ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³The default value is         ³
+  ³                        ³                ³NONGRID,NORMAL               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONVIEWPOS             ³x, y, cx, cy    ³This sets the initial icon   ³
+  ³                        ³                ³view position and size of the³
+  ³                        ³                ³folder on the screen. These  ³
+  ³                        ³                ³values are percentages       ³
+  ³                        ³                ³(0-100) of the screen size.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MENUBAR                 ³YES             ³This sets the menu bar       ³
+  ³                        ³                ³property, so that the menu   ³
+  ³                        ³                ³bar is displayed in an open  ³
+  ³                        ³                ³view of the folder.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This resets the menu bar     ³
+  ³                        ³                ³propert, so that the menu bar³
+  ³                        ³                ³is not displayed.            ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³OPEN                    ³ICON            ³This opens the icon view when³
+  ³                        ³                ³object is created or when    ³
+  ³                        ³                ³WinSetObjectData is called.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³TREE            ³This opens the tree view when³
+  ³                        ³                ³object is created or when    ³
+  ³                        ³                ³WinSetObjectData is called.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³DETAILS         ³This opens the details view  ³
+  ³                        ³                ³when object is created or    ³
+  ³                        ³                ³when WinSetObjectData is     ³
+  ³                        ³                ³called.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³                ³The default is to not        ³
+  ³                        ³                ³automatically open a view.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³REMOVEFONTS             ³YES             ³This removes all instance    ³
+  ³                        ³                ³fonts from the folder.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This does not remove instance³
+  ³                        ³                ³fonts from the folder.       ³
+  ³                        ³                ³This is the default value.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SHOWALLINTREEVIEW       ³YES             ³This set the show all in tree³
+  ³                        ³                ³view property, so that all   ³
+  ³                        ³                ³objects are displayed in an  ³
+  ³                        ³                ³open tree view of the folder.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This resets the show all in  ³
+  ³                        ³                ³tree view property, so that  ³
+  ³                        ³                ³only folders are displayed in³
+  ³                        ³                ³an open tree view of the     ³
+  ³                        ³                ³folder.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SORTBYATTR              ³index [,...]    ³This sets the attributes to  ³
+  ³                        ³                ³sort by. Index specifies a   ³
+  ³                        ³                ³list of index numbers of     ³
+  ³                        ³                ³details data to be shown in  ³
+  ³                        ³                ³the "Sort by Attribute" list ³
+  ³                        ³                ³for the folder. For example, ³
+  ³                        ³                ³"SORTBYATTR=0,2" specifies   ³
+  ³                        ³                ³that only the first and third³
+  ³                        ³                ³details data items are to be ³
+  ³                        ³                ³shown as potential sort      ³
+  ³                        ³                ³properties.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SORTCLASS               ³classname       ³This sets the class object to³
+  ³                        ³                ³sort by.                     ³
+  ³                        ³                ³The default class object is  ³
+  ³                        ³                ³WPFileSystem.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TREEFONT                ³fontname        ³This specifies the font to be³
+  ³                        ³                ³used in tree view. For       ³
+  ³                        ³                ³example:  10.System          ³
+  ³                        ³                ³Proportional                 ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TREESHADOWCOLOR         ³color           ³This sets the color of the   ³
+  ³                        ³                ³text associated with the     ³
+  ³                        ³                ³shadow icons in tree view.   ³
+  ³                        ³                ³The color value may be the   ³
+  ³                        ³                ³name of a color or 3 numbers ³
+  ³                        ³                ³representing RBG values.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TREETEXTCOLOR           ³color           ³This sets the color of the   ³
+  ³                        ³                ³text associated with normal  ³
+  ³                        ³                ³icons in tree view. The color³
+  ³                        ³                ³value may be the name of a   ³
+  ³                        ³                ³color or 3 numbers           ³
+  ³                        ³                ³representing RBG values.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TREETEXTVISIBLE         ³YES             ³This sets the text visible in³
+  ³                        ³                ³tree view property, so that  ³
+  ³                        ³                ³the names of the objects     ³
+  ³                        ³                ³contained within the folder  ³
+  ³                        ³                ³are displayed in tree view.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This resets the text visible ³
+  ³                        ³                ³in tree view property, so    ³
+  ³                        ³                ³that the names of the objects³
+  ³                        ³                ³are not displayed.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TREEVIEW                ³s1[,s2,...sn]   ³This sets the tree view to   ³
+  ³                        ³                ³the specified styles.        ³
+  ³                        ³                ³Possible values are:         ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³INVISIBLE  LINES             ³
+  ³                        ³                ³MINI       NOLINES           ³
+  ³                        ³                ³NORMAL                       ³
+  ³                        ³                ³                             ³
+  ³                        ³                ³The default value is LINES,  ³
+  ³                        ³                ³NORMAL.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³view styles             ³FLOWED          ³Flowed list items.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NONFLOWED       ³Non-flowed list items.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NONGRID         ³Non-gridded icon view.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NORMAL          ³Normal size icons.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³MINI            ³Small icons.                 ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³INVISIBLE       ³No icons.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³LINES           ³Lines in tree view.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NOLINES         ³No lines in tree view.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³WORKAREA                ³YES             ³This sets the folder so it is³
+  ³                        ³                ³a workarea.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO              ³This sets the folder so it is³
+  ³                        ³                ³not a workarea. This is the  ³
+  ³                        ³                ³default value.               ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+                            WPFontPalette
+ 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME   ³VALUE     ³DESCRIPTION                             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³AUTOSETUP ³YES       ³This specifies that the font palette is ³
+  ³          ³          ³to be reinitialized with the default set³
+  ³          ³          ³of fonts.                               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³FONTS     ³fonttype  ³These are the initial fonts for each    ³
+  ³          ³          ³cell in the font palette.  The values   ³
+  ³          ³          ³for each cell are separated by commas.  ³
+  ³          ³          ³This is equivalent to calling the       ³
+  ³          ³          ³wpSetupCell method.  The fonttype value ³
+  ³          ³          ³is presented as the point size followed ³
+  ³          ³          ³by a period which is then followed by   ³
+  ³          ³          ³the face name.                          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLCOUNT³columns   ³Number of X cells as decimal digits.  If³
+  ³          ³          ³not specified, defaults to 2.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLCOUNT³rows      ³Number of Y cells as decimal digits.  If³
+  ³          ³          ³not specified, defaults to 4.           ³
+  ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  w
+                      WPHost
+ 
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME             ³VALUE       ³DESCRIPTION                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³HOSTNAME            ³hostname    ³This sets the hostname to be     ³
+  ³                    ³            ³accessed using an FTP Host       ³
+  ³                    ³            ³object.  This value is designated³
+  ³                    ³            ³in the "Hostname" field on the   ³
+  ³                    ³            ³Host page.                       ³
+  ³                    ³            ³For example:                     ³
+  ³                    ³            ³ftp.software.ibm.com             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³USERNAME            ³username    ³This sets the username to be used³
+  ³                    ³            ³when accessing a hostname using  ³
+  ³                    ³            ³an FTP Host object.  This value  ³
+  ³                    ³            ³is designated in the "Username"  ³
+  ³                    ³            ³field on the Host page.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PASSWORD            ³password    ³This sets the password to be used³
+  ³                    ³            ³to access the given host with a  ³
+  ³                    ³            ³given username.  This value is   ³
+  ³                    ³            ³designated in the "Password"     ³
+  ³                    ³            ³field on the Host page. This     ³
+  ³                    ³            ³value is not required when the   ³
+  ³                    ³            ³object is created.  If one is not³
+  ³                    ³            ³specified, the user will be      ³
+  ³                    ³            ³prompted to enter a password when³
+  ³                    ³            ³the host is accessed.  If        ³
+  ³                    ³            ³specified, passwords are stored  ³
+  ³                    ³            ³in an encrypted form when set.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ACCOUNT             ³account     ³This sets the account value to be³
+  ³                    ³            ³used when accessing a given      ³
+  ³                    ³            ³hostname or username using the   ³
+  ³                    ³            ³FTP Host object.  This value is  ³
+  ³                    ³            ³designated in the "Account" field³
+  ³                    ³            ³on the Host page.  This value is ³
+  ³                    ³            ³required only when the FTP server³
+  ³                    ³            ³being accessed maintains account ³
+  ³                    ³            ³information for host accesses.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³FILETRANSFERTYPE    ³ASCII       ³This sets the default file       ³
+  ³                    ³            ³transfer mode for an FTP Host    ³
+  ³                    ³            ³object.  This value is designated³
+  ³                    ³            ³by selecting the ASCII "Default  ³
+  ³                    ³            ³download type" radio button on   ³
+  ³                    ³            ³Host page 1.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                    ³BINARY      ³This is the default file transfer³
+  ³                    ³            ³mode.  This value is designated  ³
+  ³                    ³            ³by selecting the BINARY "Default ³
+  ³                    ³            ³download type" radio button on   ³
+  ³                    ³            ³Host page 1.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³REMOTEDIR           ³path        ³This specifies which directory   ³
+  ³                    ³            ³will be used as the initial      ³
+  ³                    ³            ³working directory when connecting³
+  ³                    ³            ³to a host system using the       ³
+  ³                    ³            ³specified FTP Host object.  For  ³
+  ³                    ³            ³example:                         ³
+  ³                    ³            ³e:\public\bin,., /               ³
+  ³                    ³            ³                                 ³
+  ³                    ³            ³This value is designated in the  ³
+  ³                    ³            ³"Preferred remote directory"     ³
+  ³                    ³            ³field on the Host page 2.  The   ³
+  ³                    ³            ³syntax of this path specification³
+  ³                    ³            ³must be in a format understood by³
+  ³                    ³            ³the remove host's operating      ³
+  ³                    ³            ³system.  The given username and  ³
+  ³                    ³            ³account must have permissions set³
+  ³                    ³            ³to access this directory on the  ³
+  ³                    ³            ³remote host.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCALDIR            ³path        ³This specifies the directory to  ³
+  ³                    ³            ³be used as the default download  ³
+  ³                    ³            ³directory for GET operations     ³
+  ³                    ³            ³using the FTP Host object if one ³
+  ³                    ³            ³is not explicitly indicated.     ³
+  ³                    ³            ³This value is designated in the  ³
+  ³                    ³            ³"Preferred local (download)      ³
+  ³                    ³            ³directory" field on Host page 2. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³INCLUDE             ³pattern     ³This is used to filter remote    ³
+  ³                    ³            ³files and directories from the   ³
+  ³                    ³            ³FTP Host object's open views.    ³
+  ³                    ³            ³This value is designated in the  ³
+  ³                    ³            ³"Only display files matching     ³
+  ³                    ³            ³pattern" field on the Include    ³
+  ³                    ³            ³page.  The syntax of the pattern ³
+  ³                    ³            ³must be understood by the remote ³
+  ³                    ³            ³host's operating system.         ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPLaunchPad 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME        ³VALUE          ³DESCRIPTION                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³FPOBJECTS      ³object IDs or  ³Adds objects to the end of the³
+  ³               ³path and file  ³Toolbar.  If multiple objects ³
+  ³               ³names          ³exist, the objects are        ³
+  ³               ³               ³separated by a comma.  For    ³
+  ³               ³               ³example:                      ³
+  ³               ³               ³<WP_OS2WIN>,<WP_OS2EO>        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DRAWEROBJECTS  ³drawer number, ³Adds the objects to the end of³
+  ³               ³object IDs or  ³the numbered Toolbar drawer.  ³
+  ³               ³path and file  ³The drawer number is followed ³
+  ³               ³names          ³by a comma-delimited set of   ³
+  ³               ³               ³object IDs or path and file   ³
+  ³               ³               ³names.  The drawer number and ³
+  ³               ³               ³first object must be separated³
+  ³               ³               ³by a comma.  Examples of      ³
+  ³               ³               ³drawer numbers :  0=Toolbar,  ³
+  ³               ³               ³1=Left-most drawer, and so    ³
+  ³               ³               ³forth.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPCLOSEDRAWER  ³YES            ³The Toolbar drawers will close³
+  ³               ³               ³after an object in the drawer ³
+  ³               ³               ³is opened.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³The Toolbar drawers will stay ³
+  ³               ³               ³open after an object in the   ³
+  ³               ³               ³drawer is opened.             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPACTIONSTYLE  ³TEXT           ³Display the action buttons as ³
+  ³               ³               ³text (the default).           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³OFF            ³Turns off the display of      ³
+  ³               ³               ³action buttons.               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³MINI           ³Displays the action buttons as³
+  ³               ³               ³mini-icons.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NORMAL         ³Displays the action buttons as³
+  ³               ³               ³normal (large) icons.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPVERTICAL     ³YES            ³The Toolbar will be displayed ³
+  ³               ³               ³vertically.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³The Toolbar will be displayed ³
+  ³               ³               ³horizontally (the default).   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPTEXT         ³YES            ³The object titles will appear ³
+  ³               ³               ³on the Toolbar.  This has no  ³
+  ³               ³               ³effect on the objects in the  ³
+  ³               ³               ³drawers.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³The object titles will be     ³
+  ³               ³               ³hidden.  This has no effect on³
+  ³               ³               ³the objects in the drawers.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPDRAWERTEXT   ³YES            ³The object titles will appear ³
+  ³               ³               ³on the objects in the drawers.³
+  ³               ³               ³This has no effect on the     ³
+  ³               ³               ³objects on the Toolbar.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³.The object titles will be    ³
+  ³               ³               ³hidden.  This has no effect on³
+  ³               ³               ³the objects on the Toolbar.   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPSMALLICONS   ³YES            ³Objects are displayed using   ³
+  ³               ³               ³small icons.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³Objects are displayed using   ³
+  ³               ³               ³large (normal) icons.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPHIDECTLS     ³YES            ³The frame controls (title bar ³
+  ³               ³               ³and system menu) are hidden   ³
+  ³               ³               ³(the default).                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³The frame controls are        ³
+  ³               ³               ³displayed.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LPFLOAT        ³YES            ³The Toolbar will float on top ³
+  ³               ³               ³of all other windows.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO             ³The Toolbar will not float on ³
+  ³               ³               ³top of all other windows.     ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPNetGrp 
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME      ³VALUE               ³DESCRIPTION                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NETGCOMMENT  ³title               ³This sets the title for a  ³
+  ³             ³                    ³network group folder.      ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPObject 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME           ³VALUE               ³DESCRIPTION                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³CCVIEW            ³DEFAULT             ³The default value of the   ³
+  ³                  ³                    ³concurrent view setting of ³
+  ³                  ³                    ³the system is used when the³
+  ³                  ³                    ³user selects open.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³YES                 ³This sets the object's     ³
+  ³                  ³                    ³multiple concurrent view   ³
+  ³                  ³                    ³behavior, so that new views³
+  ³                  ³                    ³of this object are created ³
+  ³                  ³                    ³every time the user selects³
+  ³                  ³                    ³open.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³Opened view of this object ³
+  ³                  ³                    ³resurfaces when the user   ³
+  ³                  ³                    ³selects open.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTVIEW       ³SETTINGS            ³This sets the default open ³
+  ³                  ³                    ³view to Settings view.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³id                  ³This sets the default open ³
+  ³                  ³                    ³view to the id of a        ³
+  ³                  ³                    ³user-added view (0-9).     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³DEFAULT             ³This sets the default open ³
+  ³                  ³                    ³view to the object's class ³
+  ³                  ³                    ³default view, as returned  ³
+  ³                  ³                    ³by wpclsQueryDefaultView.  ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³HELPLIBRARY       ³filename            ³This sets the help library.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³HELPPANEL         ³id                  ³This sets the object's     ³
+  ³                  ³                    ³default help panel for     ³
+  ³                  ³                    ³object-specific help. This ³
+  ³                  ³                    ³is equivalent to calling   ³
+  ³                  ³                    ³wpSetDefaultHelp.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³HIDEBUTTON        ³YES                 ³Views of this object have a³
+  ³                  ³                    ³hide button as opposed to a³
+  ³                  ³                    ³minimize button.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³Views of this object have a³
+  ³                  ³                    ³minimize button as opposed ³
+  ³                  ³                    ³to a hide button.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³The default is the current ³
+  ³                  ³                    ³system Button appearance   ³
+  ³                  ³                    ³for windows setting.  This ³
+  ³                  ³                    ³cannot be specified here.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONFILE          ³filename            ³This sets the object's     ³
+  ³                  ³                    ³icon. This is equivalent to³
+  ³                  ³                    ³calling wpSetIconData.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONPOS           ³x,y                 ³This sets the object's     ³
+  ³                  ³                    ³initial icon position in a ³
+  ³                  ³                    ³folder. The x and y values ³
+  ³                  ³                    ³represent the position in  ³
+  ³                  ³                    ³the object's folder in     ³
+  ³                  ³                    ³percentage coordinates.    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICONRESOURCE      ³id,module           ³This sets the object's     ³
+  ³                  ³                    ³icon. This is equivalent to³
+  ³                  ³                    ³calling wpSetIconData. The ³
+  ³                  ³                    ³"id" is the icon resource  ³
+  ³                  ³                    ³ID in the dynamic link     ³
+  ³                  ³                    ³library (DLL) "module".    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCKEDINPLACE     ³YES                 ³This sets the object's icon³
+  ³                  ³                    ³locked in place property,  ³
+  ³                  ³                    ³so that the object's icon  ³
+  ³                  ³                    ³is fixed in position in an ³
+  ³                  ³                    ³open icon view of the      ³
+  ³                  ³                    ³folder containing the      ³
+  ³                  ³                    ³object.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's   ³
+  ³                  ³                    ³icon locked in place       ³
+  ³                  ³                    ³property, so that the      ³
+  ³                  ³                    ³object's icon position can ³
+  ³                  ³                    ³be moved.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MENUITEMSELECTED  ³menu-item-ID        ³This simulates selecting   ³
+  ³                  ³                    ³the specified menu item    ³
+  ³                  ³                    ³from the object's pop-up   ³
+  ³                  ³                    ³menu.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MENUS             ³This sets the       ³                           ³
+  ³                  ³object's pop-up menu³                           ³
+  ³                  ³property to short   ³                           ³
+  ³                  ³menus.              ³                           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³SHORT               ³This sets the object's     ³
+  ³                  ³                    ³pop-up menu property to    ³
+  ³                  ³                    ³long menus.                ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MINWIN            ³HIDE                ³Views of this object hide  ³
+  ³                  ³                    ³when their minimize button ³
+  ³                  ³                    ³is selected.               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³VIEWER              ³Views of this object       ³
+  ³                  ³                    ³minimize to the minimized  ³
+  ³                  ³                    ³window viewer when their   ³
+  ³                  ³                    ³minimize button is         ³
+  ³                  ³                    ³selected.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³DESKTOP             ³Views of this object       ³
+  ³                  ³                    ³minimize to the desktop    ³
+  ³                  ³                    ³when their minimize button ³
+  ³                  ³                    ³is selected.               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³The default is the current ³
+  ³                  ³                    ³Minimize button setting.   ³
+  ³                  ³                    ³This cannot be specified   ³
+  ³                  ³                    ³here.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOCOPY            ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³copy property, so that the ³
+  ³                  ³                    ³object cannot be copied.   ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NOCOPY.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³copy property, so that the ³
+  ³                  ³                    ³object can be copied.      ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NODELETE          ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³delete property, so that   ³
+  ³                  ³                    ³the object cannot be       ³
+  ³                  ³                    ³deleted. This is equivalent³
+  ³                  ³                    ³to calling wpSetStyle with ³
+  ³                  ³                    ³a style of                 ³
+  ³                  ³                    ³OBJSTYLE_NODELETE.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³delete property, so that   ³
+  ³                  ³                    ³the object can be deleted. ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NODRAG            ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³drag property, so that the ³
+  ³                  ³                    ³object cannot be dragged.  ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NODRAG.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³drag property, so that the ³
+  ³                  ³                    ³object can be dragged.     ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NODROP            ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³drop property, so that no  ³
+  ³                  ³                    ³other object can be dropped³
+  ³                  ³                    ³on it. This is equivalent  ³
+  ³                  ³                    ³to calling wpSetStyle with ³
+  ³                  ³                    ³a style of                 ³
+  ³                  ³                    ³OBJSTYLE_NODROPON.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³drop property, so that     ³
+  ³                  ³                    ³another object can be      ³
+  ³                  ³                    ³dropped on it.             ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOLINK            ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³link property, so that the ³
+  ³                  ³                    ³object cannot be linked.   ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NOLINK.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³link property, so that the ³
+  ³                  ³                    ³object can be linked.      ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³This is the same as the    ³
+  ³                  ³                    ³NOSHADOW keyword.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOMOVE            ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³move property, so that the ³
+  ³                  ³                    ³object cannot be moved.    ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NOMOVE.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³move property, so that the ³
+  ³                  ³                    ³object can be moved.       ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOPRINT           ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³print property, so that the³
+  ³                  ³                    ³object cannot be printed.  ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NOPRINT. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³print property, so that the³
+  ³                  ³                    ³object can be printed.     ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NORENAME          ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³rename property, so that   ³
+  ³                  ³                    ³the object cannot be       ³
+  ³                  ³                    ³renamed. This is equivalent³
+  ³                  ³                    ³to calling wpSetStyle with ³
+  ³                  ³                    ³a style of                 ³
+  ³                  ³                    ³OBJSTYLE_NORENAME.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³rename property, so that   ³
+  ³                  ³                    ³the object can be renamed. ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOSETTINGS        ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³settings property, so that ³
+  ³                  ³                    ³the object' settings cannot³
+  ³                  ³                    ³be opened. This is         ³
+  ³                  ³                    ³equivalent to calling      ³
+  ³                  ³                    ³wpSetStyle with a style of ³
+  ³                  ³                    ³OBJSTYLE_NOSETTINGS.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³settings property, so that ³
+  ³                  ³                    ³the object's settings can  ³
+  ³                  ³                    ³be opened.                 ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOSHADOW          ³YES                 ³This sets the object's no  ³
+  ³                  ³                    ³link property, so that the ³
+  ³                  ³                    ³object cannot be linked.   ³
+  ³                  ³                    ³This is equivalent to      ³
+  ³                  ³                    ³calling wpSetStyle with a  ³
+  ³                  ³                    ³style of OBJSTYLE_NOLINK.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's no³
+  ³                  ³                    ³link property, so that the ³
+  ³                  ³                    ³object can be linked.      ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³This is the same as the    ³
+  ³                  ³                    ³NOLINK keyword.            ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOTVISIBLE        ³YES                 ³This sets the object's not ³
+  ³                  ³                    ³visible property, so that  ³
+  ³                  ³                    ³the object cannot be made  ³
+  ³                  ³                    ³visible. This is equivalent³
+  ³                  ³                    ³to calling wpSetStyle with ³
+  ³                  ³                    ³a style of                 ³
+  ³                  ³                    ³OBJSTYLE_NOTVISIBLE.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's   ³
+  ³                  ³                    ³not visible property, so   ³
+  ³                  ³                    ³that the object can be made³
+  ³                  ³                    ³visible.                   ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³OBJECTID          ³<name>              ³This sets a persistent ID  ³
+  ³                  ³                    ³for the object. The        ³
+  ³                  ³                    ³OBJECTID stays with the    ³
+  ³                  ³                    ³object even if it is moved ³
+  ³                  ³                    ³or renamed. The object     ³
+  ³                  ³                    ³pointer or handle can be   ³
+  ³                  ³                    ³retrieved via              ³
+  ³                  ³                    ³wpclsQueryObject or        ³
+  ³                  ³                    ³WinQueryObject ,           ³
+  ³                  ³                    ³respectively. An OBJECTID  ³
+  ³                  ³                    ³is any unique string       ³
+  ³                  ³                    ³preceded with a "<" and    ³
+  ³                  ³                    ³terminated with a ">".     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³The default is to not have ³
+  ³                  ³                    ³an ID.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³OPEN              ³SETTINGS            ³This opens the Settings    ³
+  ³                  ³                    ³view when an object is     ³
+  ³                  ³                    ³created or when            ³
+  ³                  ³                    ³WinSetObjectData is called.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³DEFAULT             ³This opens the default view³
+  ³                  ³                    ³when an object is created  ³
+  ³                  ³                    ³or when WinSetObjectData is³
+  ³                  ³                    ³called.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³                    ³The default is to not open ³
+  ³                  ³                    ³a view.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TEMPLATE          ³YES                 ³This sets the object's     ³
+  ³                  ³                    ³template property. This is ³
+  ³                  ³                    ³equivalent to calling      ³
+  ³                  ³                    ³wpSetStyle with a style of ³
+  ³                  ³                    ³OBJSTYLE_TEMPLATE.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                  ³NO                  ³This resets the object's   ³
+  ³                  ³                    ³template property.         ³
+  ³                  ³                    ³This is the default value. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TITLE             ³Title               ³This sets the object's     ³
+  ³                  ³                    ³title. This is equivalent  ³
+  ³                  ³                    ³to calling wpSetTitle.     ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPPalette 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME        ³VALUE          ³DESCRIPTION                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLCOUNT     ³columns        ³Number of columns of cells.   ³
+  ³               ³               ³If not specified, defaults to ³
+  ³               ³               ³13.                           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLCOUNT     ³rows           ³Number of rows of cells.  If  ³
+  ³               ³               ³not specified, defaults to 9. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLWIDTH     ³width          ³Width in dialog units of each ³
+  ³               ³               ³cell.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLHEIGHT    ³height         ³Height in dialog units of each³
+  ³               ³               ³cell.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLGAP       ³gap            ³X separation in dialog units  ³
+  ³               ³               ³between each cell.            ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLGAP       ³gap            ³Y separation in dialog units  ³
+  ³               ³               ³between each cell.            ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+  WPPdr 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME                  ³VALUE        ³DESCRIPTION                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³INSTPATH                 ³pathname     ³This sets the name of the  ³
+  ³                         ³             ³install directory. When the³
+  ³                         ³             ³printer driver object is   ³
+  ³                         ³             ³created, and the driver is ³
+  ³                         ³             ³not already installed, the ³
+  ³                         ³             ³required driver will be    ³
+  ³                         ³             ³installed from this path.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PORTNAME                 ³portname     ³This sets the port name    ³
+  ³                         ³             ³required by the Windows    ³
+  ³                         ³             ³printer driver. Portname   ³
+  ³                         ³             ³may be one of the following³
+  ³                         ³             ³values:                    ³
+  ³                         ³             ³LPT1   COM1   COM4         ³
+  ³                         ³             ³LPT2   COM2   FILE         ³
+  ³                         ³             ³LPT3   COM3                ³
+  ³                         ³             ³                           ³
+  ³                         ³             ³The WINOS2 keyname should  ³
+  ³                         ³             ³also be specified when     ³
+  ³                         ³             ³using this keyname.        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRINTDRIVER              ³driver name  ³This sets the full driver  ³
+  ³                         ³             ³name for the printer driver³
+  ³                         ³             ³object.  A full driver name³
+  ³                         ³             ³is in the driver.device    ³
+  ³                         ³             ³format.  For example:      ³
+  ³                         ³             ³IBM42XXX.IBM 4201          ³
+  ³                         ³             ³Proprinter III             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PROMPT                   ³YES This     ³                           ³
+  ³                         ³specifies    ³                           ³
+  ³                         ³that the user³                           ³
+  ³                         ³should be    ³                           ³
+  ³                         ³prompted for ³                           ³
+  ³                         ³installation ³                           ³
+  ³                         ³diskettes.   ³                           ³
+  ³                         ³When creating³                           ³
+  ³                         ³a printer    ³                           ³
+  ³                         ³driver       ³                           ³
+  ³                         ³object, and  ³                           ³
+  ³                         ³the required ³                           ³
+  ³                         ³driver is not³                           ³
+  ³                         ³already      ³                           ³
+  ³                         ³installed,   ³                           ³
+  ³                         ³the user will³                           ³
+  ³                         ³be prompted  ³                           ³
+  ³                         ³for printer  ³                           ³
+  ³                         ³driver       ³                           ³
+  ³                         ³installation ³                           ³
+  ³                         ³diskettes.   ³                           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This specifies that the    ³
+  ³                         ³             ³user should not be prompted³
+  ³                         ³             ³for installation diskettes.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³WINOS2                   ³YES          ³This specifies that the    ³
+  ³                         ³             ³WINOS2 (or Windows) driver ³
+  ³                         ³             ³should also be installed   ³
+  ³                         ³             ³when creating the OS/2     ³
+  ³                         ³             ³printer driver object. The ³
+  ³                         ³             ³PORTNAME keyname should    ³
+  ³                         ³             ³also be specified when     ³
+  ³                         ³             ³using this keyname.        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This specifies that the    ³
+  ³                         ³             ³WINOS2 driver should not be³
+  ³                         ³             ³installed.                 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPPrinter 
+
+  The following table shows the keyname-value pairs added by the WPPrint class. 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME                  ³VALUE        ³DESCRIPTION                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³APPDEFAULT               ³YES          ³This printer object is to  ³
+  ³                         ³             ³become the application's   ³
+  ³                         ³             ³default printer object for ³
+  ³                         ³             ³printing.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This printer object is not ³
+  ³                         ³             ³to become the application's³
+  ³                         ³             ³default printer object for ³
+  ³                         ³             ³printing.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTVIEW              ³DETAILS      ³Default open view for this ³
+  ³                         ³             ³printer object is in       ³
+  ³                         ³             ³details view.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³ICON         ³Default open view for this ³
+  ³                         ³             ³printer object is in icon  ³
+  ³                         ³             ³view.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³JOBDIALOGBEFOREPRINT     ³YES          ³The job properties dialog  ³
+  ³                         ³             ³is displayed before        ³
+  ³                         ³             ³printing.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³The job properties dialog  ³
+  ³                         ³             ³is not displayed before    ³
+  ³                         ³             ³printing.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³JOBPROPERTIES            ³filename     ³The complete path to a     ³
+  ³                         ³             ³binary file containing the ³
+  ³                         ³             ³default job properties for ³
+  ³                         ³             ³this printer object.  This ³
+  ³                         ³             ³file can be created by     ³
+  ³                         ³             ³saving the                 ³
+  ³                         ³             ³PRQINFO3->pDriverData data ³
+  ³                         ³             ³to a file; this data can be³
+  ³                         ³             ³obtained by using the      ³
+  ³                         ³             ³SplQueryQueue API of the   ³
+  ³                         ³             ³spooler.                   ³
+  ³                         ³             ³For more information about ³
+  ³                         ³             ³spooler functions, see the ³
+  ³                         ³             ³Presentation Manager       ³
+  ³                         ³             ³Programming Reference.     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³OUTPUTTOFILE             ³YES          ³The output of this printer ³
+  ³                         ³             ³object goes to a file.  The³
+  ³                         ³             ³user will be prompted for a³
+  ³                         ³             ³file name each time a print³
+  ³                         ³             ³job is submitted to this   ³
+  ³                         ³             ³printer object.            ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³The output of this printer ³
+  ³                         ³             ³object does not go to a    ³
+  ³                         ³             ³file.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PORTNAME                 ³portname     ³The names of already       ³
+  ³                         ³             ³installed ports to which   ³
+  ³                         ³             ³this printer object is to  ³
+  ³                         ³             ³be attached.  In the case  ³
+  ³                         ³             ³of more than one port,     ³
+  ³                         ³             ³specify a comma-separated  ³
+  ³                         ³             ³list.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRINTDRIVER              ³driver.device³The complete name of the   ³
+  ³                         ³             ³print-driver that this     ³
+  ³                         ³             ³printer object is to use.  ³
+  ³                         ³             ³For example: 'IBM42XX.IBM  ³
+  ³                         ³             ³420 Proprinter III'        ³
+  ³                         ³             ³In the case of more than   ³
+  ³                         ³             ³one print driver, specify a³
+  ³                         ³             ³comma-separated list.      ³
+  ³                         ³             ³These printer drivers must ³
+  ³                         ³             ³already be installed.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRINTERSPECIFICFORMAT    ³YES          ³The printer object spools  ³
+  ³                         ³             ³print jobs in PM_Q_RAW     ³
+  ³                         ³             ³format.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³The printer object spools  ³
+  ³                         ³             ³print jobs in PM_Q_STANDARD³
+  ³                         ³             ³format.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRINTWHILESPOOLING       ³YES          ³The printing is enabled    ³
+  ³                         ³             ³while the job is spooling. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³The printing is disabled   ³
+  ³                         ³             ³while the job is spooling. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRIORITY                 ³priority     ³This sets the priority of  ³
+  ³                         ³number (0-9) ³the print queue associated ³
+  ³                         ³             ³with the printer object.   ³
+  ³                         ³             ³All print jobs that are    ³
+  ³                         ³             ³submitted to the printer   ³
+  ³                         ³             ³object will inherit a job  ³
+  ³                         ³             ³priority derived from the  ³
+  ³                         ³             ³print queue's priority.    ³
+  ³                         ³             ³Zero is the highest        ³
+  ³                         ³             ³priority and 9 is the      ³
+  ³                         ³             ³lowest priority.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³QSTARTTIME               ³time         ³The time when the printer  ³
+  ³                         ³             ³object starts printing.    ³
+  ³                         ³             ³The time format is HH:MM,  ³
+  ³                         ³             ³and the base is a 24-hour  ³
+  ³                         ³             ³clock.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³QSTOPTIME                ³time         ³The time when the printer  ³
+  ³                         ³             ³object is to stop printing.³
+  ³                         ³             ³The time format is HH:MM,  ³
+  ³                         ³             ³and the base is a 24-hour  ³
+  ³                         ³             ³clock.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³QUEUENAME                ³name         ³The local queue name for   ³
+  ³                         ³             ³the printer object.  If a  ³
+  ³                         ³             ³queue name is not          ³
+  ³                         ³             ³specified, one is created  ³
+  ³                         ³             ³by the printer object.     ³
+  ³                         ³             ³The QUEUENAME key will be  ³
+  ³                         ³             ³ignored if this object has ³
+  ³                         ³             ³already been assigned a    ³
+  ³                         ³             ³queue.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³QUEUEPARMS               ³qparm        ³This sets the queue        ³
+  ³                         ³             ³parameters, and can be any ³
+  ³                         ³             ³text string. Queue         ³
+  ³                         ³             ³parameters are specific    ³
+  ³                         ³             ³instructions that are read ³
+  ³                         ³             ³and used by OS/2 print     ³
+  ³                         ³             ³drivers, OS/2 queue        ³
+  ³                         ³             ³drivers, and the OS/2      ³
+  ³                         ³             ³spooler.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³QUEUEDRIVER              ³qdrvname     ³The queue driver name. The ³
+  ³                         ³             ³queue driver must already  ³
+  ³                         ³             ³be installed.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SEPARATORFILE            ³filename     ³A separator file that      ³
+  ³                         ³             ³prints before each print   ³
+  ³                         ³             ³job.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SYNCJOBPROP              ³YES          ³This specifies that the    ³
+  ³                         ³             ³default job properties of  ³
+  ³                         ³             ³the printer object are to  ³
+  ³                         ³             ³be synchronized with the   ³
+  ³                         ³             ³network's printer job      ³
+  ³                         ³             ³properties.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This specifies that the    ³
+  ³                         ³             ³default job properties will³
+  ³                         ³             ³not be synchronized.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SYNCPRINTERPROP          ³YES          ³This specifies that the    ³
+  ³                         ³             ³printer properties of the  ³
+  ³                         ³             ³printer object are to be   ³
+  ³                         ³             ³synchronized with the      ³
+  ³                         ³             ³network's printer job      ³
+  ³                         ³             ³properties.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This specifies that the    ³
+  ³                         ³             ³printer properties will not³
+  ³                         ³             ³be synchronized.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TAKEDEFAULTS             ³YES          ³This specifies that the    ³
+  ³                         ³             ³printer object takes the   ³
+  ³                         ³             ³default values when it is  ³
+  ³                         ³             ³created.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                         ³NO           ³This specifies that the    ³
+  ³                         ³             ³printer object does not    ³
+  ³                         ³             ³take default values when it³
+  ³                         ³             ³is created.  This will     ³
+  ³                         ³             ³cause the "Create a        ³
+  ³                         ³             ³printer" dialog to be      ³
+  ³                         ³             ³displayed.                 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPProgram 
+
+  The following table shows the keyname-value pairs added by the WPProgram class. 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME        ³VALUE                    ³DESCRIPTION                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ASSOCFILTER    ³filters                  ³Sets the filename filter for  ³
+  ³               ³                         ³files associated with this    ³
+  ³               ³                         ³program.  Multiple filters are³
+  ³               ³                         ³separated by commas.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ASSOCTYPE      ³type                     ³Sets the type of files        ³
+  ³               ³                         ³associated with this program. ³
+  ³               ³                         ³Multiple types are separated  ³
+  ³               ³                         ³by commas.                    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³EXENAME        ³filename                 ³Sets the name of the program. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MAXIMIZED      ³YES                      ³The program window is         ³
+  ³               ³                         ³maximized upon startup.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO                       ³The program window is restored³
+  ³               ³                         ³to normal upon startup.       ³
+  ³               ³                         ³This is the default setting.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³MINIMIZED      ³YES                      ³The program window is         ³
+  ³               ³                         ³minimized upon startup.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO                       ³The program window is restored³
+  ³               ³                         ³to normal upon startup.       ³
+  ³               ³                         ³This is the default setting.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PROGTYPE       ³DOSMODE                  ³Sets the session type to      ³
+  ³               ³                         ³stand-alone DOS mode.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³FULLSCREEN               ³Sets the session type to OS/2 ³
+  ³               ³                         ³full-screen mode.             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PM                       ³Sets the session type to PM.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_30_STD              ³Sets the session type to      ³
+  ³               ³                         ³standard compatibility full   ³
+  ³               ³                         ³screen mode.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_ENH              ³Sets the session type to      ³
+  ³               ³                         ³enhanced compatibility full   ³
+  ³               ³                         ³screen mode.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_ENHSEAMLESSCOMMON³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2* window in the       ³
+  ³               ³                         ³WIN-OS/2 enhanced             ³
+  ³               ³                         ³compatibility common session. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_ENHSEAMLESSVDM   ³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 window in a separate ³
+  ³               ³                         ³session enhanced compatibility³
+  ³               ³                         ³mode.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_STD              ³Sets the session type to      ³
+  ³               ³                         ³standard compatibility full   ³
+  ³               ³                         ³screen mode.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_STDSEAMLESSCOMMON³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 window in the        ³
+  ³               ³                         ³WIN-OS/2 standard             ³
+  ³               ³                         ³compatibility common session. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³PROG_31_STDSEAMLESSVDM   ³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 window in a separate ³
+  ³               ³                         ³session standard compatibility³
+  ³               ³                         ³mode.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³SEPARATEWIN              ³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 window running in a  ³
+  ³               ³                         ³separate VDM.                 ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³VDM                      ³Sets the session type to DOS  ³
+  ³               ³                         ³full-screen.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³WIN                      ³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 full screen.         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³WINDOWABLEVIO            ³Sets the session type to OS/2 ³
+  ³               ³                         ³windowed.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³WINDOWEDVDM              ³Sets the session type to DOS  ³
+  ³               ³                         ³windowed.                     ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³WINDOWEDWIN              ³Sets the session type to      ³
+  ³               ³                         ³WIN-OS/2 window.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NOAUTOCLOSE    ³YES                      ³Leaves the window open when   ³
+  ³               ³                         ³the program terminates.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³               ³NO                       ³Closes the window when the    ³
+  ³               ³                         ³program terminates.           ³
+  ³               ³                         ³This is the default setting.  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PARAMETERS     ³params                   ³Sets the parameters list,     ³
+  ³               ³                         ³which may include substitution³
+  ³               ³                         ³characters.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SET            ³XXX=VVV                  ³XXX is an environment         ³
+  ³               ³                         ³variable.  VVV sets the value ³
+  ³               ³                         ³of the environment variable.  ³
+  ³               ³                         ³This is also used to specify  ³
+  ³               ³                         ³DOS settings on DOS and       ³
+  ³               ³                         ³Windows** programs.           ³
+  ³               ³                         ³Each variable/value pair must ³
+  ³               ³                         ³be separated by a NULL (\0),  ³
+  ³               ³                         ³and the entire string must be ³
+  ³               ³                         ³terminated by two NULLS       ³
+  ³               ³                         ³(\0\0).  For example: DOS     ³
+  ³               ³                         ³DEVICE=value\0env=value\0\0   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³STARTUPDIR     ³pathname                 ³Sets the working directory.   ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  WPProgramFile 
+
+  The following table shows the keyname-value pairs added by the WPProgramFile class. 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME        ³VALUE                    ³DESCRIPTION         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ASSOCFILTER    ³filters                  ³Sets the filename   ³
+  ³               ³                         ³filter for files    ³
+  ³               ³                         ³associated with this³
+  ³               ³                         ³program. Multiple   ³
+  ³               ³                         ³filters are         ³
+  ³               ³                         ³separated by commas.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ASSOCTYPE      ³type                     ³Sets the type of    ³
+  ³               ³                         ³files associated    ³
+  ³               ³                         ³with this program.  ³
+  ³               ³                         ³Multiple types are  ³
+  ³               ³                         ³separated by commas.³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPRPrinter 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME          ³VALUE            ³DESCRIPTION               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ICON             ³filename         ³The name of the .ICO file ³
+  ³                 ³                 ³to be used as the icon for³
+  ³                 ³                 ³this object.              ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NETID            ³<network>        ³The full name of the      ³
+  ³                 ³                 ³printer resource as it is ³
+  ³                 ³                 ³known to the network. For ³
+  ³                 ³                 ³example:                  ³
+  ³                 ³                 ³LS:\\DEPTSERV\DEPTPRNT    ³
+  ³                 ³                 ³The NETID key will be     ³
+  ³                 ³                 ³ignored and FALSE will be ³
+  ³                 ³                 ³returned if this object   ³
+  ³                 ³                 ³has already been assigned ³
+  ³                 ³                 ³a NetId.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³REFRESHINTERVAL  ³value            ³Time interval, in seconds,³
+  ³                 ³                 ³when the printer object is³
+  ³                 ³                 ³refreshed.                ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SHOWJOBS         ³ALL              ³All jobs are displayed in ³
+  ³                 ³                 ³the printer object.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                 ³OWN              ³Only the current user's   ³
+  ³                 ³                 ³jobs are displayed in the ³
+  ³                 ³                 ³printer object.           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³TAKEDEFAULTS     ³YES              ³This specifies that the   ³
+  ³                 ³                 ³printer object takes the  ³
+  ³                 ³                 ³default values when it is ³
+  ³                 ³                 ³created.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                 ³NO               ³This specifies that the   ³
+  ³                 ³                 ³printer object does not   ³
+  ³                 ³                 ³take default values when  ³
+  ³                 ³                 ³it is created.  This will ³
+  ³                 ³                 ³cause the "Access another ³
+  ³                 ³                 ³network printer" dialog to³
+  ³                 ³                 ³be displayed.             ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPSchemePalette 
+
+  The following are the keyname-value pairs added by the WPSchemePalette class. 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME   ³VALUE       ³DESCRIPTION                           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³AUTOSETUP ³YES         ³This automatically sets the palette   ³
+  ³          ³            ³values to the original system palette ³
+  ³          ³            ³settings.                             ³
+  ³          ³            ³This is the default setting.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³          ³NO          ³This does not set palette values to   ³
+  ³          ³            ³the original system palette settings. ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SCHEMES   ³Schemetype  ³These are the initial schemes for each³
+  ³          ³            ³cell in the scheme palette.  The      ³
+  ³          ³            ³values for each cell are separated by ³
+  ³          ³            ³commas.  This is equivalent to calling³
+  ³          ³            ³the wpSetupCell instance method.  The ³
+  ³          ³            ³schemetype value is presented as the  ³
+  ³          ³            ³scheme name followed by a colon,      ³
+  ³          ³            ³followed by an application name in the³
+  ³          ³            ³INI file.                             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³XCELLCOUNT³columns     ³Number of X cells as decimal digits.  ³
+  ³          ³            ³If not specified, defaults to 4.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³YCELLCOUNT³rows        ³Number of Y cells as decimal digits.  ³
+  ³          ³            ³If not specified, defaults to 7.      ³
+  ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPServer 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME     ³VALUE          ³DESCRIPTION                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SRVCOMMENT  ³comment string ³This sets the object's title to  ³
+  ³            ³               ³the specified comment string.    ³
+  ³            ³               ³This is equivalent to calling    ³
+  ³            ³               ³wpSetTitle.                      ³
+  ³            ³               ³Note:                            ³
+  ³            ³               ³The value specified for the TITLE³
+  ³            ³               ³keyword will override this       ³
+  ³            ³               ³comment.                         ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPShadow 
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME        ³VALUE          ³DESCRIPTION                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SHADOWID       ³<name> or file ³This specifies the object for ³
+  ³               ³name           ³which this object is a shadow.³
+  ³               ³               ³The value for this keyname is ³
+  ³               ³               ³an object's id (OBJECTID) or a³
+  ³               ³               ³fully qualified pathname of a ³
+  ³               ³               ³directory, program file, or   ³
+  ³               ³               ³data file.                    ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+  WPUrl 
+
+  The following table shows the keyname-value pairs added by the WPUrl class. 
+
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³KEYNAME                 ³VALUE     ³DESCRIPTION                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³BROWSER                 ³name or   ³This specifies the executable that  ³
+  ³                        ³pathname  ³will be invoked to display the web  ³
+  ³                        ³          ³page designated in the "Url" field. ³
+  ³                        ³          ³This field can be either a pathname ³
+  ³                        ³          ³or a name of a browser in the PATH. ³
+  ³                        ³          ³EXPLORE.EXE is the default browser  ³
+  ³                        ³          ³for OS/2 Warp. The Java applet      ³
+  ³                        ³          ³viewer (APPLET.EXE) can be used here³
+  ³                        ³          ³to view Java applets with the URL   ³
+  ³                        ³          ³object, but be sure to set the      ³
+  ³                        ³          ³"Integrated browser" check box on   ³
+  ³                        ³          ³the Browser page to NO, because     ³
+  ³                        ³          ³APPLET.EXE does not understand the  ³
+  ³                        ³          ³URL-specific browser options.       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTBROWSER          ³name or   ³This sets the default value for     ³
+  ³                        ³pathname  ³BROWSER for all URL objects.  This  ³
+  ³                        ³          ³value will be placed in the "Path   ³
+  ³                        ³          ³and file name" field on the Browser ³
+  ³                        ³          ³page of a URL's properties notebook ³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed and when the URL object is  ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for BROWSER.³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTDISPLAYIMAGES    ³YES       ³This sets the default value for     ³
+  ³                        ³          ³DISPLAYIMAGES for all URL objects.  ³
+  ³                        ³          ³This value is used for the "Display ³
+  ³                        ³          ³images while loading" check box of a³
+  ³                        ³          ³URL's properties notebook when the  ³
+  ³                        ³          ³Default push button is pressed or   ³
+  ³                        ³          ³when the URL object is first        ³
+  ³                        ³          ³created.  When this keyname is set  ³
+  ³                        ³          ³to YES, the "Display images while   ³
+  ³                        ³          ³loading" check box is checked.      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³DISPLAYIMAGES.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Display images while loading"  ³
+  ³                        ³          ³check box is unchecked.             ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³DISPLAYIMAGES.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTEMAILADDRESS     ³address   ³This sets the default value for     ³
+  ³                        ³          ³EMAILADDRESS for all URL objects.   ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Electronic mail address" field on  ³
+  ³                        ³          ³the Server page of a URL's          ³
+  ³                        ³          ³properties notebook when the Default³
+  ³                        ³          ³push button is pressed and when the ³
+  ³                        ³          ³URL object is first created.        ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³EMAILADDRESS.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTENABLEPROXY      ³YES       ³This sets the default value for     ³
+  ³                        ³          ³ENABLEPROXY for all URL objects.    ³
+  ³                        ³          ³The "Proxy gateway" check box on the³
+  ³                        ³          ³Server page of a URL's properties   ³
+  ³                        ³          ³notebook is checked when the Default³
+  ³                        ³          ³push button is pressed and when the ³
+  ³                        ³          ³URL object is first created.        ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³ENABLEPROXY.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Proxy gateway" check box is    ³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³ENABLEPROXY.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTENABLESOCKS      ³YES       ³This sets the default value for     ³
+  ³                        ³          ³ENABLESOCKS for all URL objects.    ³
+  ³                        ³          ³The "Socks server" check box on the ³
+  ³                        ³          ³Server page of a URL's properties   ³
+  ³                        ³          ³notebook is checked when the Default³
+  ³                        ³          ³push button is pressed or when the  ³
+  ³                        ³          ³URL object is first created.        ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³ENABLESOCKS.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Socks server" check box is     ³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³ENABLESOCKS.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTINTEGRATEDBROWSER³YES       ³This sets the default value for     ³
+  ³                        ³          ³INTEGRATEDBROWSER for all URL       ³
+  ³                        ³          ³objects.  The "Integrated browser"  ³
+  ³                        ³          ³check box on the Browser page of a  ³
+  ³                        ³          ³URL's properties notebook is checked³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed or when the URL object is   ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³INTEGRATEDBROWSER.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Proxy gateway" check box is    ³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³INTEGRATEDBROWSER.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTLOADGRAPHICS     ³YES       ³This sets the default value for     ³
+  ³                        ³          ³LOADGRAPHICS for all URL objects.   ³
+  ³                        ³          ³The "Load graphics" check box on the³
+  ³                        ³          ³Browser page of a URL's properties  ³
+  ³                        ³          ³notebook is checked when the Default³
+  ³                        ³          ³push button is pressed or when the  ³
+  ³                        ³          ³URL object is first created.        ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³LOADGRAPHICS.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Load graphics" check box is    ³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³LOADGRAPHICS.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTNEWSSERVER       ³newsserver³This sets the default value for     ³
+  ³                        ³          ³NEWSERVER for all URL objects.  This³
+  ³                        ³          ³value will be placed in the         ³
+  ³                        ³          ³"Newsserver" field on the Server    ³
+  ³                        ³          ³page of a URL's properties notebook ³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed and when the URL object is  ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³NEWSERVER.                          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTPALETTEAWARE     ³YES       ³This sets the default value for     ³
+  ³                        ³          ³PALETTEAWARE for all URL objects.   ³
+  ³                        ³          ³The "Palette aware" check box on the³
+  ³                        ³          ³Web page of a URL's properties      ³
+  ³                        ³          ³notebook is checked when the Default³
+  ³                        ³          ³push button is pressed or when the  ³
+  ³                        ³          ³URL object is first created.        ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PALETTEAWARE.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Palette aware" check box is    ³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PALETTEAWARE.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTPARAMETERS       ³parameters³This sets the default value for     ³
+  ³                        ³          ³PARAMETERS for all URL objects.     ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Parameters" field on the Browser   ³
+  ³                        ³          ³page of a URL's properties notebook ³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed and when the URL object is  ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PARAMETERS.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTPRESENTATIONMODE ³YES       ³This sets the default value for     ³
+  ³                        ³          ³PRESENTATIONMODE for all URL        ³
+  ³                        ³          ³objects.  The "Presentation mode"   ³
+  ³                        ³          ³check box on the Web page of a URL's³
+  ³                        ³          ³properties notebook is checked when ³
+  ³                        ³          ³the Default push button is pressed  ³
+  ³                        ³          ³or when the URL object is first     ³
+  ³                        ³          ³created.                            ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PRESENTATIONMODE.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Presentation mode" check box is³
+  ³                        ³          ³unchecked.                          ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PRESENTATIONMODE.                   ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTPROXYGATEWAY     ³proxy     ³This sets the default value for     ³
+  ³                        ³          ³PROXYGATEWAY for all URL objects.   ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Proxy gatewway" field on the Server³
+  ³                        ³          ³page of a URL's properties notebook ³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed and when the URL object is  ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³PROXYGATEWAY.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTSOCKSSERVER      ³socks     ³This sets the default value for     ³
+  ³                        ³          ³SOCKSERVER for all URL objects.     ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Socks server" field on the Server  ³
+  ³                        ³          ³page of a URL's properties notebook ³
+  ³                        ³          ³when the Default push button is     ³
+  ³                        ³          ³pressed and when the URL object is  ³
+  ³                        ³          ³first created.                      ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³SOCKSERVER.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DEFAULTWORKINGDIR       ³directory ³This sets the default value for     ³
+  ³                        ³          ³WORKINGDIR for all URL objects.     ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Working directory" field on the    ³
+  ³                        ³          ³Server page of a URL's properties   ³
+  ³                        ³          ³notebook when the Default push      ³
+  ³                        ³          ³button is pressed and when the URL  ³
+  ³                        ³          ³object is first created.            ³
+  ³                        ³          ³Also see the definition for         ³
+  ³                        ³          ³WORKINGDIR.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³DISPLAYIMAGES           ³YES       ³This specifies that the browser show³
+  ³                        ³          ³the images as they are being        ³
+  ³                        ³          ³constructed on the page while being ³
+  ³                        ³          ³received from the server.  This is  ³
+  ³                        ³          ³the default value for the "Display  ³
+  ³                        ³          ³images while loading" check box on  ³
+  ³                        ³          ³the Web page.                       ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Display images while loading"  ³
+  ³                        ³          ³check box is unchecked.  This       ³
+  ³                        ³          ³specifies that the browser show the ³
+  ³                        ³          ³page when all of the images have    ³
+  ³                        ³          ³been received from the server.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³EMAILADDRESS            ³address   ³This is a required field.  This     ³
+  ³                        ³          ³specifies the user's return e-mail  ³
+  ³                        ³          ³address to be used by the browser   ³
+  ³                        ³          ³when responding to other users on   ³
+  ³                        ³          ³mail-to fields of web pages or      ³
+  ³                        ³          ³newsgroup articles.  This should be ³
+  ³                        ³          ³the complete internet e-mail        ³
+  ³                        ³          ³address.  For example:              ³
+  ³                        ³          ³marysmith.@ibm.net                  ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³Leaving this field blank will       ³
+  ³                        ³          ³prevent you from responding to      ³
+  ³                        ³          ³mail-to fields and newsgroup        ³
+  ³                        ³          ³articles.                           ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³ENABLEPROXY             ³YES       ³This sets the default value for     ³
+  ³                        ³          ³PROXYGATEWAY for all URL objects.   ³
+  ³                        ³          ³If the "Enable proxy?" check box on ³
+  ³                        ³          ³the Server page is checked. the     ³
+  ³                        ³          ³proxy server will be used.          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³If the "Enable proxy?" check box is ³
+  ³                        ³          ³not checked, the proxy server will  ³
+  ³                        ³          ³not be used.                        ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³INTEGRATEDBROWSER       ³YES       ³This sets the default value for     ³
+  ³                        ³          ³BROWSER for all URL objects.  If the³
+  ³                        ³          ³"Integrated browser" check box on   ³
+  ³                        ³          ³the Browser page is checked, this   ³
+  ³                        ³          ³specified that the designated       ³
+  ³                        ³          ³executable has been integrated with ³
+  ³                        ³          ³the URL object.                     ³
+  ³                        ³          ³For example, the IBM WebExplorer    ³
+  ³                        ³          ³browser has been integrated, you    ³
+  ³                        ³          ³would specify YES if you are using  ³
+  ³                        ³          ³EXPLORE.EXE.  The Java Applet viewer³
+  ³                        ³          ³is not integrated if you are using  ³
+  ³                        ³          ³APPLET.EXE.                         ³
+  ³                        ³          ³Other browsers might not be         ³
+  ³                        ³          ³integrated with the URL object.     ³
+  ³                        ³          ³Check the documentation provided    ³
+  ³                        ³          ³with your browser.                  ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³If the "Integrated browser" check   ³
+  ³                        ³          ³box is not checked, you will be     ³
+  ³                        ³          ³unable to use certain browser       ³
+  ³                        ³          ³parameters (for example, Palette    ³
+  ³                        ³          ³Aware, Presentation Mode, and Load  ³
+  ³                        ³          ³Graphics) because a non-integrated  ³
+  ³                        ³          ³browser cannot interpret these      ³
+  ³                        ³          ³command-line arguments.             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOADGRAPHICS            ³YES       ³This specifies that you can load    ³
+  ³                        ³          ³graphics and images on the web page ³
+  ³                        ³          ³specified by the URL if the "Load   ³
+  ³                        ³          ³graphics" check box on the Web page ³
+  ³                        ³          ³is checked.                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³If the "Load graphics" check box is ³
+  ³                        ³          ³not checked, will only be able to   ³
+  ³                        ³          ³view text, but not graphics, on a   ³
+  ³                        ³          ³web page.  This will speed up page  ³
+  ³                        ³          ³downloads if you specific not to    ³
+  ³                        ³          ³load graphics.                      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³LOCATOR                 ³url       ³This specifies the Uniform Resource ³
+  ³                        ³          ³Locator that uniquely identifies    ³
+  ³                        ³          ³each web page designated in the     ³
+  ³                        ³          ³"Uniform Resource Locator (URL)"    ³
+  ³                        ³          ³field on the Web page.              ³
+  ³                        ³          ³The URL is the address for the page ³
+  ³                        ³          ³on the web.  For example:           ³
+  ³                        ³          ³http://www.ibm.net                  ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³The keywords LOCATOR and URL can be ³
+  ³                        ³          ³used interchangeably.               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³NEWSERVER               ³news      ³This specifies the host name or IP  ³
+  ³                        ³          ³address of the server that handles  ³
+  ³                        ³          ³newsgroups for the user's company or³
+  ³                        ³          ³account.  The first example is a    ³
+  ³                        ³          ³host name and the second example is ³
+  ³                        ³          ³an IP address:                      ³
+  ³                        ³          ³news.company.com                    ³
+  ³                        ³          ³or                                  ³
+  ³                        ³          ³128.35.89.2                         ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PALETTEAWARE            ³YES       ³This is the default value for       ³
+  ³                        ³          ³BROWSER for all URL objects.  This  ³
+  ³                        ³          ³value will be placed in the         ³
+  ³                        ³          ³"Paletteaware" check box on the Web ³
+  ³                        ³          ³page.  This specifies that the OS/2 ³
+  ³                        ³          ³palette be used to display pages and³
+  ³                        ³          ³images.                             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Paletteaware" check box on the ³
+  ³                        ³          ³Web page will not be checked.  If   ³
+  ³                        ³          ³color problems are detected while   ³
+  ³                        ³          ³displaying web pages with your      ³
+  ³                        ³          ³browser, set this value to NO.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PARAMETERS              ³params    ³This specifies strings to be        ³
+  ³                        ³          ³included on the command line        ³
+  ³                        ³          ³invocation of (passed to) the       ³
+  ³                        ³          ³executable designated when it is    ³
+  ³                        ³          ³started.  If the browser being used ³
+  ³                        ³          ³permits optional parameters, declare³
+  ³                        ³          ³them using this value.              ³
+  ³                        ³          ³This sets the default value for     ³
+  ³                        ³          ³BROWSER for all URL objects.  This  ³
+  ³                        ³          ³value will be placed in the         ³
+  ³                        ³          ³"Parameters" field on the Browser   ³
+  ³                        ³          ³page.                               ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PRESENTATIONMODE        ³YES       ³This specifies that the browser use ³
+  ³                        ³          ³the full-screen (nonwindowed) mode. ³
+  ³                        ³          ³This mode is generally used for     ³
+  ³                        ³          ³presentations.  This value is used  ³
+  ³                        ³          ³for the "Presentation mode" check   ³
+  ³                        ³          ³box on the Web page.  This is the   ³
+  ³                        ³          ³default value, which specifies that ³
+  ³                        ³          ³the executable use the OS/2 palette ³
+  ³                        ³          ³to display its pages and images.    ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³                        ³NO        ³The "Presentation mode" check box   ³
+  ³                        ³          ³will not be checked.  If color      ³
+  ³                        ³          ³problems are detected while         ³
+  ³                        ³          ³displaying web pages with your      ³
+  ³                        ³          ³browser, set this value to NO.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³PROXYGATEWAY            ³proxy     ³This specifies the URL of the server³
+  ³                        ³          ³that handles the interface to the   ³
+  ³                        ³          ³web for the user's company or       ³
+  ³                        ³          ³account.  It is the firewall for    ³
+  ³                        ³          ³insulation of a company from the    ³
+  ³                        ³          ³outside world.  A proxy port can    ³
+  ³                        ³          ³also be appended to the end of the  ³
+  ³                        ³          ³proxy string if the proxy server    ³
+  ³                        ³          ³supports it.  For example:          ³
+  ³                        ³          ³http://proxy.company.com/           ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³or                                  ³
+  ³                        ³          ³http://128.35.89.2/                 ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³A proxy port can also be appended to³
+  ³                        ³          ³the end of the proxy string if the  ³
+  ³                        ³          ³proxy server supports it.  For      ³
+  ³                        ³          ³example:                            ³
+  ³                        ³          ³http://proxy.company.com:80/        ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Proxy gateway" field on the Server ³
+  ³                        ³          ³page.                               ³
+  ³                        ³          ³The slash on the end is required    ³
+  ³                        ³          ³syntax.                             ³
+  ³                        ³          ³Contact your system administrator   ³
+  ³                        ³          ³for details about using a proxy     ³
+  ³                        ³          ³gateway server on your system.      ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³SOCKSERVER              ³socks     ³This specifies the socks support    ³
+  ³                        ³          ³that will provide access the web    ³
+  ³                        ³          ³through a firewall, which provides  ³
+  ³                        ³          ³for insulation of a company from the³
+  ³                        ³          ³outside world.  This value is placed³
+  ³                        ³          ³in the "Socks server" field on the  ³
+  ³                        ³          ³Server page.                        ³
+  ³                        ³          ³For example:                        ³
+  ³                        ³          ³http://socks.company.com/           ³
+  ³                        ³          ³or                                  ³
+  ³                        ³          ³http:/socks.company.com:80/         ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³The slash on the end is required    ³
+  ³                        ³          ³syntax.                             ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³WORKINGDIR              ³directory ³This specifies OS/2 working         ³
+  ³                        ³          ³directory for the executable, if    ³
+  ³                        ³          ³required, and sets the default value³
+  ³                        ³          ³for BROWSER for all URL objects.    ³
+  ³                        ³          ³This value will be placed in the    ³
+  ³                        ³          ³"Working directory" field on the    ³
+  ³                        ³          ³Browser page.  A working directory  ³
+  ³                        ³          ³is required if the specified browser³
+  ³                        ³          ³requires DLLs or other files from a ³
+  ³                        ³          ³directory not specified in the      ³
+  ³                        ³          ³LIBPATH or other environment        ³
+  ³                        ³          ³variables.                          ³
+  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+  ³URL                     ³url       ³This specifies the Uniform Resource ³
+  ³                        ³          ³Locator that uniquely identifies    ³
+  ³                        ³          ³each web page designated in the     ³
+  ³                        ³          ³"Uniform Resource Locator (URL)"    ³
+  ³                        ³          ³field on the web page.              ³
+  ³                        ³          ³The URL is the address for a page on³
+  ³                        ³          ³the web.  For example, an URL might ³
+  ³                        ³          ³be:                                 ³
+  ³                        ³          ³http:/www.ibm.net                   ³
+  ³                        ³          ³                                    ³
+  ³                        ³          ³The keywords URL and LOCATOR can be ³
+  ³                        ³          ³used interchangeably.               ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  
+

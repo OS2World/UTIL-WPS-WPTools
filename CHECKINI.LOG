@@ -1,0 +1,290 @@
+Folders of class TSMasterSetup will be regarded as startup folders.
+=================================================
+ Checking integrity of PM_Workplace:Handles1
+=================================================
+=================================================
+ Checking PM_Objects:ClassTable
+=================================================
+=================================================
+ PM_Abstract:Objects & PM_Abstract:FldrContents
+=================================================
+Found tray: Tray 2 (0)
+Tray appears not in use, skipping..
+Found tray: Default tray (10)
+Tray contains 10 objects
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+Found tray:  (0)
+Tray appears not in use, skipping..
+
+Folder : E:\TRASH\DESKTOP\pmPGP 1.3
+  Object 2DB95 <PMPGP>, Class WPProgram : pmPGP 1.3
+   Exename: F:\PMPGP\PMPGP.EXE<-UNABLE TO ACCESS! Curdir: F:\PMPGP<-UNABLE TO ACCESS!
+=================================================
+ Checking PM_Abstract:Icons
+=================================================
+=================================================
+ Checking PMWP_ASSOC_FILTER
+=================================================
+=================================================
+ Checking PMWP_ASSOC_TYPE
+=================================================
+=================================================
+ Checking PMWP_ASSOC_CHECKSUM
+=================================================
+=================================================
+ Checking PM_Workplace:FolderPos
+=================================================
+PM_Workplace:FolderPos:65586@20
+  POINTS TO 10032 - NON-EXISTING OBJECT
+PM_Workplace:FolderPos:224920@20
+  points to 36E98 - F:\Trash\Download\odin32bin-20001128-release.wpi<-UNABLE TO ACCESS
+PM_Workplace:FolderPos:224231@XFSB
+  points to 36BE7 - C:\WINDOWS\HISTORY\HISTORY.IE5\MSHIST012000112720001128<-UNABLE TO ACCESS
+PM_Workplace:FolderPos:224231@10
+  points to 36BE7 - C:\WINDOWS\HISTORY\HISTORY.IE5\MSHIST012000112720001128<-UNABLE TO ACCESS
+PM_Workplace:FolderPos:208692@XFSB
+  points to 32F34 - F:\TMP\VBE<-UNABLE TO ACCESS
+PM_Workplace:FolderPos:208692@10
+  points to 32F34 - F:\TMP\VBE<-UNABLE TO ACCESS
+=================================================
+ Checking PM_PrintObject:JobCnrPos
+=================================================
+=================================================
+ Checking PM_Workplace:PalettePos
+=================================================
+=================================================
+ Checking PM_Workplace:StatusPos
+=================================================
+=================================================
+ Checking PM_PrintObject
+=================================================
+=================================================
+ Checking PM_Workplace:Startup
+=================================================
+E:\OS2\ARCHIVES\0X\DESKTOP\OS!2 SYSTEM\STARTUP is an ARCHIVED folder
+=================================================
+ Checking PM_Workplace:Templates
+=================================================
+=================================================
+ Checking PM_Workplace:Location
+=================================================
+<XWP_SCREENMAINSHADOW> points to 2261F - Object 2261F - DOES NOT EXIST!
+OBJECT <XWP_SEP41> (2BAEC - ---) CLAIMS TO HAVE ID '<XWP_SEP42>'!
+<INNOTEK_FLASH_WEB> points to 33040 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\INNOTEK FLASH WEBSITE<-UNABLE TO ACCESS
+<INNOTEK_FLASH_OS2ORGHELPDESK> points to 335A3 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\OS2.ORG HELPDESK<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_MACROMEDIA> points to 3AA63 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\MACROMEDIA<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_BALTHASER> points to 35451 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\BALTHASER STUDIOS<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_EYE4U> points to 3765D - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\EYE4U ACTIVE MEDIA<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_ANYGIVENSUNDAY> points to 329AE - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\ANY GIVEN SUNDAY<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_LIONHEAD> points to 317A9 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\LIONHEAD STUDIOS<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_THEVOID> points to 38B10 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\THE VOID<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_VARAZDIN2000> points to 33EE1 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\VARAZDIN 2000<-UNABLE TO ACCESS
+<INNOTEK_FLASH_SAMPLE_KIMBLE> points to 36694 - E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\KIMBLE SPECIAL AGENT<-UNABLE TO ACCESS
+=================================================
+ Checking FolderWorkareaRunningObjects
+=================================================
+=================================================
+ Checking PM_Workplace:Handles1
+=================================================
+
+*DRIV: \\CWIDDOWS\RESTORE  (1 handles) 
+
+*DRIV: \\CWIDDOWS\TMP  (1 handles) 
+
+*DRIV: \\CWIDDOWS\MCPCBDS  (1 handles) 
+
+*DRIV: \\CWIDDOWS\ENABLER  (1 handles) 
+
+*DRIV: \\CWIDDOWS\SCANTEST  (1 handles) 
+
+*DRIV: \\CWIDDOWS\CDROM  (1 handles) 
+
+*DRIV: \\CWIDDOWS\ENABLERATF  (1 handles) 
+
+*DRIV: \\NEWTON\SYS  (3 handles) 
+
+ DRIV: G:\  (1 handles) 
+
+ DRIV: O:\  (20 handles) 
+
+*DRIV: C:\  (164 handles) 
+ 37B13:EA DATA. SF    =>C:\EA DATA. SF<-UNABLE TO ACCESS
+ 300E7:MICRO~1        =>C:\PROGRA~1\MICRO~1<-UNABLE TO ACCESS
+ 3E3DC:OFFICE         =>C:\PROGRA~1\MICRO~1\OFFICE<-UNABLE TO ACCESS
+ 34637:WINWORD.EXE    =>C:\PROGRA~1\MICRO~1\OFFICE\WINWORD.EXE<-UNABLE TO ACCESS
+ 34178:EXCEL.EXE      =>C:\PROGRA~1\MICRO~1\OFFICE\EXCEL.EXE<-UNABLE TO ACCESS
+ 3A4C3:MSINFO         =>C:\PROGRA~1\MICROS~1\MSINFO<-UNABLE TO ACCESS
+ 3BAFC:MSINF16H.EXE   =>C:\PROGRA~1\MICROS~1\MSINFO\MSINF16H.EXE<-UNABLE TO ACCESS
+ 36BE7:MSHIST012000112720001128=>C:\WINDOWS\HISTORY\HISTORY.IE5\MSHIST012000112720001128<-UNABLE TO ACCESS
+ 32798:TRASH          =>C:\TRASH<-UNABLE TO ACCESS
+ 38290:PROGRA~1       =>C:\TRASH\PROGRA~1<-UNABLE TO ACCESS
+
+*DRIV: E:\  (772 handles) 
+ 357A5:CONFIG.BAK     =>E:\CONFIG.BAK<-UNABLE TO ACCESS
+ 3B9D7:VUMTB04D.RA    =>E:\TMP\VUMTB04D.RA<-UNABLE TO ACCESS
+ 30435:VU9K1D3F.RA    =>E:\TMP\VU9K1D3F.RA<-UNABLE TO ACCESS
+ 3440A:VUI6UO5N.RA    =>E:\TMP\VUI6UO5N.RA<-UNABLE TO ACCESS
+ 37D6D:LAATSTE1.RA    =>E:\TMP\LAATSTE1.RA<-UNABLE TO ACCESS
+ 3C4BC:ZATERDAG.RA    =>E:\TMP\ZATERDAG.RA<-UNABLE TO ACCESS
+ 3920C:LIVE.RAM       =>E:\TMP\LIVE.RAM<-UNABLE TO ACCESS
+ 3A7DF:V079HT52.RAM   =>E:\TMP\V079HT52.RAM<-UNABLE TO ACCESS
+ 306A2:ZONDAG_2.RA    =>E:\TMP\ZONDAG_2.RA<-UNABLE TO ACCESS
+ 3657F:OS2.###        =>E:\OS2\OS2.###<-UNABLE TO ACCESS
+ 306E5:CGEY OMNUMMERING.XLS=>E:\WARPZIP\WZTEMP\CGEY OMNUMMERING.XLS<-UNABLE TO ACCESS
+ 3D770:ODIN STUFF     =>E:\TRASH\DESKTOP\ODIN STUFF<-UNABLE TO ACCESS
+ 3630A:Programs       =>E:\TRASH\DESKTOP\Programs<-UNABLE TO ACCESS
+ 35887:Internet       =>E:\TRASH\DESKTOP\Programs\Internet<-UNABLE TO ACCESS
+ 30F4C:Folder!1       =>E:\TRASH\DESKTOP\Programs\Internet\Folder!1<-UNABLE TO ACCESS
+ 3C856:Folder         =>E:\TRASH\DESKTOP\Programs\Internet\Folder<-UNABLE TO ACCESS
+ 3A978:Connections    =>E:\TRASH\DESKTOP\Connections<-UNABLE TO ACCESS
+ 35B19:ftp.os2ss.com^hkelder=>E:\TRASH\DESKTOP\Connections\ftp.os2ss.com^hkelder<-UNABLE TO ACCESS
+ 362A9:Folder         =>E:\TRASH\DESKTOP\Connections\ftp.os2ss.com^hkelder\Folder<-UNABLE TO ACCESS
+*3478C:Macromedia Flash Player for OS!2!by www.innotek.de=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de<-UNABLE TO ACCESS
+*335A3:OS2.ORG HELPDESK=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\OS2.ORG HELPDESK<-UNABLE TO ACCESS
+*33040:INNOTEK FLASH WEBSITE=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\INNOTEK FLASH WEBSITE<-UNABLE TO ACCESS
+*337C2:FLASH SAMPLE PAGES=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES<-UNABLE TO ACCESS
+*36694:KIMBLE SPECIAL AGENT=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\KIMBLE SPECIAL AGENT<-UNABLE TO ACCESS
+*33EE1:VARAZDIN 2000  =>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\VARAZDIN 2000<-UNABLE TO ACCESS
+*38B10:THE VOID       =>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\THE VOID<-UNABLE TO ACCESS
+*317A9:LIONHEAD STUDIOS=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\LIONHEAD STUDIOS<-UNABLE TO ACCESS
+*329AE:ANY GIVEN SUNDAY=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\ANY GIVEN SUNDAY<-UNABLE TO ACCESS
+*3765D:EYE4U ACTIVE MEDIA=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\EYE4U ACTIVE MEDIA<-UNABLE TO ACCESS
+*35451:BALTHASER STUDIOS=>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\BALTHASER STUDIOS<-UNABLE TO ACCESS
+*3AA63:MACROMEDIA     =>E:\TRASH\DESKTOP\Macromedia Flash Player for OS!2!by www.innotek.de\FLASH SAMPLE PAGES\MACROMEDIA<-UNABLE TO ACCESS
+
+*DRIV: F:\  (263 handles) 
+*3E561:PMPGP          =>F:\PMPGP<-UNABLE TO ACCESS
+*33B0B:PMPGP.EXE      =>F:\PMPGP\PMPGP.EXE<-UNABLE TO ACCESS
+ 3A36B:RELEASEU       =>F:\NGR\PACKAGES\SYSPARMS\RELEASEU<-UNABLE TO ACCESS
+ 35E56:RELEASEU       =>F:\NGR\PACKAGES\STAMDATA\RELEASEU<-UNABLE TO ACCESS
+ 3E1A2:RELEASEU       =>F:\NGR\PACKAGES\SDUSERVICE\RELEASEU<-UNABLE TO ACCESS
+ 34B7F:RELEASEU       =>F:\NGR\PACKAGES\SCANNER\RELEASEU<-UNABLE TO ACCESS
+ 3D942:RELEASEU       =>F:\NGR\PACKAGES\PERSISTENTIE\RELEASEU<-UNABLE TO ACCESS
+ 3D8F9:RELEASEU       =>F:\NGR\PACKAGES\P_GRID\RELEASEU<-UNABLE TO ACCESS
+ 3311B:RELEASEU       =>F:\NGR\PACKAGES\P_AANVRAAG\RELEASEU<-UNABLE TO ACCESS
+ 3675F:RELEASEU       =>F:\NGR\PACKAGES\MAIN\RELEASEU<-UNABLE TO ACCESS
+ 3E9D1:fix            =>F:\Trash\$RSUTMP$\fix<-UNABLE TO ACCESS
+ 345F5:OS2.4          =>F:\Trash\$RSUTMP$\fix\OS2.4<-UNABLE TO ACCESS
+ 3AC55:OS2.3          =>F:\Trash\$RSUTMP$\fix\OS2.3<-UNABLE TO ACCESS
+ 30879:OS2.2          =>F:\Trash\$RSUTMP$\fix\OS2.2<-UNABLE TO ACCESS
+ 31A90:OS2.1          =>F:\Trash\$RSUTMP$\fix\OS2.1<-UNABLE TO ACCESS
+ 30910:archive        =>F:\Trash\archive<-UNABLE TO ACCESS
+ 39D72:Download       =>F:\Trash\Download<-UNABLE TO ACCESS
+ 36E98:odin32bin-20001128-release.wpi=>F:\Trash\Download\odin32bin-20001128-release.wpi<-UNABLE TO ACCESS
+ 3C093:NGR            =>F:\Trash\NGR<-UNABLE TO ACCESS
+ 34DD5:PACKAGES       =>F:\Trash\NGR\PACKAGES<-UNABLE TO ACCESS
+ 328AF:BERICHTDUMP    =>F:\Trash\NGR\PACKAGES\BERICHTDUMP<-UNABLE TO ACCESS
+ 33FEB:BERICHTDUMP___WIN32_DEBUG_UNICODE=>F:\Trash\NGR\PACKAGES\BERICHTDUMP\BERICHTDUMP___WIN32_DEBUG_UNICODE<-UNABLE TO ACCESS
+ 37DFE:HLP            =>F:\Trash\NGR\PACKAGES\BERICHTDUMP\HLP<-UNABLE TO ACCESS
+ 3A26C:BERICHTDUMP___WIN32_RELEASE_UNICODE=>F:\Trash\NGR\PACKAGES\BERICHTDUMP\BERICHTDUMP___WIN32_RELEASE_UNICODE<-UNABLE TO ACCESS
+ 31F22:RES            =>F:\Trash\NGR\PACKAGES\BERICHTDUMP\RES<-UNABLE TO ACCESS
+ 36D28:DEBUG          =>F:\Trash\NGR\PACKAGES\BERICHTDUMP\DEBUG<-UNABLE TO ACCESS
+ 369E9:NOODDOC        =>F:\Trash\NGR\PACKAGES\NOODDOC<-UNABLE TO ACCESS
+ 34F70:RELEASEU       =>F:\Trash\NGR\PACKAGES\NOODDOC\RELEASEU<-UNABLE TO ACCESS
+ 39A83:IMPORTSERVICEAGENT=>F:\Trash\NGR\PACKAGES\IMPORTSERVICEAGENT<-UNABLE TO ACCESS
+ 359A3:RELEASEU       =>F:\Trash\NGR\PACKAGES\IMPORTSERVICEAGENT\RELEASEU<-UNABLE TO ACCESS
+ 32D25:GBAKOPPEL      =>F:\Trash\NGR\PACKAGES\GBAKOPPEL<-UNABLE TO ACCESS
+ 3B453:RELEASEU       =>F:\Trash\NGR\PACKAGES\GBAKOPPEL\RELEASEU<-UNABLE TO ACCESS
+ 326C3:DCSERVICEAGENT =>F:\Trash\NGR\PACKAGES\DCSERVICEAGENT<-UNABLE TO ACCESS
+ 3120B:RELEASEU       =>F:\Trash\NGR\PACKAGES\DCSERVICEAGENT\RELEASEU<-UNABLE TO ACCESS
+ 3BB40:DCKOPPEL       =>F:\Trash\NGR\PACKAGES\DCKOPPEL<-UNABLE TO ACCESS
+ 30835:RELEASEU       =>F:\Trash\NGR\PACKAGES\DCKOPPEL\RELEASEU<-UNABLE TO ACCESS
+ 3DE8B:DATADICT       =>F:\Trash\NGR\PACKAGES\DATADICT<-UNABLE TO ACCESS
+ 39D2F:RELEASEU       =>F:\Trash\NGR\PACKAGES\DATADICT\RELEASEU<-UNABLE TO ACCESS
+ 3ACD7:BERICHTTOOL    =>F:\Trash\NGR\PACKAGES\BERICHTTOOL<-UNABLE TO ACCESS
+ 3E2A7:BERICHTTOOL___WIN32_RELEASE_UNICODE=>F:\Trash\NGR\PACKAGES\BERICHTTOOL\BERICHTTOOL___WIN32_RELEASE_UNICODE<-UNABLE TO ACCESS
+ 3915F:BERICHTTEST    =>F:\Trash\NGR\PACKAGES\BERICHTTEST<-UNABLE TO ACCESS
+ 3389E:RELEASE        =>F:\Trash\NGR\PACKAGES\BERICHTTEST\RELEASE<-UNABLE TO ACCESS
+ 3476E:TEST___WIN32_DEBUG_UNICODE=>F:\Trash\NGR\PACKAGES\BERICHTTEST\TEST___WIN32_DEBUG_UNICODE<-UNABLE TO ACCESS
+ 320E2:TEST___WIN32_RELEASE_UNICODE=>F:\Trash\NGR\PACKAGES\BERICHTTEST\TEST___WIN32_RELEASE_UNICODE<-UNABLE TO ACCESS
+ 3017E:BERICHTEN      =>F:\Trash\NGR\PACKAGES\BERICHTEN<-UNABLE TO ACCESS
+ 310D5:RELEASEU       =>F:\Trash\NGR\PACKAGES\BERICHTEN\RELEASEU<-UNABLE TO ACCESS
+ 3AB0A:AUTORISATIE    =>F:\Trash\NGR\PACKAGES\AUTORISATIE<-UNABLE TO ACCESS
+ 32760:RELEASEU       =>F:\Trash\NGR\PACKAGES\AUTORISATIE\RELEASEU<-UNABLE TO ACCESS
+ 357CA:ALGEMEEN       =>F:\Trash\NGR\PACKAGES\ALGEMEEN<-UNABLE TO ACCESS
+ 376B0:RELEASEU       =>F:\Trash\NGR\PACKAGES\ALGEMEEN\RELEASEU<-UNABLE TO ACCESS
+ 3AD65:tmp            =>F:\Trash\tmp<-UNABLE TO ACCESS
+ 39362:ODIN           =>F:\Trash\ODIN<-UNABLE TO ACCESS
+ 3B083:SYSTEM32       =>F:\Trash\ODIN\SYSTEM32<-UNABLE TO ACCESS
+ 32133:GLIDE          =>F:\Trash\ODIN\SYSTEM32\GLIDE<-UNABLE TO ACCESS
+ 349A0:VOODOO2        =>F:\Trash\ODIN\SYSTEM32\GLIDE\VOODOO2<-UNABLE TO ACCESS
+ 3451C:VOODOO1        =>F:\Trash\ODIN\SYSTEM32\GLIDE\VOODOO1<-UNABLE TO ACCESS
+ 33CB6:VOODOO2        =>F:\Trash\ODIN\SYSTEM32\VOODOO2<-UNABLE TO ACCESS
+ 32862:CVS            =>F:\Trash\ODIN\SYSTEM32\VOODOO2\CVS<-UNABLE TO ACCESS
+ 3C7F4:VOODOO1        =>F:\Trash\ODIN\SYSTEM32\VOODOO1<-UNABLE TO ACCESS
+ 317B2:CVS            =>F:\Trash\ODIN\SYSTEM32\VOODOO1\CVS<-UNABLE TO ACCESS
+ 32F34:VBE            =>F:\TMP\VBE<-UNABLE TO ACCESS
+ 31FA2:XWP-0-9-6.WPI  =>F:\NEW\XWP-0-9-6.WPI<-UNABLE TO ACCESS
+ 3E84E:ODIN32BIN-20001130-RELEASE.ZIP=>F:\DOWNLOAD\ODIN32BIN-20001130-RELEASE.ZIP<-UNABLE TO ACCESS
+
+*DRIV: D:\  (156 handles) 
+ 31FBB:VSEXP.EXE      =>D:\VB\VSS\WIN32\VSEXP.EXE<-UNABLE TO ACCESS
+
+*DRIV: W:\  (2 handles) 
+
+*DRIV: Z:\  (2 handles) 
+
+*DRIV: Q:\  (4 handles) 
+
+*DRIV: \\DEMANDIT01\SYS  (7 handles) 
+
+*DRIV: H:\  (24 handles) 
+
+*DRIV: \\CVLS0001\NETLOGON  (1 handles) 
+
+*DRIV: \\CVLS0001\CDRIVE  (1 handles) 
+
+*DRIV: \\CVLS0001\CDROM  (1 handles) 
+
+*DRIV: \\CVLS0001\DDRIVE  (1 handles) 
+
+*DRIV: \\HKELDER\CDRIVE  (1 handles) 
+
+ DRIV: \\HKELDER\CDROM  (1 handles) 
+
+*DRIV: \\HKELDER\DDRIVE  (1 handles) 
+
+*DRIV: \\HKELDER\EDRIVE  (1 handles) 
+
+*DRIV: \\HKELDER\FDRIVE  (1 handles) 
+
+*DRIV: \\NEWTON\DATA  (1 handles) 
+
+*DRIV: \\NEWTON\PROG  (1 handles) 
+
+*DRIV: \\NEWTON\TEMP  (1 handles) 
+
+ DRIV: I:\  (1 handles) 
+
+ DRIV: \\HKELDER\DOCS  (1 handles) 
+
+*DRIV: \\HKELDER2\SRVTOOLS  (1 handles) 
+
+*DRIV: \\HKELDER2\NGR  (1 handles) 
+
+*DRIV: \\HKELDER2\C$  (2 handles) 

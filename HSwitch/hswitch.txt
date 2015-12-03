@@ -1,0 +1,277 @@
+DISCLAIMER
+==========
+
+
+I allow you to use and distribute HSWITCH freely under the
+condition that I am in no way responsible for any damage or
+loss you may suffer. 
+
+
+Henk Kelder, Fidonet 2:280/801.339
+
+Notes about HSWITCH:
+====================
+
+HSWITCH is a program that allows you to switch sessions on OS/2 2.x and
+above from within full screen sessions. Note that for OS/2 2.0 you'll
+must have the first service pack (from way back) installed.
+ 
+HSWITCH is a dual mode program. The .exe file actually contains TWO
+programs: A OS/2 program AND a TSR program for DOS.
+
+HSWITCH will not work if Presention Manager is not loaded. 
+HSWITCH needs the taskmanager from PM.
+
+General Installation for OS/2
+=============================
+
+There are two ways to install HSWITCH:
+
+1. Add a "RUN=[path]HSWITCH.EXE [options] in your CONFIG.SYS
+
+2. Enter "DETACH [path]HSWITCH [options]" at a OS/2 command prompt
+
+Valid options are:
+
+        /Fnn : nn is first session number to monitor (default 4)
+        /Lnn : nn is last session number to monitor  (default 15)
+
+        For all specified sessions numbers HSWITCH creates a seperate 
+        threat (or a subtask) that monitors incomming keys.
+        Since OS/2 has a maximum of 12 full screen OS/2 session the
+        range of sessions 4 to 15 is the normal range for all posible
+        OS/2 Full Screen sessions. But since almost nobody has 12 open
+        OS/2 Full Screens at the same time the upper limit can be 
+        set at a lower value.
+        
+        /Hnn : nn is the scancode of the HOTKEY. The default value for the 
+               hotkey is 53, being the forward slash.
+
+        Note that this hotkey must always be an ALT-combination.
+        'nn' must be a valid DECIMAL keyboard SCAN code. Only minimal
+        checking is done on this number.
+
+        Not all keys can be used. Some (e.g. the numeric keys and 
+        the tab key) simply don't work. Most alphabetic keys however work.
+        Just try it. 
+        
+        Should you use this parameter make sure you specify the /H 
+        parameter both for the OS/2 version as for the DOS version 
+        equally. 
+        There is a small difference between the way hotkeys are handled
+        in OS/2 session and in DOS sessions. Each key has a scancode of
+        its own but when any shift key (ctrl, alt, shift) is pressed in
+        combination with a key a scancode can change to a logical scancode.
+        The DOS version of HSWITCH always looks at the hardware scancodes, 
+        or actually, the make and break key values as returned by the
+        hardware.
+        The OS/2 version of HSWITCH looks at the logical scancode. For 
+        some keys these values are different. Just one example:
+
+        The TAB key has scancode 15 when no addition keys are pressed.
+        When Alt-TAB is pressed the logical scancode becomes 165.
+        Should you wanne use alt-Tab as hotkey you should specify
+        /H165 for the OS/2 version, but /H15 for the DOS version.
+
+        You'll find scancodes in your PC's manual.
+
+        /O   : Always popup using (the VioPopUp attribute) OPAQUE. 
+               OPAQUE means that HSWITCH will always create a popup screen
+               with dimensions 25x80 and that underlying screen will not
+               be visible.
+               This argument is usefull for users working with SVGA
+               cards and using more than 80 columns on the screen.
+               Popping up HSWITCH will make spaghetti of the
+               screen.
+
+        /Cbf  : Specify colors for HSWITCH. 'b' is the background color and
+                'f' is the foreground color. Both are a hexadecimal value.
+
+                0 Black          8 Bright black
+                1 Blue           9 Bright blue
+                2 Green          A Bright green
+                3 Cyan           B Bright Cyan
+                4 Red            C Bright red
+                5 Purple         D Bright purple
+                6 Brown          E Yellow
+                7 Gray           F White
+               
+                e.g. /CE1 is a yellow background and a blue foreground.
+
+                On the rightside of the messagebar the current color value
+                is always shown when HSWITCH is visible.
+               
+
+Installation in a DOS box
+=========================
+
+Simply run HSWITCH in a DOS (VDM or VMB) session, or better install in
+in your AUTOEXEC.BAT.
+It will install itself as an TSR program that will take round 9Kb of 
+RAM space.
+If the OS/2 version is not installed, the DOS version will NOT install.
+
+When activated by its hotkey, HSWITCH will send a signal (via a named pipe)
+to the OS/2 counterpart that will actually show the switchlist. 
+
+Since the OS/2 program has no way to determine which DOS session has send 
+the signal the DOS program changes its session title for some moments to 
+"DOSSWITCH" so the OS/2 program can recoqnize the proper DOS session.
+The default duration of this title-change is 500 milliseconds which is
+sufficient for a 33 mHz 486 on normal operation.
+If HSWITCH never checkmarks the current DOS session when activated from DOS
+you could try to increase this value. Please note that the DOS program is
+blocked for the specified duration.
+
+Note: HSWITCH can also be loaded and activated in a DOS window. Pressing 
+the hotkey there will however result in switching to full screen before the
+switchlist is displayed. 
+
+HSWITCH does not work (the tasklist will not appear) while using WIN-OS/2,
+or from a PM program.
+
+Syntax :
+        [path]HSWITCH [options]
+
+Valid options are:
+
+        /Hnn : nn is the scancode of the HOTKEY. The default value for the 
+               hotkey is 53, being the forward slash in combination with
+               the ALT key.
+
+               This options only has effect when specified while installing
+
+        /Tnn : Specify the title-change duration in milliseconds. 
+               The default duration is 500 milliseconds. 
+
+        /R   : When already installed, removes itself from memory
+
+Activating
+==========
+
+To activate HSWITCH press the hot-key. This hot-key consist of two keys:
+Press and hold the <ALT> key en press the forward slash or the user
+specified hotkey.
+
+This keystroke causes a task list window to appear over the current
+screen. At the bottom of the screen a messagebar appears.
+A session can be selected by using the arrow keys, or by
+entering the first character in the session title.
+
+Once a session has been selected, you can enter any of the following
+keys:
+
+<ENTER> - switches you to the highlighted session
+<ESC>   - places you back in the session you started in
+<ALT-X> - Removes the detached HSWITCH OS/2 background program
+<ALT-B> - Change the background color
+<ALT-F> - Change the foreground color
+<DEL>   - Kill or Close the current selected session.
+
+If a session is a PM session AND multiple windows appear with
+the same session and process id HSWITCH will try to close any
+of these session by posting a WM_CLOSE message. HSWITCH will ask
+confirmation as 'Close ... ?'
+
+When the above is not the case the session is killed via DosKillProcess.
+HSWITCH ill then ask confirmation as 'Terminate ...?'.
+
+Please note that you can also close the Desktop this way.
+
+<ALT-A> - Toggle all/only selectable sessions.
+
+By default HSWITCH only shows normal OS/2 session, these are sessions one 
+can jump to.
+By pressing Alt-A HSWITCH will show all tasks. Non jumpable tasks are placed
+between brackets [no jump task]. Although one cannot jump to these task, one
+can (try) to close/kill the task.
+
+
+Known bugs/limitations
+======================
+
+- HSWITCH may not become active from within an OS/2 session if you have more
+  than 20 or so sessions. OS/2 can however only handle 12 full screen OS/2
+  sessions.
+
+- When you activate HSWITCH from an DOS session the current session is
+  not always marked by the highlighted bar. Instead the first session might
+  highlighted while no session is check-marked. (See notes on version 1.4)
+
+- On Version of OS/2 where only the initial release of OS/2 is installed
+  (GA) there are reports of traps when the DOS HSWITCH is used.
+
+- HSWITCH uses box drawing characters to display itself and assumes you are
+  using codepage 437. If you are not using this Codepage some incorrect
+  characters might be used.
+
+- When HSWITCH is activated from a DOS session, and the session is at a 
+  COMMAND Prompt, HSWITCH will show 'Current DOS' instead of the normal 
+  title. (feature, no bug).
+
+
+
+Credits
+=======
+
+The OS/2 Part of HSWITCH is based on the public domain "VSWITCH" program 
+by Scott Dudley. The DOS part is of my own hand.
+
+VSWITCH is in turn based on a public domain program call "HOTKEY" by
+Peter Fitzsimmons and Dave Burton.  
+
+HSWITCH is also public domain. The OS/2 code was compiled with 
+IBM CSet/2 compiler for OS/2 2.x. The DOS code was compiled with
+the Microsoft C version 6.0a compiler.
+
+
+=========================== HISTORY =======================================
+Notes on version 1.3:
+
+o       You can now specify the first and last session that hswitch
+        monitors.
+
+o       When the DOS HSWITCH is used and the screen is not set on
+        25 lines, the screen background is cleared before the program
+        will popup.
+
+o       If you run HSWITCH in the foreground it will show messages about
+        whats happening (debug messages mainly).
+
+
+Notes on version 1.4:
+
+o       You can now specify the HOTKEY that HSWITCH uses.
+
+o       The tasklist is shown in reversed order now. This normally matches
+        the order in the standard PM tasklist.
+
+o       HSWITCH now tries to select the proper session when activated from
+        a DOS session. 
+
+        However when it works, and the DOS session is at a COMMAND Prompt,
+        HSWITCH will show 'Current DOS' instead of the normal title. 
+        (feature, no bug).
+
+o       When the DOS version was installed in upper memory using LH the
+        upper memory was not freed when the DOS version was deinstalled.
+        This has been corrected.
+
+
+Notes on version 1.5
+
+o       Added the /O option. This option will make HSWITCH to use
+        the VioPopUp API call with the VP_OPAQUE flag instead of the
+        VP_TRANSPARENT flag. The flag will cause VioPopUp to always create
+        a clear 25 by 80 characters popup screen.
+        This option may be usefull for people with some SVGA adapters where
+        using HSWITCH will make spaghetti of the screen.
+
+       
+Notes on version 1.6
+
+o       Added support for colors in HSWITCH.
+
+o       Added support for closing/killing an session.
+
+o       Added a messagebar at the bottom of the screen.

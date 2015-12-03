@@ -1,0 +1,44 @@
+
+ hstart
+
+ Start     Length     Name                   Class
+ 0001:0000 012A2H     HSTART_TEXT            CODE
+ 0001:12A2 0211EH     _TEXT                  CODE
+ 0001:33C0 00002H     EMULATOR_TEXT          CODE
+ 0001:33C2 00000H     C_ETEXT                ENDCODE
+ 0002:0000 00000H     EMULATOR_DATA          FAR_DATA
+ 0002:0000 00200H     FAR_BSS                FAR_BSS
+ 0003:0000 00042H     NULL                   BEGDATA
+ 0003:0042 01C8EH     _DATA                  DATA
+ 0003:1CD0 0000EH     CDATA                  DATA
+ 0003:1CDE 00000H     XIFB                   DATA
+ 0003:1CDE 00000H     XIF                    DATA
+ 0003:1CDE 00000H     XIFE                   DATA
+ 0003:1CDE 00000H     XIB                    DATA
+ 0003:1CDE 00000H     XI                     DATA
+ 0003:1CDE 00000H     XIE                    DATA
+ 0003:1CDE 00000H     XPB                    DATA
+ 0003:1CDE 00004H     XP                     DATA
+ 0003:1CE2 00000H     XPE                    DATA
+ 0003:1CE2 00000H     XCB                    DATA
+ 0003:1CE2 00000H     XC                     DATA
+ 0003:1CE2 00000H     XCE                    DATA
+ 0003:1CE2 00000H     XCFB                   DATA
+ 0003:1CE2 00000H     XCF                    DATA
+ 0003:1CE2 00000H     XCFE                   DATA
+ 0003:1CE2 00000H     CONST                  CONST
+ 0003:1CE2 00008H     HDR                    MSG
+ 0003:1CEA 00102H     MSG                    MSG
+ 0003:1DEC 00002H     PAD                    MSG
+ 0003:1DEE 00001H     EPAD                   MSG
+ 0003:1DF0 00200H     _BSS                   BSS
+ 0003:1FF0 00000H     XOB                    BSS
+ 0003:1FF0 00000H     XO                     BSS
+ 0003:1FF0 00000H     XOE                    BSS
+ 0003:1FF0 00000H     c_common               BSS
+ 0003:1FF0 00A00H     STACK                  STACK
+
+ Origin   Group
+ 0003:0   DGROUP
+
+Program entry point at 0001:12B2

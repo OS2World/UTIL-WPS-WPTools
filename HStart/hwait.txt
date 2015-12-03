@@ -1,0 +1,102 @@
+                      === DISCLAIMER ===
+
+
+I allow you to use and distribute HWAIT freely under the condition that 
+I am in no way responsible for any damage or loss you may suffer. 
+
+
+Henk Kelder, hkelder@capgemini.nl
+
+
+Notes on HWAIT
+===============
+
+HWAIT is a program that makes it possible to synchronize events in different
+sessions. You can do this by starting HWAIT with a parameter that tells 
+HWAIT to wait for a named signal from another session.
+In the other session you can start HWAIT with another parameter to send a
+named signal.
+
+Without parameters HWAIT assumes you have used HSTART in a DOS session with
+the /WAIT parameter, and the program sends the default signal to HSTART.
+
+HWAIT will only work on OS/2 2.1. (Both OS/2 and DOS sessions)
+
+
+USING HWAIT
+============
+
+Before HWAIT can be used make sure you have placed the file 'SEMFUNCS.DLL'
+in a directory that is included in your 'LIBPATH' statement from your
+config.sys.
+
+
+
+        HWAIT [options]
+
+        Valid options are:
+
+        HWAIT /W:xxxxx          Wait for a signal with xxxxx as name.
+
+        HWAIT /S:xxxxx          Send named signal with xxxxx as name.
+
+        HWAIT /?                Show the help screen
+
+        The last two options are mutually exclusive.
+
+        Without any parameters HWAIT assumes you have used HSTART in a 
+        DOS session with the /WAIT parameter and sends the default signal.
+
+   
+A signal can only be send if in another session HSTART or HWAIT are waiting
+for it, otherwise HWAIT will give an error message.
+
+
+HISTORY
+=======
+
+Version 0.9: Initial release
+
+
+EXAMPLE 1:  using hstart with /WAIT from a dos session
+==========
+
+        HSTART "Binkley term" /fs /wait e:\binkley\bink1.cmd
+
+        contents of 'bink2.cmd':
+        ------------------
+        E:
+        CD \BINKLEY
+        BTP
+        E:\OS2TOOLS\HWAIT <- default: signals to hstart to continue
+        -----------------
+
+EXAMPLE 2:  using hstart & hwait as seperate programs
+==========
+
+        contents of 'bink.bat'
+        -------------------------
+        HSTART "Binkley term" /FS e:\binkley\bink2.cmd
+        HWAIT /W:BINK2             <- wait for signal BINK2
+        -------------------------
+
+        contents of 'bink2.cmd
+        -------------------------
+        E:
+        CD \BINKLEY
+        BTP
+        E:\OS2TOOLS\HWAIT /S:BINK2 <- send signal 'BINK2'
+        -------------------------
+
+Note: In the two examples above a DOS and a OS/2 session is being used.
+      This could also be signaling between DOS/DOS or OS/2/OS2 sessions.
+
+      Also, in the 2nd example HSTART is being used, this could of 
+      course also be another program like OS/2's START or STARTD.
+        
+
+
+
+        
+        
+

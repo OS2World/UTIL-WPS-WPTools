@@ -1,0 +1,43 @@
+                         === DISCLAIMER ===
+
+
+I allow you to use and distribute RESETWPS freely under the condition
+that I am in no way responsible for any damage or loss you may suffer.
+
+I CANNOT guarantee that RESETWPS will work for you. However I'v done
+my best to test the program and I can only say that It works for me.
+
+
+Henk Kelder
+hkelder@capgemini.nl
+http://www.os2ss.com/information/kelder/
+
+
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+________________________________________________________________________
+
+RESETWPS will RESTART the Workplace shell. Make sure all applications are
+closed before using RESETWPS.
+________________________________________________________________________
+
+
+Description:
+
+RESETWPS can be used the force OS/2's workplace shell to re-initialize
+itself.
+
+Simply type 'RESETWPS' at the commandline and (after a confirmation) the
+Workplace shell will restart.
+
+
+Known problem:
+
+-  Occasionally, a protection violation was seen in the WPCLSLST.DLL from
+   the OS/2 TOOLKIT.
+   When 'Close the application' was chosen in the protection violation
+   prompt, the workplace shell restarted normally.
+
+
+
+

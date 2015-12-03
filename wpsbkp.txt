@@ -1,0 +1,387 @@
+                         === DISCLAIMER ===
+
+
+I allow you to use and distribute WPSBKP and WPSREST freely under the 
+condition that I am in no way responsible for any damage or loss you 
+may suffer. 
+
+Henk Kelder,
+hkelder@capgemini.nl
+http://www.os2ss.com/information/kelder/
+
+
+
+                === NOTES ON WPSBKP & WPSREST ===
+
+
+DESCRIPTION:
+============
+
+WPSBKP.EXE and WPSREST.EXE are two programs that allow you to (partially)
+backup you workplace shell. 
+
+Before using WPSBKP.EXE make sure you have moved WPTOOLS.DLL to a 
+directory that is mentioned in the LIBPATH line from your config.sys.
+\OS2\DLL is a good place.
+
+Whenever you have to reinstall you desktop by either recreating the 
+ini using MAKEINI or by re-installing OS/2 you can use the WPSREST 
+program the recreate all your WPProgram and WPShadow objects, 
+as well as the folders they reside in.
+
+WPSBKP.EXE and WPSREST.EXE work best on OS/2 2.0 with the 'Service Pack'
+installed and on OS/2 2.1. Read further for more information.
+
+
+        SYNTAX: WPSBKP  [targetdirectory] [options]
+
+                WPSREST [backupfile] [options]
+
+You are advised to run WPSBKP in a empty directory.
+
+WPSREST allows you to specify a alternate input file. If you do not specify
+an input file, WPSBKP.DAT in the current directory is used as default.
+
+The /Y option can be used for WPSBKP so no questions will be asked, and Yes
+answers are assumed.
+
+BACKGROUND INFORMATION:
+=======================
+
+
+WPSBKP.EXE creates a text file (WPSBKP.DAT) the contains the instructions
+to recreate all Program and Shadow objects (WPProgram & WPShadow) as well
+as the folders these objects reside in. 
+
+This text file can be inspected or modified, and can be used by 
+WPSREST to recreate program and shadow objects. 
+Also, all icons you have assigned to the objects are saved.
+
+
+
+                === FURTHER INFORMATION ===
+
+
+When WPSBKP extracts information from the workplace shell, all objects 
+that do not have an unique OBJECTID are assigned one (after confirmation 
+by the user). 
+
+An OBJECTID is a the **only** way to refer to existing objects.
+(e.g. <WP_DESKTOP> for the desktop). 
+
+It is possible that there is a problem with these OBJECTID's:
+sometimes two objects contain the same OBJECTID. WPSBKP will report this 
+problem and will ask if it may assign a new OBJECTID to resolve this problem.
+
+When restoring the objects the WPSREST program checks for these OBJECTID's. 
+
+If an object with a given OBJECTID exists, only the settings are applied 
+to it, if it does not exist, you are asked if you want to create the object.
+
+Shadow objects:
+===============
+
+If a shadow object points to an abstract object (not a file or directory)
+and this abstract object does not have an unique OBJECTID, the shadow will
+NOT be backup'd. This will be reported.
+
+
+Icon positions
+==============
+
+WPSBKP does also save the icon position for objects on the desktop, 
+but not for objects in other folders. However these iconpositions are only
+handled properly when recreating the object and not when the object still
+exists. So you can NOT use WPSBKP as a backup-tool for you icon positions. 
+
+
+If you have added objects and have not shutdown your system before making a
+backup it is possible that some settings are not extracted properly. This 
+because WPSBKP uses information in your ini-files and some values are only
+written to it when you shutdown. This applies a specially to the ICONPOS. If
+WPSBKP cannot find a icon position for an object on the desktop, it will
+be reported.
+
+
+OS/2 2.0 GA, No service pack installed:
+=======================================
+
+When you run the WPSREST program on OS/2 2.0 GA you must make sure you 
+have no open folders or other objects. In some cases your system 
+will hang when WPSREST tries to apply settings to open folders. 
+This is due to a bug in the workplace shell.
+
+For WPSREST to work best, you should have installed the SOMFIX patch dated
+September 4, 1992. This patch solves a problem in the WinSetObjectData call
+the would not allow a setting string to be longer than 255 characters.
+Also, installing the service pack for OS/2 2.0 from october 1992, solves 
+this problem.
+
+
+
+NEW VERSIONS of OS/2
+====================
+
+You should take care when using this program on new versions of
+OS/2 since this program interprets data from the ini-files. 
+The internal structure of this data can change, and the
+program might fail or even corrupt information
+This was the case with the new OS/2 2.00.1 (or 2.01) version as well
+as the Service Pack release in october 1992.
+
+The best way to test this is run checkini WITHOUT the /C option! 
+(Optionally use the /W option to write out all checkini's findings and 
+inspect the logfile)
+If Checkini reports un unusual amount of errors, the internal structure of
+the workplace shells data inside the ini-files might have changed. 
+Look in CHECKINI's logfile at the  
+"PM_Abstract:Objects & PM_Abstract:FldrContents" section with special care.
+If this section contains a lot of errors while your workplace shell seems to
+function properly there might have been a change, so:
+
+
+         DO NOT USE CHECKINI.EXE or WPSBKP.EXE then!
+         ===========================================
+
+(see DANGER.TXT about this)
+Note: The warning above does not apply to WPSREST.EXE and COPYINI.EXE!
+
+
+If you are using to *original* OS/2 2.0 version (the so-called GA version)
+restoring a backup might result in lost properties such a icons and various
+settings. The cause for these problems lies in OS/2 self.
+Installing the service pack from October 1992 solves these problems.
+
+
+
+
+
+CORRECTIONS in version 0.91:
+
+o   In this version a problem has been corrected that ICONPOS setting was not
+    added for objects on the desktop other than WPFolder.
+
+o   Another problem was that when restoring a WPShadow object for a folder, 
+    the TITLE=xxxx setting made that the original folder name was renamed.
+    The program than hung the desktop. This has been corrected so that a 
+    WPShadow object does not contain a TITLE=xxxx setting. Also when
+    restoring objects, a existing WPShadow object is not updated.
+
+o   WPShadow objects are always backuped last.
+
+o   Performance has been improved.
+
+
+CHANGES in version 0.92:
+
+o   WPSBKP now accepts a directory name as parameter. This directory must
+    exist and is used to place the backup information in. If no parameter
+    is specified the current directory is used.
+
+o   WPSBKP prompts the location where the backup information will be placed
+    and the user must confirm this with a 'Y'.
+
+CHANGES in version 0.94:
+
+o   WPSBKP now support OS/2 2.00.1 (beta version)
+
+o   Since the needed PROGTYPE strings for WINOS231 (OS/2 2.00.1) programs 
+    are unknown WINOS231 programs will backup as WINOS2 (3.0) programs.
+
+o   Template WPProgram objects are no longer backup'd.
+
+
+CHANGES is version 0.96:
+
+o   WPSBKP now works properly after installing the october '92 service pack
+
+CHANGES is version 0.97:
+
+o   In some occasions a problem could occur that multiple objects have the
+    same OBJECTID assigned. WPSBKP now assigns a new OBJECTID id to the
+    object that incorrectly claims to have a duplicate OBJECTID.
+
+o   Updated the documentation files (this file)
+
+o   When creating the text file (WPSBKP.DAT) an existing version of this
+    file will be renamed to WPSBKP.OLD.
+
+o   A simple test has been build in to see if OBJECTID's can be found
+    in the ini-files, to determine if the internal data structure of the
+    ini-files might have been changed and WPSBKP will fail completely.
+    This is however no guarantee that WPSBKP will function properly on
+    new versions of OS/2 2.0.
+
+o   Whenever WPSBKP wants to assign an OBJECTID to an object, the user 
+    will be prompted for a confirmation to assign this OBJECTID to the 
+    object. Whatever the reply is, the new OBJECTID is always written to
+    the backup file.
+
+CHANGES in version 0.98:
+
+o   Due to an error in the OS/2 2.0 Toolkit the ICONVIEWPOS (size and
+    position of a folder) was incorrectly backup'd.  The positions were
+    backup's as ICONVIEWPOS=x1,y1,x2,y2 while they should have been backup'd
+    as ICONVIEWPOS=x,y,cx,cy (xpos, ypos, widht, height) in percentages.
+
+CHANGES in version 0.99:
+
+o   Trailing spaces in DOS settings and Objecttitles are removed
+
+o   WIN-OS/2 3.1 program types are backup'd properly. (OS/2 BETA 2.1). 
+    So the problem mentioned with version 0.94 no longer exists.
+
+CHANGES in version 1.01:
+
+o   Some minor text enhancements were made.
+
+o   When a problems was encountered with the format of the INI files 
+    WPSBKP now advises to run CheckIni.
+
+CHANGES in version 1.02:
+
+o   A problem existed in 2.1 BETA when DOS SETTINGS were backup'd.
+    Appearantly 2.1 BETA handled comma's different from the GA version.
+    A correction has been build in WPSBKP that will handle DOS SETTINGS
+    properly for 2.1 BETA.
+    WPSBKP now backups DOS Settings as documented in the OS/2 Toolkits
+    documentation files. A comma is seen as a newline and whenever a literal
+    comma is needed a ^ is put in before it.
+
+    The effect of the problem was the each comma was interpreted as a
+    newline character. This actually resulted in a TRAP E when trying
+    to start a restored DOS program that contained DOS_VERSION settings.
+    If you encounter these problems open the settings for the Dos program 
+    objects, go to setting page 2, press on 'DOS settings', go to
+    DOS_VERSION and press the 'DEFAULT' button.
+
+
+Notes on version 1.10:
+
+o     This version now supports all known versions of OS/2 2.0 and 
+      OS/2 2.1 Beta versions uptill release level 6.498 (March '93)
+
+o     Some time ago (version 0.99) Trailing spaces were removed in 
+      DosSettings.
+      Appearantly the 'NETWARE_RESOURCES' always must be padded with 
+      spaces to 7 positions. Now the trailing spaces in DosSettings are
+      back in again.
+
+Notes on version 1.11:
+
+o     The format of the output (WPSBKP.DAT) file was changed to a more
+      readable format. Version 1.11 of WPSREST supports both the old and
+      the new format.
+
+o     The version number of WPSREST now matches the version number of 
+      WPSBKP.
+
+o     An error was corrected were individual DOS_SETTINGS were limited to
+      100 characters. This lead to the problem that long DOS_SETTINGS 
+      (e.g. DOS_VERSION strings) being truncated.
+
+o     The format of the .ICONPOS extended attribute was changed in OS/2 2.1.
+      WPSBKP now handles the EA correct for all supported versions.
+
+o     The OS/2 2.0 GA version contained a BUG in a vital API call that I
+      tried to get around by actually doing two calls when restoring objects. 
+      The first to re-create the object, the second to apply some settings.
+      When using OS/2 2.1 BETA's this method lead to loosing the restored
+      object ICON on the second call. 
+
+      When WPSREST detects OS/2 2.1 it does no longer do two calls when
+      restoring an object. (The BUG was fixed in the Service Pack already).
+
+Notes on version 1.12:
+
+o     Whenever an object (WPShadow or WPProgram) was located in a root 
+      directory, WPSBKP would issue the message 
+      'Unable to find folder in array' and would terminate.
+      This has been corrected.
+
+o     A new command switch has been added. /Y makes wpsbkp not to ask any
+      questions but always anwer all questions with yes.
+
+Notes on version 1.13:
+
+o     When the workplace shell had more then 64 Kb of object-handle-to-file
+      data (PM_Workplace:HandlesX) WPSBKP would mess up. Now WPSBKP
+      can handle multiple BLOCK records.
+
+Notes on version 1.14:
+
+o     An error was corrected where WPSBKP sometimes would run into an 
+      exception error when handling WPShadow objects.
+
+
+Notes on version 1.15:
+
+o     When using the OS/2 3.0 (Warp) some settings were not backup'd
+      properly. This has been corrected.
+
+o     Coding has been added to backup customized menues. 
+      Although the syntax to restore such a menu is documented (MENU=..) 
+      the workplace shell seems to ignore the settings.
+
+Notes on version 1.16:
+
+o     The animated icon for folders will be backup'd also now as well
+      as folder backgrounds.
+
+o     Although the syntax for setting customized menues was in WARPS beta
+      toolkit it is gone from the official toolkit. If have left the
+      code in, maybe in the future it will work.
+
+Notes on version 1.17:
+
+o     Don't know why I've never notived it but the setupstring for
+      the minimize/hide icon appearantly was incorrect. It was
+      'VIEWBUTTON=HIDE/MAXIMIZE'. I've changed it to 'HIDEBUTTON=YES/NO'.
+
+o     For all minimize settings (Minimize to, concurent view, hide button)
+      I've added the DEFAULT option to be written when no other setting was
+      specified.
+
+Notes on version 1.20:
+
+o     Did quite a view changes in order to make (parts of) the functions
+      within WPSBKP available for usage from REXX. See WPTOOLS.TXT
+
+Notes on version 1.21:
+
+o     This version will now also backup any launchpads. Restoring a launchpad
+      however is a tricky thing because applying setupstrings to an existing
+      launchpad will add icons to it. Therefore WPSREST will always recreate
+      the launchpad.
+
+      There is a potential problem with the launchpad. When a new icon is 
+      created on the launchpad the workplace shell first creates a shadow of
+      this object in the Nowhere folder and then places this shadow object
+      on the launchpad. (WPSBKP does not backup these shadows.)
+      When the launchpad itself is deleted all these shadow objects are 
+      left in the nowhere folder and there is no way other then manually to
+      get rid of them. 
+      This problem also occurs when WPSREST restores an existing launchpad.
+      One could use a tool like Deskman/2 or my own ICONTOOL to delete all
+      these no longer needed shadow objects.
+
+Notes on version 1.30:
+
+      Added the option /Y to WPSREST to automatically recreate all missing
+      objects.
+
+Notes on version 1.31:
+
+      WPSREST had problems with restoring objects if the PARAMETER argument
+      had quotes in it. Has been fixed.
+
+Notes on version 1.33:
+      Slightly modified WPSREST so the /Y options also skips the first 
+      confirmation.
+
+Notes on version 1.34:
+      Corrected a problem where an empty folder could cause WPSBKP to 
+      terminate.
+
+Notes on version 1.40:
+      Changed compiler to VAC 3.0.

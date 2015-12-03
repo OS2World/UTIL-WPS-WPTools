@@ -1,0 +1,310 @@
+BOOL StartProgram(HWND hwnd, PRECINFO pcrec, USHORT usAssocIndex)
+{
+static PROGDETAILS ProgDet;
+static BYTE      szParameters[MAX_PATH];
+static BYTE      szProgramName[MAX_PATH];
+static BYTE      szCurDir[MAX_PATH];
+static BYTE      szDosSettings[2048];
+
+PINSTANCE wd = WinQueryWindowPtr(hwnd, 0);
+ULONG     ulAppType;
+APIRET    rc;
+PSZ       pszExt;
+PBYTE     pClassInfo;
+USHORT    usSize;
+#ifdef DEBUG
+PBYTE     p;
+#endif
+
+
+   memset(szDosSettings, 0, sizeof szDosSettings);
+   memset(szParameters, 0, sizeof szParameters);
+   memset(szCurDir, 0, sizeof szCurDir);
+   memset(&ProgDet, 0, sizeof ProgDet);
+   ProgDet.Length = sizeof ProgDet;
+   ProgDet.progt.fbVisible = SHE_VISIBLE;
+   ProgDet.swpInitial.fl   = SWP_ACTIVATE;
+   ProgDet.swpInitial.hwndInsertBehind = HWND_TOP;
+//   ProgDet.swpInitial.hwnd             = hwnd;
+
+
+   if (pcrec->finfo.chType == TYPE_ABSTRACT)
+      {
+      PBYTE pObjectData;
+      BYTE  szObjID[10];
+      ULONG ulProfileSize;
+
+      sprintf(szObjID, "%lX", LOUSHORT(pcrec->finfo.hObject));
+      pObjectData = GetProfileData("PM_Abstract:Objects", szObjID,
+         HINI_USERPROFILE, &ulProfileSize);
+      if (!pObjectData)
+         {
+         DebugBox("ICONTOOL", "Unable to get profiledata!", FALSE);
+         return FALSE;
+         }
+      if (!strcmp(pObjectData + 4, "WPProgram"))
+         {
+         free(pObjectData);
+         if (!GetObjectName(pcrec->finfo.hObject, szProgramName, sizeof szProgramName))
+            return FALSE;
+         ProgDet.progt.progc = GetObjectProgType(pcrec->finfo.hObject);
+         GetObjectCurDir(pcrec->finfo.hObject, szCurDir, sizeof szCurDir);
+         if (!szCurDir[0] && *szProgramName != '*')
+            {
+            strcpy(szCurDir, szProgramName);
+            p = strrchr(szCurDir, '\\');
+            if (p)
+               *p = 0;
+            }
+         GetObjectParameters(pcrec->finfo.hObject, szParameters, sizeof szParameters);
+         GetDosSettings(pcrec->finfo.hObject, szDosSettings, sizeof szDosSettings);
+         }
+//      else if (!strcmp(pObjectData + 4, "WPSchemePalette"))
+//         {
+//         free(pObjectData);
+//         DebugBox("ICONTOOL","Cannot open WPSchemePalette objects!", FALSE);
+//         return FALSE;
+//         }
+      else
+         {
+         free(pObjectData);
+//         WinOpenObject(pcrec->finfo.hObject, OPEN_DEFAULT, FALSE);
+         MySetObjectData(pcrec->finfo.hObject, "OPEN=DEFAULT");
+         return TRUE;
+         }
+      }
+   else if (pcrec->finfo.chType == TYPE_FILE)
+      {
+      HOBJECT hObject = 0L;
+      
+      /*
+         Get full name of selected object
+      */
+      strcpy(szProgramName, wd->szCurDir);
+      if (szProgramName[strlen(szProgramName) - 1] != '\\')
+         strcat(szProgramName, "\\");
+      strcat(szProgramName, pcrec->finfo.szFileName);
+
+      /*
+         Is a associated prog selected?
+      */
+      if (usAssocIndex > 0)
+         {
+         usAssocIndex--;
+         szParameters[0] = ' ';
+//         strcpy(szParameters+1, szProgramName);
+         strcpy(szParameters, szProgramName);
+         hObject = pcrec->finfo.hObjAssoc[usAssocIndex];
+         if (!hObject)
+            {
+            DebugBox("ICONTOOL", "Don't know how to start this file !", FALSE);
+            return FALSE;
+            }
+         if (!GetObjectName(hObject, szProgramName, sizeof szProgramName))
+            {
+            DebugBox("ICONTOOL", "Unable to find associated program name!", FALSE);
+            return FALSE;
+            }
+         strcpy(szCurDir, szProgramName);
+         p = strrchr(szCurDir, '\\');
+         if (p)
+            *p = 0;
+         }
+
+      /*
+         If Object is abstract
+      */
+      if (hObject &&
+         (HIUSHORT(hObject) == OBJECT_ABSTRACT ||
+          HIUSHORT(hObject) == OBJECT_ABSTRACT2))
+         {
+         ProgDet.progt.progc = GetObjectProgType(hObject);
+         GetDosSettings(hObject, szDosSettings, sizeof szDosSettings);
+         }
+      else
+         {
+         if (GetEAValue(szProgramName, ".CLASSINFO", &pClassInfo, &usSize))
+            {
+            ULONG ulProgType = 0;
+            WPPGMFILEDATA wpPgm;
+
+            *(PULONG)pClassInfo = (ULONG)usSize;
+            GetObjectData(pClassInfo+4, "WPProgramFile", WPPROGFILE_DOSSET, szDosSettings, sizeof szDosSettings);
+            if (!GetObjectData(pClassInfo+4, "WPProgramFile", WPPROGFILE_DATA, &wpPgm, sizeof wpPgm))
+               {
+               if (GetObjectData(pClassInfo+4, "WPProgramFile", WPPROGFILE_PROGTYPE, &ulProgType, sizeof ulProgType))
+                  ProgDet.progt.progc = ulProgType;
+               }
+            else
+               ProgDet.progt.progc = wpPgm.ulProgType;
+            free(pClassInfo);
+            }
+         }
+      }
+
+   if (!ProgDet.progt.progc)
+      {
+      pszExt = strrchr(szProgramName, '.');
+      if (!pszExt)                   
+         pszExt = szProgramName;
+
+      if (!stricmp(pszExt, ".EXE") || !stricmp(pszExt, ".COM"))
+         {
+         rc = DosQueryAppType(szProgramName, &ulAppType);
+         if (rc)
+            {
+            DebugBox("ICONTOOL", "Error on DosQueryAppType", FALSE);
+            return FALSE;
+            }
+         ProgDet.progt.progc = 0xFFFF;
+         switch (ulAppType & 7)  /* only last tree bits */
+            {
+            case FAPPTYP_NOTWINDOWCOMPAT :
+               ProgDet.progt.progc = PROG_FULLSCREEN;
+               break;
+            case FAPPTYP_WINDOWCOMPAT    :
+               ProgDet.progt.progc = PROG_WINDOWABLEVIO;
+               break;
+            case FAPPTYP_WINDOWAPI       :
+               ProgDet.progt.progc = PROG_PM;
+               break;
+            case FAPPTYP_NOTSPEC          :
+               if (ulAppType & FAPPTYP_WINDOWSREAL)
+                  ProgDet.progt.progc = PROG_31_ENHSEAMLESSCOMMON; /* PROG_WINDOW_REAL;*/
+               else if (ulAppType & FAPPTYP_WINDOWSPROT)
+                  ProgDet.progt.progc = PROG_31_ENHSEAMLESSCOMMON; /* PROG_WINDOW_PROT; */
+               else if (ulAppType & FAPPTYP_WINDOWSPROT31)
+                  ProgDet.progt.progc = PROG_31_ENHSEAMLESSCOMMON; /* PROG_WINDOW_PROT; */
+               else if (ulAppType & FAPPTYP_DOS)
+                  ProgDet.progt.progc = PROG_VDM;
+               else if (ulAppType == FAPPTYP_NOTSPEC)
+                  ProgDet.progt.progc = PROG_FULLSCREEN;
+               break;
+            }
+         if (ProgDet.progt.progc == 0xFFFF)
+            {
+            DebugBox("ICONTOOL", "Unknown application type !", FALSE);
+            return FALSE;                 
+            }
+         }
+      else if (!stricmp(pszExt, ".CMD"))
+         ProgDet.progt.progc = PROG_WINDOWABLEVIO;
+      else if (!stricmp(pszExt, ".BAT"))
+         ProgDet.progt.progc = PROG_WINDOWEDVDM;
+      else
+         {
+         DebugBox("ICONTOOL", "Don't know how to start this file !", FALSE);
+         return FALSE;
+         }
+      }
+     
+   if (!szCurDir[0])
+      strcpy(szCurDir, wd->szCurDir);
+
+   if (ProgDet.progt.progc == PROG_SEAMLESSCOMMON ||
+       ProgDet.progt.progc == PROG_31_ENHSEAMLESSCOMMON ||
+       ProgDet.progt.progc == PROG_31_STDSEAMLESSCOMMON)
+      {
+      PSZ pszWinSet;
+      ULONG ulWinSize;
+
+      pszWinSet = GetProfileData("WINOS2",
+         "PM_GlobalWindows31Settings",
+         HINI_PROFILE,
+          &ulWinSize);
+      if (pszWinSet)
+         {
+         memmove(szDosSettings + ulWinSize - 1,  szDosSettings, strlen(szDosSettings) + 1);
+         memcpy(szDosSettings, pszWinSet, ulWinSize - 1);
+         free(pszWinSet);
+         }
+
+      if (szProgramName[0] == '*')
+         strcpy(szProgramName, "WINOS2.COM");
+      else
+      if (!WindowsSessionActive()) // always returns TRUE
+         {
+         memmove(szParameters + strlen(szProgramName) + 4, szParameters,
+            strlen(szParameters) + 1);
+         memset(szParameters, 0x20, strlen(szProgramName) + 4);
+         memcpy(szParameters, " /K ", 4);
+         memcpy(szParameters + 4, szProgramName, strlen(szProgramName));
+         strcpy(szProgramName, "WINOS2.COM");
+         }
+      }
+   else if (ProgDet.progt.progc == PROG_WINDOW_REAL       ||
+            ProgDet.progt.progc == PROG_WINDOW_PROT       ||
+            ProgDet.progt.progc == PROG_30_STD            ||
+            ProgDet.progt.progc == PROG_WINDOW_AUTO       ||
+            ProgDet.progt.progc == PROG_SEAMLESSVDM       ||
+            ProgDet.progt.progc == PROG_30_STDSEAMLESSVDM ||
+            ProgDet.progt.progc == PROG_31_STDSEAMLESSVDM ||
+            ProgDet.progt.progc == PROG_31_ENHSEAMLESSVDM ||
+            ProgDet.progt.progc == PROG_31_ENH            ||
+            ProgDet.progt.progc == PROG_31_STD            )
+      {
+      PSZ pszWinSet;
+      ULONG ulWinSize;
+
+      pszWinSet = GetProfileData("WINOS2",
+         "PM_GlobalWindows31Settings",
+         HINI_PROFILE,
+          &ulWinSize);
+
+      if (pszWinSet)
+         {
+         memmove(szDosSettings + ulWinSize - 1,  szDosSettings, strlen(szDosSettings) + 1);
+         memcpy(szDosSettings, pszWinSet, ulWinSize - 1);
+         free(pszWinSet);
+         }
+
+      if (szProgramName[0] == '*')
+         {
+         ProgDet.progt.progc = PROG_VDM;
+         strcpy(szProgramName, "WINOS2.COM");
+         }
+      }
+
+
+   ProgDet.pszTitle = pcrec->finfo.szTitle;
+   if (szProgramName[0] != '*')
+      ProgDet.pszExecutable = szProgramName;
+   else
+      ProgDet.pszExecutable = NULL;
+   if (*szCurDir)
+      ProgDet.pszStartupDir = szCurDir;
+   if (*szParameters)
+      ProgDet.pszParameters = szParameters;
+   if (*szDosSettings)
+      ProgDet.pszEnvironment = szDosSettings;
+
+   if (strchr(szParameters, ' '))
+      {
+      memmove(szParameters + 1, szParameters, strlen(szParameters)+1);
+      szParameters[0] = '"';
+      strcat(szParameters, "\"");
+      }
+
+   printf("Starting \'%s\' Catagory %d\nCurDir: \'%s\'\nParameters \'%s\'\nEnvironment:",
+      szProgramName, ProgDet.progt.progc,
+      ProgDet.pszStartupDir,
+      ProgDet.pszParameters);
+   p = szDosSettings;
+   while (*p)
+      {
+      printf("\'%s\'\n", p);
+      p +=strlen(p) + 1;
+      }
+
+   pcrec->finfo.happ = WinStartApp(hwnd, &ProgDet,
+//      szParameters, NULL, 0);
+      NULL, NULL, SAF_INSTALLEDCMDLINE);
+
+   if (!pcrec->finfo.happ)
+      DebugBox("ICONTOOL", szProgramName, TRUE);
+   else
+      WinSendMsg(wd->hwndContainer, CM_SETRECORDEMPHASIS,
+         (MPARAM)pcrec, MPFROM2SHORT(TRUE, CRA_INUSE));
+
+   return TRUE;
+}

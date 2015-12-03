@@ -1,0 +1,84 @@
+#include <os2.h>
+#include <pmstddlg.h>
+
+#include "assoedit.h"
+RCINCLUDE assoedit.dlg 
+
+ICON 1                  ASSOEDIT.ico
+ICON ID_WINDOW          ASSOEDIT.ICO
+
+
+MENU  ID_WINDOW LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  SUBMENU "~File" ,                     0, MIS_TEXT
+  BEGIN
+     MENUITEM "~Quit",                  ID_QUIT, MIS_TEXT
+     MENUITEM SEPARATOR
+     MENUITEM "~About...",              ID_ABOUT, MIS_TEXT
+  END
+  SUBMENU "~Associations",              0, MIS_TEXT
+  BEGIN 
+     MENUITEM "Associations by file ~Type",    ID_ASSOCTYPES,   MIS_TEXT
+     MENUITEM "Associations by file ~Filter",  ID_ASSOCFILTERS, MIS_TEXT
+  END
+  SUBMENU     "~Help", -3
+  BEGIN
+     MENUITEM "~Help index",             ID_HELPINDEX
+     MENUITEM "~General help",           ID_GENERALHELP
+     MENUITEM "~Keys help",              ID_KEYSHELP
+     MENUITEM "~Using help",             ID_USINGHELP
+     MENUITEM SEPARATOR
+     MENUITEM "~Product information...", ID_HELPPRODUCTINFO
+  END
+END
+
+/*--------------------------------------------------------------*\
+ *  Help table definition                                       *
+\*--------------------------------------------------------------*/
+HELPTABLE   EAS_HELP_TABLE
+{
+    HELPITEM   ID_WINDOW,       SUBTABLE_MAIN,            4110
+    HELPITEM   ID_ASSOCDLG      SUBTABLE_ASSOCDLG,        4120
+    HELPITEM   ID_ADDHANDLEDLG  SUBTABLE_ADDHANDLEDLG,    4130
+    HELPITEM   ID_ADDASSOCDLG   SUBTABLE_ADDASSOCDLG,     4140
+
+}
+
+HELPSUBTABLE SUBTABLE_MAIN
+SUBITEMSIZE     2
+{
+    HELPSUBITEM     ID_GENERALHELP,         4111
+    HELPSUBITEM     ID_USINGHELP,           4112
+    HELPSUBITEM     ID_HELPINDEX,           4113
+    HELPSUBITEM     ID_KEYSHELP,            4114
+    HELPSUBITEM     ID_HELPPRODUCTINFO,     4115
+}
+
+
+HELPSUBTABLE SUBTABLE_ASSOCDLG
+SUBITEMSIZE     2
+{
+    HELPSUBITEM     ID_ASSOCLIST,            4121
+    HELPSUBITEM     ID_ADDASSOC,             4122
+    HELPSUBITEM     ID_DELASSOC,             4123
+    HELPSUBITEM     ID_ADDHANDLE,            4124
+    HELPSUBITEM     ID_DELHANDLE,            4125
+    HELPSUBITEM     ID_DEFAULT,              4126
+    HELPSUBITEM     ID_ASSOC,                4127
+}
+
+
+HELPSUBTABLE SUBTABLE_ADDHANDLEDLG
+SUBITEMSIZE     2
+{
+    HELPSUBITEM     ID_TYPEOBJ,              4131
+    HELPSUBITEM     ID_TYPEPROG,             4132
+    HELPSUBITEM     ID_OBJECTLIST,           4133
+    HELPSUBITEM     ID_NEWPROG,              4134
+}
+
+HELPSUBTABLE SUBTABLE_ADDASSOCDLG
+SUBITEMSIZE     2
+{
+    HELPSUBITEM     ID_NEWTYPE,              4140
+}

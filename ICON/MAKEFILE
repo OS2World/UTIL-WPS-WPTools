@@ -1,0 +1,65 @@
+DEBUG=YES
+# IBM Developer's Workframe/2 Make File Creation run at 22:59:10 on 05/10/92
+
+# Make File Creation run in directory:
+#   E:\ICON;
+
+!ifndef WF
+ERR=>$*.err
+!endif
+
+!ifdef DEBUG
+CV=/CO 
+!endif
+
+
+IBMC=E:\IBMCPP
+LIB=$(TOOLKIT)\LIB;$(IBMC)\LIB
+INCLUDE=$(TOOLKIT)\H;$(IBMC)\INCLUDE
+
+# /Sm - Migration level
+# /Ss - Allow // comment
+# /Gm - Single thread
+# /Gf - Fast floating point
+# /Ti - Debugging information
+# /Kb+ - Warning on general diagnostics
+
+
+.c.obj:
+   ICC.EXE /Tl1 /Sm /Ss /Gm+ /Gf /Ti /Kb+ /G3 /C /I$(INCLUDE) .\$*.c >$*.err
+
+!ifndef WR
+   type $*.err
+!endif
+
+
+LINKOPT=/NOI $(CV) /PM:PM /STACK:32000 /ALIGN:4 /BASE:0x10000 /MAP
+
+ALL: ICON.EXE ICON.HLP
+
+ICON.EXE::  ICON.OBJ ICONDRAG.OBJ ICONOPTS.OBJ ICONOPEN.OBJ ICONDEL.OBJ \
+            ICONABOU.OBJ ICONEXTR.OBJ ICONEA.OBJ OBJECT.OBJ READICON.OBJ 
+   ilink /NOFREE $(LINKOPT) $**,ICON,ICON,..\wptools\wptools.lib,ICON.DEF;
+   rc icon.res icon.exe
+
+ICON.EXE:: ICON.RES
+   rc icon.res icon.exe
+
+icon.res        : icon.rc icon.h icon.dlg
+   rc -r $(*B).rc >>icon.err
+   type icon.err
+
+ICON.HLP    :  ICON.IPF
+        ipfc icon.ipf
+
+
+ICON.OBJ    :  ICON.C       ICON.H ICONDEF.H
+ICONDRAG.OBJ:  ICONDRAG.C   ICON.H ICONDEF.H
+ICONOPTS.OBJ:  ICONOPTS.C   ICON.H ICONDEF.H
+ICONOPEN.OBJ:  ICONOPEN.C   ICON.H ICONDEF.H
+ICONDEL.OBJ :  ICONDEL.C    ICON.H ICONDEF.H
+ICONABOU.OBJ:  ICONABOU.C   ICON.H ICONDEF.H
+READICON.OBJ:  READICON.C   ICON.H ICONDEF.H
+ICONEXTR.OBJ:  ICONEXTR.C   ICON.H ICONDEF.H
+ICONEA.OBJ  :  ICONEA.C     ICON.H ICONDEF.H
+OBJECT.OBJ  :  OBJECT.C     ICON.H ICONDEF.H

@@ -1,0 +1,69 @@
+New versions of WPTOOLxx.ZIP can be found at:
+
+        http://www.os2ss.com/information/kelder/
+
+
+New in WPTOOL22.ZIP:
+
+WPTOOLS.DLL  -> updated, see WPTOOLS.TXT
+CHECKINI.EXE -> updated, see CHECKINI.TXT
+
+New in WPTOOL23.ZIP:
+
+CHECKINI.EXE -> updated, see CHECKINI.TXT
+WPTOOLS.DLL  -> updated, see WPTOOLS.TXT
+
+New in WPTOOL24.ZIP:
+
+CHECKINI.EXE -> updated, see CHECKINI.TXT
+WPSREST.EXE  -> updated, see WPSBKP.TXT
+WPTOOLS.DLL  -> updated, see WPTOOLS.TXT
+
+New in WPTOOL25.ZIP:
+
+WPTOOLS.DLL  -> updated to version 1.35, see wptools.txt
+CHECKINI.EXE -> updated to version 2.26, see checkini.txt
+
+New in WPTOOL26.ZIP:
+
+CHECKINI.EXE -> updated to version 2.27, see checkini.txt
+WPTOOLS.DLL  -> updated to version
+
+New in WPTOOL27.ZIP
+
+WPSBKP/WPSREST -> updated to version 1.33, see wpsbkp.txt
+WPTOOLS.DLL -> updated to version 1.37, see wptools.dll
+CHECKINI.EXE-> slightly modified to version 2.28: see checkini.txt
+
+New in WPTOOL28.ZIP
+
+CHECKINI.EXE -> Added a new test. see CHECKINI.TXT
+
+New in WPTOOL29.ZIP
+
+General: Found that internal object handles can have a hiword of 0x0004 
+         meaning the object is a filesystem object.
+         This was changed in all programs.
+         Also, modified CHECKINI to now use WPTOOLS.DLL.
+
+Added:   DEFASSOC.EXE - for manipulating associations from the command line.
+         GETOBJ.EXE - for querying object settings from the command line.
+
+
+New WPTOOL30.ZIP
+
+WPTOOLS.DLL -> Corrected a problem where retrieving an data from the
+               profile showed an error message if not data was present.
+CHECKINI    -> See CHECKINI.TXT for version 2.30 and 2.40.
+WPSBKP      -> Corrected a problem where the program could abort if an
+               empty folder was found.
+
+New in WPTOOL31.ZIP 
+
+- All modules compiled with VAC 3.0
+
+CHECKINI    -> See CHECKINI.TXT for version 2.43
+WPTOOLS     -> Minor change.
+
+New in WPTOOL32.ZIP:
+CHECKINI    -> Updated to version 2.46.

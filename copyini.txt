@@ -1,0 +1,84 @@
+                         === DISCLAIMER ===
+
+
+I allow you to use and distribute COPYINI freely under the condition 
+that I am in no way responsible for any damage or loss you may suffer. 
+
+Henk Kelder, 
+hkelder@capgemini.nl
+http://www.os2ss.com/information/kelder/
+
+
+
+=== NOTES on COPYINI ===
+
+COPYINI will make a copy of you OS2.INI an OS2SYS.INI to a specified 
+directory. Both these ini-files contain a lot of empty space as a
+result of the updating of records. COPYINI will result in much smaller
+ini-files.
+
+NOTE: COPYINI will only work if presentation manager has been started!
+
+Syntax:
+
+        COPYINI DIRECTORY [/NWT]
+
+        DIRECTORY - A directory where the copied ini-files will be located.
+
+        /NWT      - Optional, if specified COPYINI will use an undocumented
+                    API-Call reset the Write Through bit temporary. This
+                    will result in a faster copy operation.
+
+
+You could decide to let the ini files be copied to your \OS2\INSTALL 
+directory. 
+In that case whenever you keep ALT-F1 pressed when booting your PC these new
+ini's will be copied to your \OS2 directory. 
+(NOTE: also the CONFIG.SYS and STARTUP.CMD will be copied from the
+install directory to the root directory then!)
+You should take care when using this method. The version of OS2.INI and
+OS2SYS.INI that are creating during the installation of OS/2 contain
+instructions to CREATE the desktop. The copied version of the ini-files 
+contain less than that. You must be sure the desktop's directory structure 
+is intact when new ini's are copied back.
+
+
+An alternate way to allow you to copy the new ini's is to boot from a
+BOOTABLE diskette and copy them manually.
+
+Yet another way is to change the PROTSHELL line in the config.sys. If you
+change it to PROTSHELL=X:\OS2\CMD.EXE (where X stands for you OS/2 drive)
+when booting OS/2 you will not start the workplace shell but a CMD session.
+From this session you can manually copy the ini's, and then start the
+workplace shell by typing PMSHELL at the command line.
+
+NOTE: When you use the method mentioned above a lot of programs (copyini
+itself, but also checkini, will NOT work !)
+
+
+
+=== HOW COPYINI WORKS ===
+
+
+COPYINI uses only fully documented calls. It queries via PrfQueryProfileData
+all application names within the ini-files. Than, per application name all
+the key names are queried, and the per app/key pair the data is retrieved
+and written out the the new ini-files.
+
+
+Changes in COPYINI november 1992:
+
+o   Updated the documentation files (this file)
+
+Changes to version 1.1:
+
+o   COPYINI does not work when PM has not been started. I fiddled a bit
+    with some tests to see if PM was active, until now with little success.
+
+Changes to version 1.2:
+
+o   Optional, COPYINI now can use an UNDOCUMENTED call to allow caching to 
+    INI-Files. This will result in a better performance.
+
+o   COPYINI will no longer display all application-key pairs. It will only
+    show application names and the count of keys.

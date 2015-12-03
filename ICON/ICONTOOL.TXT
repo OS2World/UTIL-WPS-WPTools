@@ -1,0 +1,154 @@
+                       === DISCLAIMER ===
+
+
+I allow you to use and distribute ICON.EXE freely under the condition 
+that I am in no way responsible for any damage or loss you may suffer.
+
+Henk Kelder, hkelder@capgemini.nl
+
+                === NOTES ON ICONTOOL ===
+
+General
+
+ICON.EXE was written in 'plain old' C using the C/2 Set compiler and 
+OS/2 2.0 toolkit. No 'Som' programming was used. All information about
+abstract objects is gotten out (hacked) off the ini-files. Clearly the
+latter is fully UNDOCUMENTED ! (but it seems to work reasonally well.)
+
+
+Drag-drop of icons
+
+ICON.EXE is a PM program for OS/2 2.0 that I initially wrote because I did
+not like the complex way to set an icon for a workplace shell object and 
+other objects (read: files and directories) on my harddisk of attached
+network drives. 
+Furthermore, since the workplace shell claims to support drag-drop 
+operations I wanted to experiment with this. Why shouldn't I be able to drag
+an iconfile and drop it on something else so that the icon would be assigned
+to this something else.
+
+Initialy I tried to write it so it would show icons only and one could then
+drag the icon on an object on the desktop. Unfortunately the desktop itself
+doesn't seem to follow the specifications for drag-drop operations
+completely. The solutions for this was that ICONTOOL allows you to open two
+windows and you can do draging and dropping between these two windows.
+
+
+Changing directories or drives (open other folders)
+
+When icontool is configured to show drives and/or directories you can simply
+change to these drives and/or directories by selecting 'open' or by double 
+clicking on them. Icontool will no open a new folder but will replace the
+contents of the open window.
+
+
+Copying, moving and deleting of objects
+
+Although not it main purpose, you could also use this program to do these
+operations on most objects.
+
+
+
+Changing object titles
+
+When the program allowed me to do this I found that I would also like to
+change the titles of objects WITHOUT changing the underlying fysical
+filename of an object. I found the the workplace shell uses the .LONGNAME
+extended attribute, if present, as a title. It was no big deal to show 
+these .LONGNAME ea's. (It is an option you can set under 'Open->Settings'.)
+
+If ICON.EXE shows longnames, one can change the names as one would change
+the name of objects on the desktop. Please remember that only the .LONGNAME
+extented attribute is changed and NOT the fysical filename.
+
+
+Extracting Icons
+
+Another nice feature would be the possibility to 'extract' an icon to an
+iconfile. When this option is chosen the program first looks if there is an
+an .ICON ea and if so writes this ea as a file to disk. If there is 
+no .ICON ea the iconfile is constucted from the icon bitmap as it is visible 
+on the screen. In the latter case the iconfile only contains a bitmap for 
+the device it is extracted from.
+
+
+Setting default Icon
+
+Setting the default icon means that the .ICON ea is removed.
+
+Abstract objects
+
+ICONTOOL also displays abstract objects. In some cases the icon for an
+abstract object is somewere deep in an OS/2 dll. In such a case I'm not able
+to determine the icon and a questionmark icon is shown.
+With Icontool you can open all abstract objects with the exception of the
+color palette. This is because the api-call I use to open abstract objects
+(WinSetObjectData(hObject, "OPEN=DEFAULT") resets a color palette object to
+a 5 by 4 palette all of them being a 'New scheme'.
+
+
+
+Known problems:
+
+- When draging-dropping to another application (e.g. the workplace shell
+  itself) the graphical display gets distorded. This is due to a bug in OS/2
+  itself, don't call me, call IBM ! This problem occurs only in the original
+  first release of OS/2 2.0 (GA version).
+
+- For testing reasons a lot of error and/or warning message are build in.
+  Normally you should not see them, but on the Novell Network I work with
+  myself I sometimes see 'Not enoug memory' messages. These messages result
+  from the Novell Requestor for OS/2 2.0 reporting very L A R G E 
+  extended attribute sizes. So don't call me, call Novell !
+
+
+Updates in version 1.5:
+
+- This version now supports OS/2 2.00.1 beta (32 bits GRE)
+
+- Also, the mechanism for reading extended attributes has been improved.
+  This was needed because the new 2.00.1 (or 2.01 BETA) appearantly has
+  a bug that returns un incorrect size for extented attributes when using
+  DosQueryPathInfo.
+  Appearantly this same bug appears to be in the Novell Netware Requester, 
+  since I haven't seen the problem mentioned above after I made the changes.
+
+- Known problems: ICON.EXE terminates or causes your desktop to hang
+                  when starting in WINOS/2 Program
+                  in the early 2.00.1 BETA version. It works properly in GA version.
+
+Updates in version 1.6:
+
+- Icon.exe now works properly after the service pack (October 1992) has
+  been installed!.
+
+
+Updates in version 1.61:
+
+- ICON.EXE allows the user to specify a directory where extracted icons
+  will be placed. (open->settings)
+
+- ICON.EXE now works properly with OS/2 2.1 BETA. (Released december '92)
+
+
+Updates in version 1.70:
+
+- ICON.EXE now works properly with OS/2 2.1 BETA (Released march '93)
+
+
+Update in version 1.80:
+
+-  ICON.EXE now works with OS/2 3.0 (or WARP)
+
+-  ICON.EXE allows you to modify several extended attributes.
+
+Update in version 1.90:
+
+-  ICON.EXE now utilizes WPTOOLS.DLL to query object settings, both
+   formatted and unformatted.
+
+-  ICON.EXE still works very nice with WARP 4.
+
+Update in version 1.91:
+-  Didn't recoqnize objecthandles with a 4 in the hiword as an file system
+   object.

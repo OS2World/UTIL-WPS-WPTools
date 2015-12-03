@@ -1,0 +1,128 @@
+#include <os2.h>
+#include <pmstddlg.h>
+
+#include "icon.h"
+RCINCLUDE icon.dlg
+
+ICON 1                  ICONTOOL.ico
+ICON ID_DRIVEICON       DRIVE.ICO
+ICON ID_DIRICON         FOLDER.ICO
+ICON ID_VOLMACICON      ICONTOOL.ICO       
+ICON ID_WINDOW          ICONTOOL.ICO
+ICON ID_UNKNOWNICO      UNKNOWN.ICO
+
+
+MENU  ID_POPUPSYS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  SUBMENU "~Open" ,                     ID_SUBMENUOPEN, MIS_TEXT
+  BEGIN
+     MENUITEM "~Settings...",           ID_CHOPTS, MIS_TEXT, MIA_CHECKED
+     MENUITEM "~New window",            ID_NEW   , MIS_TEXT
+  END  
+  SUBMENU  "~Help",                     ID_HELPMENU
+  BEGIN
+     MENUITEM "~Help index",            ID_HELPINDEX
+     MENUITEM "~General help",          ID_GENERALHELP, MIS_TEXT, MIA_CHECKED
+     MENUITEM "~Using help",            ID_USINGHELP
+     MENUITEM "~Keys help",             ID_KEYSHELP
+     MENUITEM SEPARATOR
+     MENUITEM "~Product information...",ID_HELPPRODUCTINFO
+  END
+  MENUITEM SEPARATOR
+  MENUITEM "~Refresh",                  ID_REFRESH, MIS_TEXT
+  MENUITEM "~Change Directory ...",     ID_OPEN, MIS_TEXT
+  MENUITEM "~Save Options"        ,     ID_SAVOPTS, MIS_TEXT
+  MENUITEM "~About ...",                ID_ABOUT, MIS_TEXT
+  MENUITEM SEPARATOR
+  SUBMENU "~Window",                    0, MIS_TEXT
+  BEGIN 
+     MENUITEM "~Restore     \tAlt+F5",  SC_RESTORE,  MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM "~Move        \tAlt+F7",  SC_MOVE,     MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM "~Size        \tAlt+F8",  SC_SIZE,     MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM "Mi~nimize    \tAlt+F9",  SC_MINIMIZE, MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM "Ma~ximize    \tAlt+F10", SC_MAXIMIZE, MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM SEPARATOR
+     MENUITEM "~Close       \tAlt+F4",  SC_CLOSE,    MIS_TEXT | MIS_SYSCOMMAND
+     MENUITEM SEPARATOR
+     MENUITEM "Window lis~t \tCtrl+Esc", SC_TASKMANAGER,  MIS_TEXT|MIS_SYSCOMMAND
+  END
+  MENUITEM SEPARATOR
+  MENUITEM "~Close",                    SC_CLOSE, MIS_TEXT|MIS_SYSCOMMAND
+END
+
+
+MENU ID_POPUPMENU LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  SUBMENU "~Open" ,                      ID_SUBMENUOBJECT, MIS_TEXT
+  BEGIN
+     MENUITEM "~Settings...",            ID_SETTING,    MIS_TEXT, 
+     MENUITEM "~Object",                 ID_OPENOBJECT, MIS_TEXT, MIA_CHECKED
+  END  
+  SUBMENU "~Create icon" ,               ID_SUBMENUCREATE, MIS_TEXT
+  BEGIN
+     MENUITEM "~Object",                 ID_CREATEOBJECT, MIS_TEXT,
+  END
+  MENUITEM "~Query setup string...",     ID_QUERYSETTING, MIS_TEXT
+  MENUITEM "~View ClassInfo...",         ID_DUMPOBJDATA,  MIS_TEXT
+  SUBMENU  "~Help",                      ID_POPUPHELPMENU, MIS_TEXT
+  BEGIN
+     MENUITEM "~Help index",             ID_HELPINDEX
+     MENUITEM "~General help",           ID_GENERALHELP,  MIS_TEXT, MIA_CHECKED
+     MENUITEM "~Using help",             ID_USINGHELP
+     MENUITEM "~Keys help",              ID_KEYSHELP
+     MENUITEM SEPARATOR
+     MENUITEM "~Product information...", ID_HELPPRODUCTINFO
+  END
+  MENUITEM SEPARATOR
+  MENUITEM  "~Extract icon", ID_EXTRACT, MIS_TEXT
+  MENUITEM  "Default ~icon", ID_REMOVE,  MIS_TEXT
+  MENUITEM  SEPARATOR
+  MENUITEM  "~Delete", ID_DELETE, MIS_TEXT
+  MENUITEM  SEPARATOR
+  MENUITEM  "~Set OBJECTID...", ID_SETOBJECTID, MIS_TEXT
+  MENUITEM  "<OBJECTID>", ID_OBJECTID, MIS_TEXT, MIA_DISABLED
+END
+
+MENU ID_POPUPEA LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  SUBMENU "~Open" ,                      ID_SUBMENUOBJECT, MIS_TEXT
+  BEGIN
+     MENUITEM "~Settings",               ID_CHOPTS, MIS_TEXT, MIA_CHECKED
+  END  
+  SUBMENU  "~Help",                      ID_POPUPHELPMENU, MIS_TEXT
+  BEGIN
+     MENUITEM "~Help index",             ID_HELPINDEX
+     MENUITEM "~General help",           ID_GENERALHELP,  MIS_TEXT, MIA_CHECKED
+     MENUITEM "~Using help",             ID_USINGHELP
+     MENUITEM "~Keys help",              ID_KEYSHELP
+     MENUITEM SEPARATOR
+     MENUITEM "~Product information...", ID_HELPPRODUCTINFO
+  END
+  MENUITEM SEPARATOR
+  MENUITEM  "Save ~Attribute",    ID_SAVEEA, MIS_TEXT
+  MENUITEM SEPARATOR
+  MENUITEM  ".SUBJECT",            ID_EASUBJECT,    MIS_TEXT
+  MENUITEM  ".COMMENTS",           ID_EACOMMENTS,   MIS_TEXT
+  MENUITEM  ".KEYPHRASES",         ID_EAKEYPHRASES, MIS_TEXT
+  MENUITEM  ".HISTORY",            ID_EAHISTORY,    MIS_TEXT
+
+END
+
+
+/*--------------------------------------------------------------*\
+ *  Help table definition                                       *
+\*--------------------------------------------------------------*/
+HELPTABLE   EAS_HELP_TABLE
+{
+    HELPITEM   ID_WINDOW,       SUBTABLE_MAIN,            4110
+}
+
+HELPSUBTABLE SUBTABLE_MAIN
+SUBITEMSIZE     2
+{
+    HELPSUBITEM     ID_GENERALHELP,         4111
+    HELPSUBITEM     ID_USINGHELP,           4112
+    HELPSUBITEM     ID_HELPINDEX,           4113
+    HELPSUBITEM     ID_KEYSHELP,            4114
+    HELPSUBITEM     ID_HELPPRODUCTINFO,     4115
+}

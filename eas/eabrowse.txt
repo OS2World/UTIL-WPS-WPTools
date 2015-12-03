@@ -1,0 +1,110 @@
+=== DISCLAIMER ===
+
+
+I allow you to use and distribute EA-Browser freely under the condition 
+that I am in no way responsible for any damage or loss you may suffer. 
+
+Henk Kelder, hkelder@compuserve.com
+
+http://www.os2ss.com/information/kelder/
+
+
+NOTES ON THIS PROGRAM
+====================================
+
+This program - The EA-Browser - is a program under development. 
+It is not yet finished. 
+
+It will however function as the title says:
+It allows you to browse thru the extended attributes on your disks.
+Also you can change and delete existing extended attributes now. 
+
+But beware: editing in the so-called 'binary mode' acts a bit strange:
+
+The <INSERT> key inserts a single byte (value 00h) at the current cursor
+location.
+The <DELETE> key removes the single byte at the cursor location.
+
+When you have changed an EA you must choose 'Attributes->Save' in order 
+to save the changes. 
+
+
+WHAT THE PROGRAM SHOWS
+======================
+
+The top-left-side list box will show all files and directories in the
+current directory. 
+The top-right-side list box will show all extended attributes belonging 
+the the file or directory that is selected in the top-left-side listbox.
+
+The bottom half of the screen will show the extended attribute itself.
+
+It will show the EA depening on a menu-option:
+
+-  When 'Binary Mode' is selected no EA-type formatting will take place and
+   the EA will be shown in hexadecimal (left) and character (right)
+   presentation.
+
+-  When 'Binary Mode' is not selected the program will try to show the EA
+   based on the EA-type. The EA-type is normally specified by the first two
+   bytes of the EA. Several EA's do however not follow this convention or
+   they do not match the way the format of an EA-type as described in the 
+   'IBM Redbooks'.
+   Unknown EA-types are always displayed in binary mode. 
+
+   Some EA-types are unclear to me: ASN.1 and MVST. I've never seen them
+   being used and do not know the format (yet). They will always be shown
+   in binary mode.    
+   Also EA's containing Metafiles and bitmaps are shown in binary mode.
+   See KNOWN BUGS for more information.
+
+-  When showing an icon the icon is presented on a button. Pressing this
+   button will lauch ICONEDIT.EXE (if it is in your PATH!).
+
+You can change directories by double-clicking on a directory or by 
+selecting 'Change Directory' from the menu.
+
+KNOWN BUGS
+==========
+
+The program tries to show the EA's according the the EA type. EA type
+information is however stored in the EA itself (the first 2 bytes) but can
+be incorrect or even not used (the data starts at the beginning).
+Rexx command files don't follow conventions there.
+
+The EA-Browser can (in theory) try to show an EA based on a specified EA
+type and run into a protection violation if the EA has violated the format 
+of the specified type.
+Should this be the case try looking at the EA after you have selected 
+'Binary mode' from the menu.
+
+
+
+THE FUTURE OF THIS PROGRAM
+==========================
+
+The options in the menu are mostly 'Not yet implemented' and I am not even
+sure if they will ever be..
+
+I am releasing this program as a BETA and so that anyone who thinks this
+program might be interesting can drop me a note with hints-tip-wishes.
+
+An important question is: 
+  Should this program have the ability to change extended attributes? 
+  With the risk of changing some vital piece of information so that your
+  workplace shell never works again?
+
+If you have any ideas, please send them to me at the above Fidonet address.
+
+Henk Kelder
+
+
+Notes on version 0.30:
+
+o       An error was corrected so that EABROWSE will function under WARP.
+        The error occured when showing .ICON or .ICON1 eas. EABROWSE would
+        trap.
+
+Notes on version 0.31:
+o       Made a small change so EABROWSE will show if an extended attribute
+        is critical or not.

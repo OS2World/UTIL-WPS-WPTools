@@ -1,0 +1,61 @@
+LIBRARY WPTOOLS INITINSTANCE
+
+DESCRIPTION 'Henk kelders WPTOOLS.DLL Version 2.12 - October 1999'
+
+DATA MULTIPLE NONSHARED LOADONCALL
+
+CODE LOADONCALL
+
+EXPORTS
+pszGetObjectSettings     @1
+GetWPProgramOptions      @2
+GetWPAbstractOptions     @3
+GetWPObjectOptions       @4
+GetWPFsysOptions         @5
+GetWPFolderOptions       @6
+GetWPShadowOptions       @7
+GetWPPaletteOptions      @8
+GetWPFontPaletteOptions  @9
+GetWPColorPaletteOptions @10
+GetWPProgramFileOptions  @11
+GetPrintDestOptions      @12
+GetWPRPrinterOptions     @13
+GetWPDiskOptions         @14
+GetWPDataFileOptions     @15
+DumpObjectData           @16
+
+fGetObjectClass          @50
+GetObjectLocation        @51
+ConvertTitle             @52
+PathFromObject           @53
+GetAllProfileNames       @54
+GetProfileData           @55
+GetEAValue               @57
+SetEAValue               @58
+WPToolsLoadFuncs         @59
+WPToolsQueryObject       @60
+MakeAbstractHandle       @61
+MakeDiskHandle           @62
+IsObjectDisk             @63
+IsObjectAbstract         @64
+Is21                     @65
+GetClassInfo             @66
+MySetObjectData          @67
+_rgLaunchPadObjects      @68
+GetGenObjectValue        @69
+GetPartName              @70
+GetGenObjectValueSubValue @71       
+fReadAllBlocks           @72
+ResetBlockBuffer         @73 
+GetActiveHandles         @74 
+IsWarp                   @75
+IsWarp4                  @76
+GetObjectID              @77
+MessageBox               @78
+SetInis                  @79
+GetBaseClassString       @80
+WPToolsFolderContent    @102
+WPToolsVersion          @103
+WPToolsSetObjectData    @104
+WPToolsUnloadByTrap     @200
+GetWPToolsVersion       @201

@@ -1,0 +1,100 @@
+INFORMATION ABOUT BETA VERSION 2.42 OF CHECKINI. (29 Sept 1999)
+================================================
+
+Thank you for helping me to test this version of CHECKINI.
+
+Before anything else:
+
+-------------------------------------------------------------------------
+DO NOT RUN THIS VERSION WITH THE /C OPTION IF YOU DO NOT HAVE A BACKUP OF
+                          YOUR INI-FILES.
+-------------------------------------------------------------------------
+
+
+The version includes some new tests to solve problems some users are 
+having with their OS2.INI and OS2SYS.INI.
+
+Some background:
+
+The Workplace Shell doesn't store actual pathnames internally, but instead
+uses a mechanism where every file and directory is seen as an object. 
+Each object is assigned a unique number to identify the object with.
+
+To be able to translate these numbers back to pathnames, the WPS keeps a list
+of all assigned object handles and their partial component name. 
+This list is kept in OS2SYS.INI, PM_Workplace:HandlesX (where X = 0 or 1)
+
+PROBLEM 1 - DAMAGED TOP LEVEL NODE
+==================================
+
+For each partition a block of data is present. Each block contains treelike 
+NODES where each node contains a name and a reference to its parent node. 
+
+The top level node should have the same name as the drive name, but 
+sometimes the name of the top level node changes into something else.
+And since the full name is constructed by combining all node names from the 
+top level node to the node the object handle refers to all files on a given 
+partition suddenly no longer begin with e.g. K: but with the incorrect 
+top level node name. Suppose the WPS changed the top level node name to foo 
+then the WPS would try to access all files on that partition as:
+foo\myfile instead of k:\myfile.
+
+CHECKINI now checks for this, and if it finds this problems, offers to 
+correct it (with /C only). If such a problem is corrected, CHECKINI 
+terminates itself and offers to restart the WPS.
+
+
+
+PROBLEM 2 - DUPLICATE DATA BLOCKS FOR ONE PARTITION
+===================================================
+
+Sometimes (due to a WPS Error?) duplicate blocks exist for the same 
+partition. Clearly this causes problems for the WPS. I can only guess about 
+the exact problems that occur, but one can imagine that this could lead to 
+the WPS being unable to translate a handle to a path since the WPS only 
+searches one block (the first it finds). And since it looks like the WPS 
+sometimes writes the blocks in reverse order the problem could exist one day
+but be gone the next and to happen again after a subsequent boot.
+
+CHECKINI now checks for duplicate blocks per partition (Called a DRIV block).
+When it finds a duplicate it will remove (after manual confirmation) the 
+least referenced block, terminate itself, and offer to restart the WPS.
+
+It can however only determine which block is used least if all other tests 
+are not skipped.
+
+
+
+
+WHAT DO I ASK?
+==============
+- Please DO NOT SPREAD THIS VERSION Until I know it is SAVE !!!
+
+- Run CHECKINI without the /C option to see if this problem is present on
+  your machine. Look for: 'Checking integrity of PM_Workplace:HandlesX'.
+
+  If neighter of these problems occurs on your machine then this version of
+  CHECKINI will not do any harm. You cannot help me then. So thank you for
+  your time.
+
+- If the problem is found, make backup's of your OS2SYS.INI and OS2.INI first.
+
+- I would also advise to run WPSBKP since when solving problem #2 handles
+  stored in your program objects could be lost when they are in the block
+  that CHECKINI removes. WPSBKP allows you to restore them should this be the
+  case.
+
+- Then run CHECKINI /C. The /Y[:n] option doesn't work for the new tests, and
+  as I see it, will never work, because simply too much happens to run it 
+  automaticaly.
+
+- During the process CHECKINI will try to make a backup of the INI files.
+  I am not sure if this works, so if it doesn't let me know.
+
+- When done, send me CHECKINI.LOG plus all your remarks.
+
+
+Henk Kelder
+
+email: henk.kelder@capgemini.nl
+  

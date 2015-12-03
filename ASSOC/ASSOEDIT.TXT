@@ -1,0 +1,79 @@
+                         === DISCLAIMER ===
+
+
+I allow you to use and distribute ASSOEDIT freely under the condition 
+that I am in no way responsible for any damage or loss you may suffer. 
+
+Henk Kelder, hkelder@inetgate.capgemini.nl
+
+                   === NOTES on ASSOEDIT ===
+
+Assoedit.exe allows you to inspect or modify associations set for
+file- and typefilters.
+You can add new associations, remove old ones and change defaults
+associations.
+Also, you can add new filetypes.
+
+
+Simply copy ASSOEDIT.EXE and ASSOEDIT.HLP to your harddisk.
+
+If you do not start ASSOEDIT.EXE from the same directory as the .hlp file
+is located make sure you have placed the .HLP file in a directory that is
+included in your helppath in the config.sys (SET HELP=...).
+
+
+This version of ASSOEDIT supports:
+
+o  OS/2 2.0 GA 
+o  OS/2 2.0 GA with service pack dated oktober 1992
+o  OS/2 2.10
+o  OS/2 2.11 (= 2.10 + SP)
+o  OS/2 3.0 (WARP)
+
+Notes on version 1.1:
+
+o   You've just got it.
+
+
+
+Notes on version 1.2:
+
+This version now also supports:
+
+o   OS/2 2.1 BETA (march '93 - Kernel version 6.498)
+
+o   OS/2 3.0 Warp
+
+Notes on version 1.3:
+
+o   You can now drag a SINGLE workplace shell program object into the 
+    listbox that shows associated programs.
+
+Notes on version 1.4:
+
+o   Corrected an error where ASSOEDIT was unable to translate OBJECT handles
+    back to file names. This only occured when the workplace shell stored
+    more than 64 Kb in its internal handle-to-file tables.
+
+Notes on version 1.5:
+
+o   Corrected a problem that was caused by the correction in version 1.4.
+
+Notes on version 1.6:
+
+o   Now works with warp 4.0    
+
+Notes on version 2.0:
+
+o   Fixed a problem where ASSOEDIT didn't recoqnize certain file system 
+    objecthandles.
+o   AssoEdit now also uses WPTOOLS.DLL.
+
+Notes on version 2.1:
+
+o   Just make sure ASSOEDIT works with WPTOOLS.DLL version 2.11
+
+Henk Kelder
+
+
+

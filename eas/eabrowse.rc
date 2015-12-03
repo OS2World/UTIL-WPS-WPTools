@@ -1,0 +1,45 @@
+#include <os2.h>
+#include <pmstddlg.h>
+
+#include   "EABrowse.h"
+
+ICON 1                  EABrowse.ico
+ICON ID_WINDOW          EABrowse.ico
+BITMAP ID_BITMAP        EABrowse.bmp
+RCINCLUDE "EABrowse.dlg"
+
+MENU ID_WINDOW LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+  SUBMENU "~File" ,                     MID_FILE,    MIS_TEXT
+  BEGIN
+     MENUITEM "~Change directory",      MID_OPEN,    MIS_TEXT
+     MENUITEM SEPARATOR
+     MENUITEM "~Quit",                  MID_QUIT,    MIS_TEXT
+  END  
+
+  SUBMENU "~Options" ,                  MID_OPTIONS, MIS_TEXT
+  BEGIN
+     MENUITEM "~Hexadecimal mode",      MID_BINARY,  MIS_TEXT
+     MENUITEM "~Only files with EAs",   MID_EAFILESONLY, MIS_TEXT
+     MENUITEM "~Allow changes",         MID_ALLOWEDIT, MIS_TEXT
+     MENUITEM SEPARATOR
+     MENUITEM "Change ~Font",           MID_FONT,    MIS_TEXT
+  END  
+
+  SUBMENU "~Attributes",                MID_ATTRIBUTES, MIS_TEXT
+  BEGIN
+     MENUITEM "~Add",                   MID_ADD,      MIS_TEXT
+     MENUITEM "~Delete",                MID_DELETE,   MIS_TEXT
+     MENUITEM "~Save",                  MID_SAVE,     MIS_TEXT
+   END
+
+  SUBMENU  "~Help",                     MID_HELPMENU, MIS_TEXT
+  BEGIN
+     MENUITEM "~Help index",            MID_HELPINDEX,   MIS_TEXT
+     MENUITEM "~General help",          MID_GENERALHELP, MIS_TEXT
+     MENUITEM "~Using help",            MID_USINGHELP,   MIS_TEXT
+     MENUITEM "~Keys help",             MID_KEYSHELP,    MIS_TEXT
+     MENUITEM SEPARATOR
+     MENUITEM "~Product information...",MID_ABOUT,       MIS_TEXT
+  END
+END

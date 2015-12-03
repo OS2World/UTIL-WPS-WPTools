@@ -1,0 +1,189 @@
+                      === DISCLAIMER ===
+
+
+I allow you to use and distribute HSTART freely under the condition that 
+I am in no way responsible for any damage or loss you may suffer. 
+
+
+Henk Kelder, hkelder@capgemini.nl
+
+
+Notes on HSTART
+===============
+
+HSTART.EXE is an alternative program for the START command embedded in
+OS/2. HSTART will however only work on OS/2 2.1 or higher.
+
+Compared with the START command it has two advantages:
+
+-       HSTART can be used from DOS sessions 
+        From  OS/2's own DOS, called a Virtual Dos Machine (VDM), as
+        an other version of DOS started from an boot diskette or an
+        image file, called a Virtual Machine Boot (VMB).
+
+-       HSTART allows DOS Settings for a DOS session to be specified in a 
+        text file.
+
+
+USING HSTART
+============
+
+The syntax of HSTART is mainly the same as the syntax of the START command:
+(type 'HELP START' on a command line for more details on the various 
+parameters)
+
+  HSTART ["Title"] [options] [program] [parameters]
+
+  Valid options are:
+
+  /DOS    - start a dos session
+  /PM     - start a presentation manager session
+
+  /FS     - start a fullscreen session
+  /WIN    - start a windowed session
+
+  /F      - start session in the foreground
+            (This is default when /PM, /FS, /DOS or /WIN is specified)
+  /B      - start session in the background
+            (This is default when /PM, /FS, /DOS and /WIN are not specified)
+
+  /MAX    - starts session maximized (if windowed)
+  /MIN    - starts session minimized (if windowed)
+  /POS=x,y,cx,cy - starts session with specified window sizes(if windowed)
+
+  /C      - start via command processor. Terminate session when program ends
+  /K      - start via command processor. Keep session when program ends
+            (This is the default for non-PM programs)
+  /N      - start program directly (bypass command processor)
+            (This is the default for PM programs)
+
+  /S:file - Specify File containing settings for DOS sessions
+            See SETTINGS.TXT for more details on DOS settings.
+
+  /WAIT   - Wait for session to finish 
+            (Works with restrictions, see below)
+
+  /Ddir   - Specifies directory where to start the command in. 
+            Default is current directory.
+  Remarks:
+
+  -     The /I parameter is not implemented in HSTART. It doesn't seem to
+        work properly for the START command anyway.
+
+  -     You cannot combine the /DOS parameter with the /N parameter.
+
+  -     When you specify /DOS and do not specify a /S:file parameter
+        a default setting file is used. This default file is searched for in
+        the same directory as HSTART is located. The name of this default
+        file is HSTART.CFG.
+
+  -     You cannot specify a /S:file parameter if no /DOS parameter is 
+        specified. 
+
+  -     When used on a system without PM do not use the /MIN or /MAX or /POS
+        options. Hstart will not work then.
+
+KNOWN PROBLEMS/RESTRICTIONS:
+============================
+
+-       When HSTART is used from DOS, the new session does not have the
+        same current directory as the session HSTART was issued from.
+        Instead the new session starts from the root directory of drive
+        OS/2 boots from. 
+
+        You could use the '&' to combine several commands
+        to get to the requested subdir
+
+            e.g.: HSTART "BinkleyTerm" /fs e:&cd \binkley&btp
+
+        or use a .bat/.cmd file.
+
+-       When a DOS session is started in the background switching to this
+        new session and then switching back to the desktop seems to distore
+        the graphical display. 
+        (Only when SET VIDEO_8514A_XGA_IOTRAP=0; is in the DOS settings file)
+
+-       On some SVGA systems, starting a DOS session in the background, and
+        switching to it shows a complete black screen. The DOS session seems 
+        to hang. (Possibly also related to VIDEO_8514A_XGA_IOTRAP ?)
+
+        Should this occur, switch back to the desktop and close the DOS 
+        session using the tasklist.
+
+
+-       When the /N parameter is used, please specify the full program name,
+        including the extension.
+
+-       The /WAIT parameter only works directly when used from a OS/2
+        sesssion.
+        Please note that if you start a (program in a) command session,
+        HSTART will stop waiting after the session itself is closed. 
+        Use the /C parameter if needed.
+
+        When this option is used from a DOS session, please use HWAIT
+        (without options) to signal hstart it may continue, or better, stop
+        waiting. Please note that this will only function properly when only
+        one DOS session is waiting. When multiple DOS sessions are waiting
+        they will all continue after HWAIT is run.
+        A better solution when from multiple DOS sessions programs need to 
+        be started with a wait option is not to use the /WAIT option from 
+        HSTART but use HWAIT both for waiting and signaling.
+
+        See 'HWAIT.TXT' for more details.
+
+
+FILES
+=====
+
+HSTART.EXE   : the main program
+
+HWAIT.EXE    : A program that sends a signal to a DOS version of HSTART.
+
+SEMFUNCS.DLL : Needed for HWAIT to work in OS/2 sessions. Make sure this
+               file is located in a location pointed at by the LIBPATH=
+               from your CONFIG.SYS.
+
+
+HISTORY
+=======
+
+Version 0.8: Initial release.
+
+Version 0.9: /WAIT option added
+             HWAIT.EXE added.
+
+
+Version 1.0: Changed the program so it works when using CSHELL.
+             You should not use /MAX or /MIN options then.
+
+Version 1.1: Corrected a problem that occured when from a foreground session
+             was tried to be started from a OS/2 background session. 
+             OS/2 will then return a errorcode indicating that it was unable
+             to start the session in the foreground and the session is started
+             in the background. The problem only occured when HSTART was
+             used the /WAIT option. Due to the errorcode HSTART would terminate
+             itself without waiting and by terminating itself also terminate
+             the started session. Now HSTART will continue to wait if 
+             this error occurs.
+
+Version 1.2: Oops, just noticed that the version number in the program itself
+             was not updated to 1.1. Now it is 1.2.
+
+             Corrected a problem when HSTART was used more then once from an 
+             OS/2 session with the /WAIT option. The problem was that HSTART
+             needs to create a queue for the /WAIT option to function, and
+             HSTART did not use unique queue names per instance. Now HSTART
+             uses unique queue names.
+
+             When HSTART is used from a DOS session to start any other session
+             HSTART creates a named semaphore to realise the /WAIT function.
+             I have not found a way to let HWAIT (which is needed to signal
+             the waiting DOS session to continue) know which semaphore name
+             to signal. 
+
+Version 1.4: Cannot remember whatever the changes in version 1.3 were.
+
+             Modified the code so all arguments will be enclosed in double
+             Quotes.
+
+Version 2.0 : Added the /D switch.

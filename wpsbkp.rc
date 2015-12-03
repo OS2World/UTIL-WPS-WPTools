@@ -1,0 +1,4 @@
+#include <os2.h>
+#include <pmstddlg.h>
+
+ICON 1 WPSBKP.ICO

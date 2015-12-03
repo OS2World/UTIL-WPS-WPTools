@@ -1,0 +1,76 @@
+                         === DISCLAIMER ===
+
+
+I allow you to use and distribute REPLINI freely under the condition
+that I am in no way responsible for any damage or loss you may suffer.
+
+I CANNOT guarantee that REPLINI will work for you. However I'v done
+my best to test the program and I can only say that It works for me.
+
+
+Henk Kelder
+hkelder@capgemini.nl
+http://www.os2ss.com/information/kelder/
+
+
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+________________________________________________________________________
+
+REPLINI will RESTART the Workplace shell. Make sure all applications are
+closed before using REPLINI.
+________________________________________________________________________
+
+
+NOTES on REPLINI version 0.9:
+
+
+REPLINI (ReplaceIni) will replace the OS2.INI and OS2SYS.INI with a copy
+(made by 'COPYINI'?) of these files from another location.
+The reason for this program is that it is rather cumbersome to replace the
+current active ini-files when the workplace shell has these two files in
+use.
+
+
+REPLINI will replace both ini's by restarting the workplace shell two times:
+
+The first time the workplace shell will be restarted to use the new version
+of the ini's at the specified location.
+
+Then REPLINI will rename the original ini files to save versions. Their
+names will be OS2.nnn and OS2SYS.nnn where 'nnn' will be the first number
+that produces non-existing file names.
+
+Then REPLINI will copy the new ini's from the specified directory to the
+directory where the original ini's were located.
+
+Finally, REPLINI will restart the workplace shell to use the copied
+ini files.
+
+The whole process should take no more than a few seconds.
+
+
+When one of the steps described above fails, REPLINI will try to restore
+all changes!
+
+
+FIRST TIME USAGE:
+
+Make sure you have a saved copy of your ini files. Should REPLINI fail
+press RESET (C-A-D), boot from a boot disk and restore your saved copy of
+the ini files.
+
+
+KNOWN LIMITATIONS:
+
+-  Objects from 'startup' folders will not restart when using REPLINI.
+
+-  Occasionally, a protection violation was seen in the WPCLSLST.DLL from
+   the OS/2 TOOLKIT.
+   When 'Close the application' was chosen in the protection violation
+   prompt, the workplace shell restarted normally.
+
+-  After REPLINI has been used on the March '93 BETA of OS/2 2.1
+   (Release level 6.489) Shutdown no longer works. Use Ctrl-Alt-Del
+   to reboot.
+

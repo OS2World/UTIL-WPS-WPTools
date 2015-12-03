@@ -1,0 +1,119 @@
+# Make file for wptools.DLL
+#   1-09-1992
+# IBM C/2 Set compiler
+# DLL 
+
+TOOLKIT=E:\TOOLKIT
+IBMC   =E:\IBMCPP
+PFXLIB= $(MSCDIR)\PFX\LIB\pfxmt32.lib
+PFXINC =$(MSCDIR)\PFX\INCLUDE
+
+#DEBUG=YES
+
+.SUFFIXES: .dll
+
+!ifdef DEBUG
+OPTS=/O+ /Ti 
+CV=/CO
+!else
+OPTS=/O+
+!endif
+
+LINKOPT=/NOI $(CV) /ALIGN:16 /MAP /EXEPACK /STACK:10000 /NOE
+CFLAGS = /W3 /G4 /Gd- /C /Gm+ /Gf+ /Gi+ /Ss /Ge- /Sm
+
+# Compiler options
+# /Sm - Migration (microsoft compatible) libs
+# /Se - IBM extentions
+
+# /Ss - Allow use of // comment
+# /Gm - Use single thread libraries
+# /Gf - Use fast floating point
+# /Kb+ - Warnings on general diagnostics
+# /G3  - Optimize code for 80386 (also runs on 80486)
+# /C   - Compile only
+# /Gt+ - Make shure all data is 16 bits alligned
+# /Gs+ - Remove stack checking
+# /Gm+ - Link with multi-tasking lib
+# /Ge- - Use libs that assume a DLL is being build
+# /Ge+ - Use libs that assume a EXE is being build
+# /Gd- - Statically link c-runtime into the dll.
+
+OBJS= wpabs.obj    \
+      wpfolder.obj \
+      wpfsys.obj   \
+      wpobject.obj \
+      wpprgref.obj \
+      wpprgfil.obj \
+      wpdataf.obj  \
+      wpshadow.obj \
+      wppalet.obj  \
+      wpfntpal.obj \
+      wpclrpal.obj \
+      wpprndst.obj\
+      wprprint.obj \
+      getftit.obj \
+      wpdisk.obj  \
+      os2prof.obj  \
+      os2block.obj \
+      os2ea.obj    \
+      os2obj.obj   \
+      os2err.obj   \
+      readicon.obj \
+      objloc.obj   \
+      getset.obj \
+      launch.obj \
+      scenter.obj \
+      wpdsktop.obj \
+      wphost.obj \
+      wpurl.obj
+
+.c.obj:
+     ICC.EXE  $(CFLAGS) $(OPTS) /I$(TOOLKIT)\H;$(IBMC)\INCLUDE;$(PFXINC) %s >%|dpfF.err
+     type %|dpfF.err      
+
+ALL: WPTOOLS.LIB 
+
+WPTOOLS.LIB:  WPTOOLS.DLL
+      implib WPTOOLS.LIB $**
+
+WPTOOLS.DLL : $(OBJS) wptools.def
+        ilink /NOFREE @<<
+$(RT_OBJS: = +^
+) $(OBJS: = +^
+)
+$@
+WPTOOLS, 
+REXX.LIB $(PFXLIB) $(LINKOPT)
+WPTOOLS.DEF 
+<<NOKEEP
+
+wpabs.obj    : wpabs.c        wptools.h
+wpfolder.obj : wpfolder.c     wptools.h
+wpfsys.obj   : wpfsys.c       wptools.h
+wpobject.obj : wpobject.c     wptools.h
+wpprgref.obj : wpprgref.c     wptools.h
+wpprgfil.obj : wpprgfil.c     wptools.h
+wpshadow.obj : wpshadow.c     wptools.h
+wppalet.obj  : wppalet.c      wptools.h
+wpfntpal.obj : wpfntpal.c     wptools.h
+wpclrpal.obj : wpclrpal.c     wptools.h
+wppprndest.obj : wpprndest.c  wptools.h
+os2prof.obj  : os2prof.c      wptools.h
+os2block.obj : os2block.c     wptools.h
+os2ea.obj    : os2ea.c        wptools.h
+os2obj.obj   : os2obj.c       wptools.h
+os2err.obj   : os2err.c       wptools.h
+readicon.obj : readicon.c     wptools.h
+getset.obj   : getset.c       wptools.h
+wprprint.obj : wprprint.c     wptools.h
+wpdisk.obj   : wpdisk.c       wptools.h
+getftit.obj  : getftit.c      wptools.h
+wpdataf.obj  : wpdataf.c      wptools.h
+objloc.obj   : objloc.c       wptools.h
+launch.obj   : launch.c       wptools.h
+wpdsktop.obj : wpdsktop.c     wptools.h
+wphost.obj   : wphost.c       wptools.h
+wpurl.obj    : wpurl.c        wptools.h
+scenter.obj  : scenter.c      wptools.h
+

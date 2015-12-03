@@ -1,0 +1,65 @@
+                        WARNING DANGER
+                        ==============
+
+
+Two program's in this package (CHECKINI.EXE and WPSBKP.EXE) extract
+information from the workplace shell. Since there is no known method of
+doing this on a documented way, they interpret the ini-files themselves.
+
+Although undocumented, it works properly for the following versions of
+OS/2:
+
+o       The original 2.0 version (GA) as was released in spring 1992
+
+o       The OS/2 2.00.1 (2.01) BETA version that was released in autumn 1992
+
+o       The original version in combination with the service pack released
+        october, 1992 (GA + SP).
+
+o       The OS/2 2.1 BETA's with the following revisions:
+        6.479, 6.498, 6.514.
+
+o       The GA release of OS/2 2.1. (rev. 6.514)
+
+o       OS/2 2.11 (OS/2 2.10 + SP)
+
+o       OS/2 3.0 (Warp)
+
+o       OS/2 3.0 with Fixpack 22 installed
+
+o       The Gamma version of Merlin (Warp 4.0)
+
+o       OS/2 WARP 4.0. I have FP11 installed and it still works !
+        
+
+IBM could at any point in time decide to change the way the workplace shells
+data is stored in the ini-files. 
+
+Therefore a new release of OS/2 or even a small update in one of the 
+workplace shell's programfiles or dll's could cause the two programs
+mentioned above to fail or even to corrupt your workplace shell.
+
+
+The best way to test this is run CHECKINI WITHOUT the /C option! 
+(Optionally use the /W option to write out all checkini's findings and 
+inspect the logfile)
+If Checkini reports un unusual amount of errors, the internal structure of
+the workplace shells data inside the ini-files might have changed. 
+Look in CHECKINI's logfile at the  
+"PM_Abstract:Objects & PM_Abstract:FldrContents" section with special care.
+If this section contains a lot of errors while your workplace shell seems to
+function properly there might have been a change, so:
+
+
+         DO NOT USE CHECKINI.EXE or WPSBKP.EXE then!
+         ===========================================
+
+
+Note: The warning above does not apply to WPSREST.EXE and RESETWPS.EXE
+REPLINI.EXE since these programs only use FULLY DOCUMENTED CALLS!
+
+Henk Kelder, 
+henk.kelder@capgemini.nl
+http://www.os2ss.com/information/kelder/
+
+

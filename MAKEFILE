@@ -1,0 +1,132 @@
+#
+# MAKEFILE for various OS/2 2.0 programs
+#
+#
+#DEBUG=YES
+
+PFXLIB= $(MSCDIR)\PFX\LIB\pfxmt32.lib
+PFXINC =$(MSCDIR)\PFX\INCLUDE
+
+WPLIB=.\WPTOOLS\WPTOOLS.LIB
+WPTINC=.\WPTOOLS
+
+!ifdef DEBUG
+OPTS=/O- /Ti /Gs+ /D__DEBUG_ALLOC__
+CV=/CO /MAP
+msgbind=type
+!else
+OPTS=/O+ /Gs+ 
+msgbind=msgbind
+!endif
+
+#LINKOPT=/NOI $(CV) /PM:VIO /STACK:10000 /ALIGN:4 /MAP /BASE:0x10000 /EXEPACK:2
+LINKOPT=/NOI $(CV) /PM:VIO /STACK:32768 /ALIGN:4 /MAP /BASE:0x10000 /EXEPACK:2
+# Compiler options
+# /Sm - Migration (microsoft compatible) libs
+# /Se - IBM extentions
+# /Ss - Allow use of // comment
+# /Gm - Use single thread libraries
+# /Gf - Use fast floating point
+# /Kb+ - Warnings on general diagnostics
+# /G3  - Optimize code for 80386 (also runs on 80486)
+# /C   - Compile only
+# /Gt+ - Make shure all data is 16 bits alligned
+# /Gs+ - Remove stack checking
+# /Gm+ - Link with multi-tasking lib
+# /Ge- - Use libs that assume a DLL is being build
+# /Gd- - Statically link c-runtime into the dll.
+# /Tm -  Enable debug memory management
+
+CFLAGS = /Wdcl /Weff /Wpar /Wpro /Wrea /Wret /Wuse /W3 /Gd- /C /G4mief /Ssme
+
+.c.obj:
+     ICC.EXE  $(CFLAGS) $(OPTS) /I$(PFXINC);$(WPTINC) .\$*.c >$*.err
+     type $*.err      
+
+.obj.exe:
+     !if exist $*.map del $*.map   
+     ilink /NOFREE $*.OBJ, $*, $*, $(PFXLIB) $(WPLIB) $(LINKOPT); >$*.ERL
+     type $*.erl
+     echo <<$*.bnd
+> $*.EXE
+< D:\IBMCPP\HELP\\DDE4.MSG
+*
+<<KEEP
+     $(msgbind) $*.bnd
+
+all: wpsbkp.exe wpsrest.exe copyini.exe checkini.exe getfobj.exe delprf.exe \
+     makeobj.exe replini.exe drives.exe checkea.exe \
+     resetwps.exe setdef.exe queues.exe eaback.exe earest.exe \
+     setobj.exe w95long.exe delea.exe getobj.exe defassoc.exe
+     
+
+
+#
+# All executables
+#
+wpsbkp.exe  :: wpsbkp.obj $(WPLIB)
+     ilink /NOFREE $*.obj, $*, $*, $(PFXLIB) WPTOOLS\WPTOOLS.LIB $(LINKOPT);
+     -if exist $*.res rc $*.res $*.exe
+     msgbind <<$*.bnd
+> $*.EXE
+< D:\IBMCPP\HELP\\DDE4.MSG
+*
+<<KEEP
+
+wpsbkp.exe  :: wpsbkp.res
+     rc $*.res $*.exe
+
+wpsbkp.res  : wpsbkp.rc
+     rc -r $*.rc
+
+queues.exe  : queues.obj
+test.exe    : test.obj
+wpsrest.exe : wpsrest.obj 
+copyini.exe : copyini.obj
+     ilink /NOFREE $*.obj, $*.exe, NUL, ,CopyIni.DEF $(LINKOPT)
+replini.exe : replini.obj
+checkini.exe: checkini.obj $(WPLIB)
+getfobj.exe : getfobj.obj  $(WPLIB)
+delprf.exe  : delprf.obj   $(WPLIB)
+makeobj.exe : makeobj.obj  $(WPLIB)
+drives.exe  : drives.obj
+checkea.exe : checkea.obj
+shutdown.exe: shutdown.obj
+setobj.exe  : setobj.obj
+eaback.exe  : eaback.obj
+earest.exe  : earest.obj
+resetwps.exe: resetwps.obj
+checkwps.exe: checkwps.obj
+     ilink $*.obj, $*, NUL, $(PFXLIB) $(WPLIB),$*.def $(LINKOPT);
+w95long.exe : w95long.obj $(WPLIB)
+delea.exe   : delea.obj $(WPLIB)
+getobj.exe  : getobj.obj
+defassoc.exe: defassoc.obj
+
+
+#
+# All objects
+#
+wpsbkp.obj  : wpsbkp.c wptools\wptools.h
+wpsrest.obj : wpsrest.c wptools\wptools.h
+copyini.obj : copyini.c
+checkini.obj: checkini.c wptools\wptools.h
+delprf.obj  : delprf.c
+getfobj.obj : getfobj.c
+makeobj     : makeobj.c
+replini.obj : replini.c
+drives.obj  : drives.c
+checkea.obj : checkea.c
+eaback.obj  : eaback.c eaback.h
+earest.obj  : earest.c eaback.h
+resetwps.obj: resetwps.c
+checkwps.obj: checkwps.c
+test.obj    : test.c
+queues.obj  : queues.c
+shutdown.obj: shutdown.c
+setobj.obj  : setobj.c
+w95long.obj : w95long.c
+delea.obj   : delea.c
+getobj.obj  : getobj.c wptools\wptools.h
+defassoc.obj: defassoc.c wptools\wptools.h
+
