@@ -11,4 +11,4 @@ Several utilities and libraries for the OS/2 WPS.
 * Henk Kelder
 
 ## LINKS
-* 
+* https://www.os2world.com/wiki/index.php/WPTools
